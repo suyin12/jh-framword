@@ -4,8 +4,5 @@ git has a mutable index called stage.
 Creating a new branch is quick and simple.
 add merge test.
 dev a branch edit  hehe.
-<<<<<<< HEAD
-=======
-your are stupid.
->>>>>>> issut-101
+
 
