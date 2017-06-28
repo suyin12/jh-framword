@@ -5,7 +5,6 @@
  * Date: 2017/6/2713:49
  *
  */
-
 /**
  *
  * 1）用文件存储会员信息，会员注册输入用户名和电子邮件就行。
@@ -16,32 +15,50 @@
  *
  *
  * */
-namespace action\merber;
+use conn;
 
 class MemberModel{
     private static $_instance;
-    public $username;
-    public $email;
+    private $username;
+    private $email;
     private $saveTime;
+    private $pdo;
 
     public function __construct($username='',$email=''){
         $this->username = $username;
         $this->email = $email ;
         session_start();;
+        $this->pdo = Conn::get_instance();
     }
-    public function getMerberInfo(){
-
-        //保存到数据库
-        $str = "insert into member_info(M_ID,M_Name,M_Password,M_Question,M_Answer,M_Card,M_Tel,M_QQ,M_Email,M_Address,M_Code,M_Money,M_Blance,M_CreateTime,M_Status)values(,:username,'','','','','','',:email,'','','','','','')";
-        $sth = $pdo->prepare($str,array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
-        $sth->execute(array(':username'=>$this->username,':email'=>$this->email));
-        //保存为文件格式
-        $arr = "\r\n".$this->username." ".$this->email." ";
-        if(file_exists("merber.txt")) {
-            file_put_contents("merber.txt", $arr, FILE_APPEND);
-            echo "保存成功";
-            exit;
+    public function dataRet($data,$message=""){
+        if(!empty($data)){
+           $arr['status'] = "0";
+           $arr['data'] = "";
+           $arr['message'] = $message;
+        }else{
+            $arr['status'] = "1";
+            $arr['data'] = $data;
+            $arr['message'] = "成功!";
         }
+        return json_encode($arr);
+    }
+    public function getMemberInfo(){
+        //保存到数据库
+        $sql = "select email from member_info where email=`$this->email`";
+        if($this->pdo->query($sql)){
+            return $this->dataRet($this->pdo->query($sql),"该邮箱已经注册,请通过邮箱找回密码!");
+        }
+        $str = "insert into member_info(M_ID,M_Name,M_Password,M_Question,M_Answer,M_Card,M_Tel,M_QQ,M_Email,M_Address,M_Code,M_Money,M_Blance,M_CreateTime,M_Status)values(,:username,'','','','','','',:email,'','','','','','')";
+        $sth = $this->pdo->prepare($str,array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+        $res = $sth->execute(array(':username'=>$this->username,':email'=>$this->email));
+        return $this->dataRet($res,"插入失败!");
+        //保存为文件格式
+//        $arr = "\r\n".$this->username." ".$this->email." ";
+//        if(file_exists("merber.txt")) {
+//            file_put_contents("merber.txt", $arr, FILE_APPEND);
+//            echo "保存成功";
+//            exit;
+//        }
 
     }
     public static function getInstance(){
@@ -50,7 +67,6 @@ class MemberModel{
         }
         return self::$_instance;
     }
-
     public function login(){
         $merberStr = file_get_contents("merber.txt");
         $merberArr = explode(" ",$merberStr);
@@ -91,6 +107,6 @@ class MemberModel{
         echo date("Y-m-d H:i:s",$_SESSION['saveTime']);
     }
 }
-$test = new merber("李四","452292741@qq.com");
+$test = new MemberModel("李四","452292741@qq.com");
 //$test->getMerberInfo();
 $test->checkLogout();
