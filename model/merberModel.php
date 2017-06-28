@@ -18,7 +18,7 @@
  * */
 namespace action\merber;
 
-class merber{
+class MemberModel{
     private static $_instance;
     public $username;
     public $email;
@@ -30,6 +30,12 @@ class merber{
         session_start();;
     }
     public function getMerberInfo(){
+
+        //保存到数据库
+        $str = "insert into member_info(M_ID,M_Name,M_Password,M_Question,M_Answer,M_Card,M_Tel,M_QQ,M_Email,M_Address,M_Code,M_Money,M_Blance,M_CreateTime,M_Status)values(,:username,'','','','','','',:email,'','','','','','')";
+        $sth = $pdo->prepare($str,array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+        $sth->execute(array(':username'=>$this->username,':email'=>$this->email));
+        //保存为文件格式
         $arr = "\r\n".$this->username." ".$this->email." ";
         if(file_exists("merber.txt")) {
             file_put_contents("merber.txt", $arr, FILE_APPEND);

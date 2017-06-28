@@ -41,4 +41,5 @@ class Conn{
     }
 }
 $pdo = Conn::get_instance();
+define("webPath","https://".$_SERVER['HTTP_HOST'].__DIR__);
 
