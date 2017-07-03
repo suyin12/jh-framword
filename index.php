@@ -24,3 +24,4 @@ define("CONF_PATH", SYS_PATH . "conf/");
 define("JH_PATH", SYS_PATH . "jh/");
 
 require JH_PATH  ."jh.php";
+create a new branch is quick AND simple.
