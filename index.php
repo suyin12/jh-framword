@@ -24,4 +24,3 @@ define("CONF_PATH", SYS_PATH . "conf/");
 define("JH_PATH", SYS_PATH . "jh/");
 
 require JH_PATH  ."///jh.php";
-$a = "your are stupid";
