@@ -23,4 +23,4 @@ define("APP_PATH",$base_path."app/");
 define("CONF_PATH", SYS_PATH . "conf/");
 define("JH_PATH", SYS_PATH . "jh/");
 
-require JH_PATH  ."/jh.php";
+require JH_PATH  ."///jh.php";
