@@ -25,5 +25,5 @@ define("JH_PATH", SYS_PATH . "jh/");
 
 require JH_PATH  ."jh.php";
 
-$a = "create a new branch is quick and simple";
+$a = "create a new branch is quick & simple";
 
