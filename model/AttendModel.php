@@ -5,6 +5,7 @@
  * Date: 2017/6/29 13:44
  *
  */
+//报名参加模型
 class AttendModel{
     private $tel;
     private $name;
