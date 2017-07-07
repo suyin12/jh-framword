@@ -6,7 +6,8 @@
  *
  */
 namespace jh;
-require './setting.php';
+require 'setting.php';
+
 use jh\Conn;
 
 class PrivilegeManagement{
@@ -34,12 +35,12 @@ class PrivilegeManagement{
     }
     /**
      * 获取用户角色数组
-     * param $id
+     * param $id $bool
      * return array()
     */
     public function rulesArr($id,$bool = false){
-        $conn = Conn::$_instance;
-//        var_dump($conn);exit;
+        $pdo = Conn::get_instance();
+        $pdo = $pdo->connet();
         if(empty($id)){
             echo "传入id有误,请确认!!!";exit;
         }
@@ -50,20 +51,35 @@ class PrivilegeManagement{
         }else{
             $sql = "select name from rules where 1=1";
         }
-
-        $ret = $conn->query($sql);
+        $pdo->query("set names utf8");
+        $ret = $pdo->query($sql);
         $this->rolesArr = $ret->fetchAll(\PDO::FETCH_ASSOC);
-
-//        foreach($this->rolesArr as $key => &$val){
-//            $this->rolesArr = $val;
-//        }
-        echo "<pre>";
-        var_dump($this->rolesArr);exit();
+//        var_dump($this->rolesArr);exit;
         return $this->rolesArr;
     }
-    //设置用户权限 return array()
-    public function updateUserRules(){
 
+    /**
+     * 修改用户的角色id状态
+     *
+     * 1:允许,2:允许查看,0:禁止操作
+     */
+    public function updateUserRules($arr,$type=1){
+        $pdo = Conn::get_instance();
+        if($type==1){
+            $sql = "update  users_in_roles set status = 1 where user_id = '' and role_id = '' ";
+        }elseif($type==2){
+            $sql = "update  users_in_roles set status = 2 where user_id = '' and role_id = '' ";
+        }else{
+            $sql = "update  users_in_roles set status = 0 where user_id = '' and role_id = '' ";
+        }
+
+        $ret = $pdo->connet()->exec($sql);
+
+        foreach($arr as $k => $v){
+
+        }
+        $ret = json_encode($ret);
+        return $ret;
     }
 
 }
