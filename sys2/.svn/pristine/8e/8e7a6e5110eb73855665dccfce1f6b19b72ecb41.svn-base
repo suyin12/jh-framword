@@ -1,0 +1,142 @@
+<include file="./Addons/Paiqian/View/default/Wap/_head.html"/>
+
+<body>
+<div class="container">
+  <header class="header"> <a class="back" href="javascript:;" onClick="$.WeiPHP.back();"></a> <span class="title">订单详情</span> <a class="cate" href="javascript:;" onClick="$.WeiPHP.showPopCate();"></a> </header>
+  <div class="page with_foot_page">
+  <php>$status_class[0]='status_red';$status_class[1]='status_green';$status_class[99]='status_yellow';$status_class[98]='status_green';</php>
+    <div class="top_title_al"> 订单号：{$info.orderID} </div>
+    <div class="weui_cells" style="margin-top:0">
+      <div class="weui_cell">
+        <div class="weui_cell_bd weui_cell_primary"> 订单状态 </div>
+        <div class="weui_cell_ft"> <span class="status {$status_class[$info[payStatus]]}">{$info.payStatus_title}</span> </div>
+      </div>
+    </div>
+    <div class="weui_cells" style="margin-top:15px">
+      <div class="weui_cell">
+        <div class="weui_cell_bd weui_cell_primary">
+          <p>共有<span class="orange">{$info.person_count|intval}</span>人参保</p>
+          <p>总计<span class="big orange">￥<script language="javascript" type="text/javascript">
+function round2(Num1,Num2){
+     if(isNaN(Num1)||isNaN(Num2)){
+           return(0);
+     }else{
+     return(Num1.toFixed(Num2));
+           }
+}
+document.write(round2(<php> echo $info['total'] </php>,2))
+</script></span></p>
+        </div>
+      </div>
+    </div>
+    <p class="top_title_al">缴交明细</p>
+    <ul>
+    
+      <volist name="info.data" id="vo">
+        <li class="weui_cells" style="margin-top:0;">
+          <div class="weui_cell" href="javascript:;">
+            <div class="weui_cell_bd weui_cell_primary">
+              <p>姓名</p>
+            </div>
+            <div class="weui_cell_ft"> {$vo.name} </div>
+          </div>
+          <if condition="$vo[soInsurance]">
+            <div class="weui_cell muti_inner_cells">
+              <div class="weui_cell_bd weui_cell_primary">
+                <p>社保</p>
+              </div>
+              <div class="weui_cell_ft">
+                <div class="weui_cell" href="javascript:;">
+                  <div class="weui_cell_bd weui_cell_primary"> </div>
+                  <div class="weui_cell_ft"> 起缴月份:{$vo.soInsBeginMonth} </div>
+                </div>
+                <div class="weui_cell" href="javascript:;">
+                  <div class="weui_cell_bd weui_cell_primary"> </div>
+                  <div class="weui_cell_ft"> 购买套餐:{$vo.soInsNeedMonthNum}个月(￥{$vo.soInsTotal}/月) </div>
+                </div>
+              </div>
+            </div>
+          </if>
+          <if condition="$vo[housingFund]">
+            <div class="weui_cell muti_inner_cells">
+              <div class="weui_cell_bd weui_cell_primary">
+                <p>公积金</p>
+              </div>
+              <div class="weui_cell_ft">
+                <div class="weui_cell" href="javascript:;">
+                  <div class="weui_cell_bd weui_cell_primary"> </div>
+                  <div class="weui_cell_ft"> 起缴月份:{$vo.HFBeginMonth} </div>
+                </div>
+                <div class="weui_cell" href="javascript:;">
+                  <div class="weui_cell_bd weui_cell_primary"> </div>
+                  <div class="weui_cell_ft"> 购买套餐:{$vo.HFNeedMonthNum}个月(￥{$vo.HFTotal}/月) </div>
+                </div>
+              </div>
+            </div>
+          </if>
+          <div class="weui_cell cell_no_arrow">
+            <div class="weui_cell_bd weui_cell_primary">
+              <p></p>
+            </div>
+            <div class="weui_cell_ft"> <span class="small">社保￥{$vo.soInsNeedMonthNumTotal}+公积金￥{$vo.HFNeedMonthNumTotal}+服务费￥{$vo.mCostNeedMonthNumTotal}=<span class="orange">￥<script language="javascript" type="text/javascript">
+function round2(Num1,Num2){
+     if(isNaN(Num1)||isNaN(Num2)){
+           return(0);
+     }else{
+     return(Num1.toFixed(Num2));
+           }
+}
+ document.write(round2(<php> echo ($vo['soInsNeedMonthNumTotal']+$vo['HFNeedMonthNumTotal']+$vo['mCostNeedMonthNumTotal']);</php>,2)) 
+</script> 
+              </span></span> </div>
+          </div>
+        </li>
+      </volist>
+    </ul>
+    <if condition="$info[payStatus] eq 0">
+      <div class="bottom_fixed_bar two_btn_wrap"> <a class="weui_btn weui_btn_plain_default" href="javascript:;" onClick="$.WeiPHP.showActionSheet();">取消订单</a> <a class="weui_btn weui_btn_primary" href="{:U('choosePayType',array('orderID'=>$info['orderID']))}">完成支付</a> </div>
+    </if>
+  </div>
+  <include file="./Addons/Paiqian/View/default/Wap/_service.html"/>
+</div>
+<script type="text/html" id="actionSheetHtml">
+<div id="actionSheet_wrap">
+	<div class="weui_mask_transition" id="mask" style="display: none;"></div>
+	<div class="weui_actionsheet" id="weui_actionsheet" style="background:#fff">
+		<p class="weui_cells_tips">选择取消理由</p>
+		<div class="weui_actionsheet_menu">
+			<div class="weui_cells weui_cells_checkbox" style="margin-top:0">
+			    <volist name="reason_list" id="vo">
+                <label class="weui_cell weui_check_label" for="s{$key}">
+                    <div class="weui_cell_hd">
+                        <input type="radio" class="weui_check" name="msgID" id="s{$key}" value="{$key}">
+                        <i class="weui_icon_checked"></i>
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>{$vo}</p>
+                    </div>
+                </label>
+				</volist>
+            </div>
+			
+		</div>
+		<div class="weui_actionsheet_action two_btn_wrap">
+			<a style="margin:5px 15px" class="weui_btn weui_btn_plain_default" href="javascript:" onClick="$.WeiPHP.hideActionSheet($('#weui_actionsheet'),$('#mask'));">取消</a>
+			<a style="margin:5px 15px" class="weui_btn weui_btn_primary" href="javascript:void(0);" onClick="cancel()">确定</a>
+		</div>
+	</div>
+</div>
+</script> 
+<script type="text/javascript">
+function cancel(){
+	var msgID = $('input[name="msgID"]:checked').val();
+
+	if(typeof(msgID)=="undefined"){
+		$.WeiPHP.toast('请选择取消理由',0,2000);
+		return false;
+	}
+	
+	window.location.href = "{:U('orderCancel',array('orderID'=>$info[orderID]))}&msgID="+msgID;
+}
+</script> 
+<include file="./Addons/Paiqian/View/default/Wap/_foot.html"/>

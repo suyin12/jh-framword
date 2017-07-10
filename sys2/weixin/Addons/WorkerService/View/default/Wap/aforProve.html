@@ -1,0 +1,68 @@
+<include file="./Addons/WorkerService/View/default/Wap/_head.html"/>
+<body>
+
+    <div class="container">
+        <header class="header">
+            <a class="back" href="javascript:;" onClick="$.WeiPHP.back();">
+            </a>
+            <span class="title">
+                收入证明(月收入)
+            </span>
+            <a class="cate" href="javascript:;" onClick="$.WeiPHP.showPopCate();">
+            </a>
+        </header>
+        <div class="page" style="margin-bottom: 23%;">
+            <p class="logo_img logo_img_bor">
+                <a href="{:U('index')}">
+                    <img src="/weixin/Public/static/paiqian/logo_img3.png" width="30%">
+                </a>
+            </p>
+           
+            <?php $id=1;?>
+            <form action="{:U('proveInfo','id='.$id)}" method="post">
+                <div class="news_detail hd news_title">
+                    <p style="font-size: 17px;text-align: center;margin-top: 1em;margin-bottom: 1.3em;">
+                        收入证明
+                    </p>
+                    <div class="content">
+
+                        <p class="text text_information">
+                           兹证明<u>&nbsp;{$personalData.name}&nbsp;</u>（身份证号码: <u>{$personalData.pID}</u>），系本单位<u>在职员工</u>，已连续在本单位工作<u>&nbsp;{$time}&nbsp;</u>年，近一年该员工的平均月收入（税前）为人民币<u>&nbsp;{$averageWage}&nbsp;</u>元。
+                        </p>
+                        <p class="text_file">
+
+                            <u>
+                                本证明仅用于证明我司员工的工作及在我司的工资收入，不作为我司对该员工任何形式的担保文件。
+                            </u>
+                        </p>
+                        <p class="text_prove">
+                            特此证明
+                        </p>
+                        <p class="text_name">
+                            公司联系人：
+                            <u>&nbsp;{$mName.mName}&nbsp;</u>
+                        </p>
+                        <p class="text_phone">
+                            联系电话：
+                            
+                            <u>&nbsp;0755-82385383&nbsp;</u>
+                            
+                        </p>
+                        <p class="text text_Firm">
+                            深圳市鑫锦程人力资源管理有限公司
+                        </p>
+                        <p class="text text_times">
+                            {$nowTime}
+                        </p>
+                        <div class="weui_EC">
+                                <img src="/weixin/Public/static/WorkerService/gong_07.png" alt="">
+                            </div>
+                    </div>
+                </div>
+             
+        </div>
+        <include file="./Addons/WorkerService/View/default/Wap/_btn.html" />
+        </form>
+    
+        <include file="./Addons/WorkerService/View/default/Wap/_foot.html" />
+

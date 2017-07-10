@@ -1,0 +1,112 @@
+<include file="./Addons/Paiqian/View/default/Wap/_head.html"/>
+<body>
+<div class="container">
+	<header class="header">
+        <a class="back" href="javascript:;" onClick="$.WeiPHP.back();"></a>
+        <span class="title">参保人列表</span>
+        <a class="cate" href="javascript:;" onClick="$.WeiPHP.showPopCate();"></a>
+    </header>
+   
+    <div class="with_foot_page">
+    <div class="page">
+    	<div class="common_tab">
+        <php>$status=I('status','1');$classCur[$status] = 'cur';</php>
+        	<a class="{$classCur[1]}" href="{:U('userList',array('status'=>'1'))}">正常</a>
+            <!--
+            <a class="{$classCur[99]}" href="{:U('userList',array('status'=>'99'))}">停保中</a>
+            -->
+            <a class="{$classCur[0]}" href="{:U('userList',array('status'=>'0'))}">已停缴</a>
+        </div>
+        <form id="form" action="{:U('agentUserRenew')}" method="post">
+        <ul class="weui_cells weui_cells_access">
+        <volist name="list_data" id="vo">
+        
+            <li class="weui_cell left_padding_cell" href="javascript:;">
+                <div class="weui_cell_hd weui_cells_checkbox">
+                    <label class="weui_check_label" for="s{$vo.fID}">
+                        <div class="weui_cell_hd">
+                            <input type="checkbox" class="weui_check fid_check" name="fIDs[]" id="s{$vo.fID}" value="{$vo.fID}">
+                            <i class="weui_icon_checked"></i>
+                        </div>
+                    </label>
+                </div>            
+                <a class="weui_cell_bd weui_cell_primary" href="{:U('userDetail',array('fID'=>$vo['fID']))}">
+                    <p><strong>{$vo.name}</strong><span class="small">{$vo.mobilePhone}</span></p>
+                    <p class="cell_info">{$vo.city_title}/{$vo.cityInsurance_title}<br/><span>{$vo.showTxt}</p>
+                </a>
+                <div class="weui_cell_ft"></div>
+            </li>
+            </volist>
+        </ul>
+      	
+        
+        <div class="bottom_fixed_bar">
+        	<div class="weui_cells_checkbox">
+                <label class="weui_cell weui_check_label" for="ckeck_all">
+                    <div class="weui_cell_hd">
+                        <input type="checkbox" class="weui_check" name="checkbox1" id="ckeck_all">
+                        <i class="weui_icon_checked"></i>
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>全选</p>
+                    </div>
+                </label>
+            </div>
+            <div class="fr total_info">
+            	 <button type="button" id="button_confirm"  class="btn" onClick="do_confirm()">批量续缴</button>       
+            </div>
+        	           
+        </div>
+       </form>
+        
+    </div>
+    <include file="./Addons/Paiqian/View/default/Wap/_service.html"/>
+    </div>
+</div>
+<script type="text/javascript">
+$(function(){
+	$("#ckeck_all").click(function(){
+		$(".fid_check").prop("checked", this.checked);
+	});
+})
+function do_confirm(){
+	$.WeiPHP.confirm({msg:'确认续缴',rightCallback:function(){
+		var target = "{:U('agentUserRenew')}";
+		var query = $('#form').serialize();
+		$.post(target,query,function(data){
+			    var that = $('#button_confirm');
+				$(that).removeClass('disabled').prop('disabled',false);
+                if (data.status==1) {
+					if($(that).hasClass('dialog_submit')){
+						//对话框中的提交动作
+						if (data.url) {
+							window.parent.location.href=data.url;
+						}else{
+							window.parent.location.reload();
+						}
+					}else{
+						if (data.url) {
+							$.WeiPHP.toast(data.info + ' 页面即将自动跳转~',1);
+						}else{
+							$.WeiPHP.toast(data.info ,1);
+						}
+						setTimeout(function(){
+							if (data.url) {
+								location.href=data.url;
+							}else{
+								location.reload();
+							}
+						},1500);
+					}
+                }else{
+					if($(that).hasClass('dialog_submit')){
+						$.WeiPHP.toast(data.info,0);
+					}else{
+						$.WeiPHP.toast(data.info,0);
+					}
+                }
+            });
+	}});
+}
+</script>
+<include file="./Addons/Paiqian/View/default/Wap/_foot.html"/>

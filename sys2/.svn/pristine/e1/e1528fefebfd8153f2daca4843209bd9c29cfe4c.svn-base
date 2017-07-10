@@ -1,0 +1,61 @@
+<include file="./Addons/BusinessAnalysis/View/default/Wap/_head.html"/>
+
+
+<body>
+<div class="container">
+    <header class="header">
+        <a class="back" href="javascript:;" onClick="$.WeiPHP.back();"></a>
+        <span class="title">入离职报告</span>
+        <a class="cate" href="javascript:;" onClick="$.WeiPHP.showPopCate();"></a>
+    </header>
+
+    <div class="page" style="margin-bottom:15px;">
+        <p class="logo_img"><a href="{:U('index')}"><img src="/weixin/Public/static/paiqian/logo_img3.png" width="30%"></a></p>
+
+        <div class="wage"></div>
+        <div class="user_action_list">
+            <div class="weui_cells weui_cells_access">
+                <foreach name="list_data" item="vo">
+                    <if condition="$vo.mount+$vo.dimission gt 0" >
+                    <div class="weui_cell muti_inner_cells">
+                        <div class="weui_cell_bd weui_cell_primary">
+                            <p>{$vo.unitName}</p>
+                        </div>
+                        <div class="weui_cell_ft">
+                            <section>
+                                <div class="weui_cell_bd weui_cell_primary">
+
+                                </div>
+                                <div class="weui_cell">
+                                    入职:  {$vo.mount}
+                                </div>
+                            </section>
+                                <section >
+                                <div class="weui_cell_bd weui_cell_primary">
+
+                                </div>
+                                <div class="weui_cell">
+                                    离职:  {$vo.dimission}
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                        </if>
+                </foreach>
+
+            </div>
+            <div class="user_action_list list_top">
+                <div class="weui_cells weui_cells_access">
+                        <div class="weui_cell_hd"></div>
+                        <div class="weui_cell_bd weui_cell_primary">
+                            <sction class="weui_cell">
+                                <p><span class="span_num">总计：入职 {$total.mount} 人 离职 {$total.dimission}  人</span></span></p>
+                            </sction>
+
+                        </div>
+                </div>
+            </div>
+
+
+            <include file="./Addons/BusinessAnalysis/View/default/Wap/_menu.html"/>
+            <include file="./Addons/BusinessAnalysis/View/default/Wap/_foot.html"/>

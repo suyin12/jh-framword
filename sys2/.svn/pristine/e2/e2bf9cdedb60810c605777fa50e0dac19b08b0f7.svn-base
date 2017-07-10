@@ -1,0 +1,68 @@
+<include file="./Addons/Paiqian/View/default/Wap/_head.html"/>
+
+<body>
+<div class="container">
+  <header class="header"> <a class="back" href="javascript:;" onClick="$.WeiPHP.back();"></a> <span class="title">退款详情</span> <a class="cate" href="javascript:;" onClick="$.WeiPHP.showPopCate();"></a> </header>
+  <div class="page with_foot_page">
+    <div class="top_title_al"> 退款单号:{$info.bankInfo.orderID} </div>
+    <div class="weui_cells" style="margin-top:0">
+      <div class="weui_cell">
+        <div class="weui_cell_bd weui_cell_primary"> 退款状态: {$info.payStatusTxt}</div>
+        <php>$status_class[0]='status_red';$status_class[1]='status_green';$status_class[99]='status_yellow';$status_class[98]='status_green';</php>
+        <div class="weui_cell_ft"> <span class="status {$status_class[$info[payStatus]]}">{$info.payStatus_title}</span> </div>
+      </div>
+      <div class="weui_cell">
+        <div class="weui_cell_bd weui_cell_primary"> 退款金额:{$info.refundMoney} </div>
+        <div class="weui_cell_ft"> <span class="big orange">
+        	<script language="javascript" type="text/javascript">
+function round2(Num1,Num2){
+     if(isNaN(Num1)||isNaN(Num2)){
+           return(0);
+     }else{
+     return(Num1.toFixed(Num2));
+           }
+}
+document.write(round2(<php> echo $info['total'] </php>,2))
+</script>
+        </span></div>
+      </div>
+    </div>
+    <p class="top_title_al">共有<span class="orange">{$info.count}</span>人申请退款</p>
+    <ul class="weui_cells weui_cells_access" style="margin-top:0;">
+        <volist name="info.data" id="vo">
+            <li class="weui_cell">
+                <div class="weui_cell_bd weui_cell_primary">
+                    <p class="l_title">{$vo.name}</p>
+                    <p class="lit">社保停缴月份:<span class="gray">{$vo.soInsStopMonth}</span></p>
+                    <p class="lit">公积金停缴月份:<span class="gray">{$vo.HFStopMonth}</span></p>
+                </div>
+                
+            </li>
+        </volist>
+    </ul>
+    <p class="top_title_al">退款账户信息</p>
+    <div class="weui_cells weui_cells_access" style="margin-top:0;">
+    	<div class="weui_cell">
+        	<div class="weui_cell_bd weui_cell_primary">
+                <p class="l_title">开户行：<span class="gray">{$info.bankInfo.bankAddress}</span></p>
+                <p class="l_title">户名：<span class="gray">{$info.bankInfo.name}</span></p>
+                <p class="l_title">账号：<span class="gray">{$info.bankInfo.bID}</span></p>
+            </div>
+        </div>
+    </div>
+
+   
+      <div class="bottom_fixed_bar"> <a style="margin:5px 15px" class="weui_btn weui_btn_primary" href="javascript:;" onClick="refundCancel()">取消退款</a> </div>
+    </if>
+    <include file="./Addons/Paiqian/View/default/Wap/_service.html"/>
+  </div>
+  
+</div>
+<script type='text/javascript'>
+	function refundCancel(){
+		var orderID ={$info['bankInfo']['orderID']};
+		
+		window.location.href ="{:U('refundCancel',array('orderID'=>$info[bankInfo][orderID]))}";
+	}
+</script>
+<include file="./Addons/Paiqian/View/default/Wap/_foot.html"/>

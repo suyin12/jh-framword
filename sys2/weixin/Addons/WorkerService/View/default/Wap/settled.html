@@ -1,0 +1,78 @@
+<include file="./Addons/WorkerService/View/default/Wap/_head.html"/>
+<!-- <link rel="stylesheet" href="__STATIC__/WorkerService/prove.css?v={:SITE_VERSION}"/> -->
+
+<style>
+    /*.news_title{padding-left: 30px;padding-right: 30px;}*/
+    .sett_b{border: none;border-bottom: 1px solid #000;width: 11em}
+    .p_Proof{margin-bottom: 7.8em;}
+    .p_year{letter-spacing:-0.12em;}
+</style>
+<body>
+
+<div class="container">
+    <header class="header">
+        <a class="back" href="javascript:;" onClick="$.WeiPHP.back();"></a>
+        <span class="title">落户证明</span>
+        <a class="cate" href="javascript:;" onClick="$.WeiPHP.showPopCate();"></a>
+    </header>
+    <div class="page" style="margin-bottom: 23%;">
+    <p class="logo_img logo_img_bor"><a href="{:U('index')}"><img src="/weixin/Public/static/paiqian/logo_img3.png" width="30%"></a></p>
+    
+    
+    <?php $id=5;?>
+    <form action="{:U('proveInfo','id='.$id)}" method="post"  onsubmit="return Service()";>
+    <div class="news_detail hd news_title">
+    <p class="prove_title">落户证明</p>
+    <div class="content">
+           <p class="text p_year">
+                           兹有<u>&nbsp;{$personalData.name}&nbsp;</u>（身份证号码: <u>{$personalData.pID}</u>），由于未能接受其本人入户到本单位集体户，特同意其户口入户到<input class="sett_b"  type="text" name="acceptUnit" placeholder="请输入填写落户地址"  value="">,请贵局予以办理为盼！
+                        </p>
+                        
+                        
+                        <p class="p_Proof">
+                            特此证明
+                        </p>
+
+                         <p class="text p_Firm">
+                            深圳市鑫锦程人力资源管理有限公司
+                        </p>
+                        <p class="text p_time">
+                            {$nowTime}
+                        </p>
+                         <div class="weui_EC" style="width: 41%;">
+                                <img src="/weixin/Public/static/WorkerService/gong_07.png" alt="">
+                            </div>
+                    </div>
+    </div>
+</div>
+
+
+    </div>
+
+    
+
+
+<include file="./Addons/WorkerService/View/default/Wap/_btn.html"/>
+</form>
+    <script type="text/javascript">
+    $(function(){
+        $.WeiPHP.initJson2Select([{$json}]);
+    });
+
+
+    function Service(){
+        var acceptUnit=$('.sett_b').val();
+        
+        if(acceptUnit==''){
+             $.WeiPHP.toast('落户地址不能为空', 0, 3000);
+                        return false;
+        }
+    }
+</script>
+
+    
+
+
+
+
+<include file="./Addons/WorkerService/View/default/Wap/_foot.html"/>

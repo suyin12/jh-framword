@@ -1,0 +1,52 @@
+<include file="./Addons/Paiqian/View/default/Wap/_head.html"/>
+<body>
+<div class="container">
+	 <php>$from = I('from');</php>
+	<header class="header">
+        <a class="back" href="javascript:;" onClick="$.WeiPHP.back();"></a>
+        <span class="title"> <neq name="from" value="userCenter">确认</neq>代理协议</span>
+        <a class="cate" href="javascript:;" onClick="$.WeiPHP.showPopCate();"></a>
+    </header>
+    
+    <div class="page with_foot_page">
+    	
+        <div class="toggle_content">
+        	<p class="title">社保代理协议</p>
+            <p class="summary">根据广东省人力资源社会保障厅、财政厅《转发人
+力资源社会保障部 财政部关于做...</p>
+			<div class="content">根据广东省人力资源社会保障厅、财政厅《转发人
+力资源社会保障部 财政部关于做,根据广东省人力资源社会保障厅、财政厅《转发人
+力资源社会保障部 财政部关于做...根据广东省人力资源社会保障厅、财政厅《转发人
+力资源社会保障部 财政部关于做...</div>
+			<a class="toggle_btn" href="javascript:;" title="展开">&nbsp;</a>
+        </div>
+        <div class="toggle_content">
+        	<p class="title">资金安全协议</p>
+            <p class="summary">根据广东省人力资源社会保障厅、财政厅《转发人
+力资源社会保障部 财政部关于做...</p>
+			<div class="content">根据广东省人力资源社会保障厅、财政厅《转发人
+力资源社会保障部 财政部关于做,根据广东省人力资源社会保障厅、财政厅《转发人
+力资源社会保障部 财政部关于做...根据广东省人力资源社会保障厅、财政厅《转发人
+力资源社会保障部 财政部关于做...</div>
+			<a class="toggle_btn" href="javascript:;" title="展开">&nbsp;</a>
+        </div>
+       
+        <neq name="from" value="userCenter">
+        <div class="bottom_fixed_bar">
+            <a style="margin:5px 15px;" class="weui_btn weui_btn_primary" href="{:U('choosePayType',array('orderID'=>I('orderID')))}">我已同意</a>
+        </div>
+       </neq>
+        <include file="./Addons/Paiqian/View/default/Wap/_service.html"/>
+    </div>
+    
+</div>
+<script type="text/javascript">
+$('.toggle_btn').click(function(){
+	if($(this).parent().hasClass('toggle_show')){
+		$(this).parent().removeClass('toggle_show');
+	}else{
+		$(this).parent().addClass('toggle_show');
+	}
+})
+</script>
+<include file="./Addons/Paiqian/View/default/Wap/_foot.html"/>

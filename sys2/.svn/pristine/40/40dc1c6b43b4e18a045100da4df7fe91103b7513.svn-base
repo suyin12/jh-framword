@@ -1,0 +1,25 @@
+<include file="./Addons/Paiqian/View/default/Wap/_head.html"/>
+<body>
+<div class="container">
+	<header class="header">
+        <a class="back" href="javascript:;" onClick="$.WeiPHP.back();"></a>
+        <span class="title" onClick="$('.news_menu_wrap').show();">资讯详情</span>
+        <a class="cate" href="javascript:;" onClick="$.WeiPHP.showPopCate();"></a>
+    </header>
+    <include file="./Addons/Paiqian/View/default/Wap/_menu.html"/>
+    <div class="page">
+    	<div class="news_detail hd">
+        	<h6>{$info.title}</h6>
+            <p class="info">{$info.cTime|time_format}</p>
+            <div class="content">
+            	<notempty name="info.cover"><p><img src="{$info.cover|get_cover_url}"/></p></notempty>
+                {$info.content|htmlspecialchars_decode}
+            </div>
+        </div>
+        
+    </div>
+    <include file="./Addons/Paiqian/View/default/Wap/_service.html"/>
+</div>
+<script type="text/javascript">
+</script>
+<include file="./Addons/Paiqian/View/default/Wap/_foot.html"/>

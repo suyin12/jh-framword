@@ -1,0 +1,27 @@
+pre {
+	word-wrap:break-word; /* Internet Explorer 5.5+ */
+}
+a span, 
+#submitbox #submit, 
+#searchbox .button, 
+#subscribe li a {
+	cursor:hand;
+}
+#header #head_rss_feed a {
+	BACKGROUND: none transparent scroll repeat 0% 0%; FILTER: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/wp-content/themes/budeyan/christmas/christmas.png');
+	cursor:hand;
+}
+#footer #foot_rss_feed a {
+	BACKGROUND: none transparent scroll repeat 0% 0%; FILTER: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/wp-content/themes/budeyan/images/rss.png');
+	cursor:hand;
+}
+#footer #foot_favorites a {
+	BACKGROUND: none transparent scroll repeat 0% 0%; FILTER: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/wp-content/themes/budeyan/images/favorites-1.png');
+	cursor:hand;
+}
+.logo .description {
+	margin:-15px auto;
+}
+.logo {
+	margin:15px auto;
+}

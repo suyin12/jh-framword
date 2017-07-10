@@ -1,0 +1,231 @@
+<include file="./Addons/Paiqian/View/default/Wap/_head.html"/>
+<body>
+<div class="container">
+	<header class="header">
+        <a class="back" href="javascript:;" onClick="$.WeiPHP.back();"></a>
+        <span class="title">测算</span>
+        <a class="cate" href="javascript:;" onClick="$.WeiPHP.showPopCate();"></a>
+    </header>
+    
+    <div class="page with_foot_page">
+    	<div class="person_list_top">
+        	<a class="question small" href="{:U('help',array('tpl'=>'helpSetting'))}">查看设置说明</a>
+        </div>
+       <form id="form" action="{:U('counterResult')}" method="post" class="form-horizontal">
+    	<div class="weui_cells weui_cells_form weui_cells_split" style="margin:5px 0 15px">
+        	<div class="weui_cell weui_cell_select weui_select_after">
+                <div class="weui_cell_hd">
+                    参保城市
+                </div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <select class="weui_select chang_event" name="city" id="city">
+                    </select>
+                </div>
+            </div>
+            <div class="weui_cell weui_cell_select weui_select_after">
+                <div class="weui_cell_hd">
+                    参保类型
+                </div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <select class="weui_select chang_event" name="cityInsurance" id="cityInsurance">
+                    </select>
+                </div>
+            </div>
+               
+         	<div class="weui_cell weui_cells_checkbox">
+
+                    <div class="weui_cell_bd weui_cell_primary">
+                       社保基数<span class="small">(<span id="radix_min">{$info.minRadix}</span>~<span id="radix_max">{$info.maxRadix}</span>)</span> <input style="border:1px solid #ccc; padding:5px; width:70%" class="weui_input chang_event" type="number" placeholder="请输入社保基数" name="radix" value="{$info.minRadix}">
+                    </div>
+              </div>
+			  
+        </div>
+        <div class="weui_cells weui_cells_form weui_cells_split">
+        	
+         	<div class="weui_cell weui_cells_checkbox">
+
+                    <div class="weui_cell_bd weui_cell_primary">
+                       公积金基数<span class="small">(<span id="HFRadix_min">{$info.minRadix}</span>~<span id="HFRadix_max">{$info.maxRadix})</span></span> <input style="border:1px solid #ccc; padding:5px; width:70%" class="weui_input chang_event" type="number" placeholder="请输入公积金基数" name="HFRadix" value="{$info.minRadix}">
+                    </div>
+              </div>
+			  
+        </div>
+       <div class="two_btn_wrap">
+        	<button class="weui_btn weui_btn_warn" type="button" onClick="getDetail()">测算</button>
+            <a class="weui_btn weui_btn_primary" href="{:U('help',array('tpl'=>'helpAddPerson'))}">申缴</a>
+        </div>
+        <div class="weui_cells shebao_detail_cells" id="detail_info"></div>    
+       	
+       
+       </form>
+        <p class="bottom_tips" onClick="$.WeiPHP.showActionSheet();"><img src="__STATIC__/paiqian/question_icon.png" style="width:24px; vertical-align:middle;"/> 缴费比例说明</p>
+        <include file="./Addons/Paiqian/View/default/Wap/_service.html"/>
+    </div>
+    <div class="bottom_fixed_bar">
+        <a style="margin:5px 15px;" class="weui_btn weui_btn_primary" href="javascript:;" onClick="$.WeiPHP.showShareTips()">分享给朋友</a>
+    </div>
+    
+</div>
+<div id="actionSheet_wrap">
+	<div class="weui_mask_transition" id="mask" style="display: none;"></div>
+	<div class="weui_actionsheet" id="weui_actionsheet">
+		<div class="weui_actionsheet_menu pay_type_menu">
+        	<p class="ca_detail_title">缴费比例说明</p>
+            <div style="margin:0 15px;">
+			<table class="ca_detail_table" width="100%">
+				<thead>
+                	<tr>
+                    	<th width="34%">类型</th>
+                        <th width="33%">个人</th>
+                        <th width="33%">单位</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                	<tr>
+                    	<td>养老</td>
+                        <td>{$info.pPension}</td>
+                        <td>{$info.uPension}</td>
+                    </tr>
+                	<tr>
+                    	<td>医疗</td>
+                        <td>{$info.pHospitalization}</td>
+                        <td>{$info.uHospitalization}</td>
+                    </tr>
+                	<tr>
+                    	<td>工伤</td>
+                        <td>{$info.pEmploymentInjury}</td>
+                        <td>{$info.uEmploymentInjury}</td>
+                    </tr>   
+                	<tr>
+                    	<td>失业</td>
+                        <td>{$info.pUnemployment}</td>
+                        <td>{$info.uUnemployment}</td>
+                    </tr>
+                	<tr>
+                    	<td>生育</td>
+                        <td>{$info.pBirth}</td>
+                        <td>{$info.uBirth}</td>
+                    </tr>                    
+                	<tr>
+                    	<td>残障金</td>
+                        <td>{$info.pPDIns}</td>
+                        <td>{$info.uPDIns}</td>
+                    </tr>                      
+                	<tr>
+                    	<td>公积金</td>
+                        <td>{$info.pHFPer}</td>
+                        <td>{$info.uHFPer}</td>
+                    </tr>
+                                                        
+                </tbody>
+			</table>
+			</div>
+		</div>
+		
+		<div class="weui_actionsheet_action">
+			<div class="weui_actionsheet_cell" id="actionsheet_cancel">关闭</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+$(function(){
+	$.WeiPHP.initWxShare({
+		title: '保费测算器', // 分享标题
+		desc:  '保费测算器', // 分享描述
+		link: window.location.href+"&publicid={$public_info['id']}", // 分享链接
+		imgUrl: '{:SITE_URL}/Public/static/paiqian/calculator_share.png', // 分享图标
+	});
+	$.WeiPHP.initJson2Select([{$json}]);
+});
+
+$(function(){
+	//getDetail();
+	
+   $('.chang_event').change(function(){ 
+   			var val = parseFloat($(this).val());
+			var name = $(this).attr('name');
+			var maxVal = parseFloat($('#'+name+'_max').text());
+			var minVal = parseFloat($('#'+name+'_min').text());
+			if(val<minVal){
+				$.WeiPHP.toast('不能小于最小基数',0);
+				 $(this).val(minVal);
+			}else if(val>maxVal){
+				$.WeiPHP.toast('不能大于最大基数',0);
+				$(this).val(maxVal);
+			}
+			//getDetail(); 
+   });
+})
+
+function getDetail(){
+	var query = $('#form').serialize();
+	$.post("{:U('counterResult')}",query,function(res){
+		//console.log(res);
+		var html = '<p class="weui_cells_tips">保费金额明细</p>';
+		
+
+			html  +=	  '<div class="shebao_wrap">'
+						+ '<p class="title"><img src="__STATIC__/paiqian/shebao.png"/>每月保费明细</p>'
+						//+ '<p class="sub_title">'+res.soInsMonth+'</p>'
+						+ '<div class="shebao_detail">'		
+						+ '<table class="ca_detail_table" width="100%" cellpadding="0" cellspacing="0">'
+							+ '<thead>'
+								+ '<tr>'
+									+ '<th width="25%">类型</th>'
+									+ '<th width="25%">个人</th>'
+									+ '<th width="25%">单位</th>'
+									+ '<th width="25%">合计</th>'
+								+ '</tr>'
+							+ '</thead>'
+							+ '<tbody>'	
+						+ '	<tr class="item"><td class="small">养老</td><td >'+res.soInsFun.pPension+'</td><td>'+res.soInsFun.uPension+'</td><td>'+res.soInsFun.pension+'</td></tr>'
+						+ '	<tr class="item"><td class="small">医疗</td><td>'+res.soInsFun.pHospitalization+'</td><td>'+res.soInsFun.uHospitalization+'</td><td>'+res.soInsFun.hospitalization+'</td></tr>'
+						+ '	<tr class="item"><td class="small">工伤</td><td>'+0+'</td><td>'+res.soInsFun.uEmploymentInjury+'</td><td>'+res.soInsFun.employmentInjury+'</td></tr>'
+						+ '	<tr class="item"><td class="small">失业</td><td>'+res.soInsFun.pUnemployment+'</td><td>'+res.soInsFun.uUnemployment+'</td><td>'+res.soInsFun.unemployment+'</td></tr>'
+						+ '	<tr class="item"><td class="small">残障险</td><td>'+0+'</td><td>'+res.soInsFun.uPDIns+'</td><td>'+res.soInsFun.uPDIns+'</td></tr>'
+						+ '	<tr class="item"><td class="small">合计</td><td class="orange">'+res.soInsFun.pTotal+'</td><td class="orange">'+res.soInsFun.uTotal+'</td><td class="orange">'+res.soInsFun.total+'</td></tr>'
+						+ '</tbody>'
+						+ '</table>'
+					 + '</div>';
+
+			html  +=	 '<p class="title"><img src="__STATIC__/paiqian/gongjijin.png"/>每月公积金明细</p>'
+						//+ '<p class="sub_title">'+res.HFMonth+'</p>'
+						+ '<div class="shebao_detail">'
+						+ '<table class="ca_detail_table" width="100%" cellpadding="0" cellspacing="0">'
+							+ '<thead>'
+								+ '<tr>'
+									+ '<th width="25%">类型</th>'
+									+ '<th width="25%">个人</th>'
+									+ '<th width="25%">单位</th>'
+									+ '<th width="25%">合计</th>'
+								+ '</tr>'
+							+ '</thead>'
+							+ '<tbody>'	
+						+ '	<tr class="item"><td class="small">公积金</td><td>'+res.HFFun.pTotal+'</td><td>'+res.HFFun.uTotal+'</td><td class="orange">'+res.HFFun.total+'</td><tr>'
+						+ '</tbody>'	
+						+ '</table>'	
+					 + '</div>';
+
+		//TODO 服务费
+		/*
+		if(res.mCostFun.total>0){
+			html  +=	  '<div class="shebao_wrap">'
+						+ '<p class="title"><img src="__STATIC__/paiqian/fuwufei.png"/>服务费用</p>'
+						+ '<div>'
+						+ '	<span class="orange"><center>服务费￥'+res.mCostFun.total+'</center></span>'
+						+ '</div>'
+					 + '</div>';
+		}
+		*/
+
+			html  +=	  '	<div><br/><span class="orange big"><center>每月共计 ￥'+(res.soInsFun.total+res.HFFun.total)+'</center></span>'
+						+ '</div>'
+					 + '</div>';
+	
+		//console.log(html);			 
+		$('#detail_info').html(html);
+	});
+}
+</script>
+<include file="./Addons/Paiqian/View/default/Wap/_foot.html"/>

@@ -1,0 +1,84 @@
+<include file="./Addons/WorkerService/View/default/Wap/_head.html"/>
+
+
+<body>
+<include file="./Addons/WorkerService/View/default/Wap/_menu.html"/>
+<div class="container">
+    <header class="header">
+        <a class="back" href="javascript:;" onClick="$.WeiPHP.back();"></a>
+        <span class="title">开具证明</span>
+        <a class="cate" href="javascript:;" onClick="$.WeiPHP.showPopCate();"></a>
+    </header>
+
+    <div class="page">
+        <p class="logo_img"><a href="{:U('index')}"><img src="/weixin/Public/static/paiqian/logo_img3.png" width="30%"></a></p>
+
+     <div class="common_tab">
+        <php>$status=I('status','1');$classCur[$status] = 'cur';</php>
+      <a class="{$classCur[1]} uer_a" href="{:U('proveList',array('status'=>'1'))}">常用证明</a>
+           
+            <a class="{$classCur[0]} uer_a" href="{:U('personal',array('status'=>'0'))}">自定义证明</a>
+        </div>
+       
+        <div class="air_div"></div>
+      
+        <form id="form" action="{:U('contactInfoSave')}" method="post" class="form-horizontal" onsubmit="return checks()">
+            <div class="weui_cells weui_cells_form label_5em">
+                <div class="weui_cell">
+                    <div class="weui_cell_hd"><label class="weui_label">收件人</label></div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <input class="weui_input" type="text" id="name" placeholder="请输入收件人" name="name" value="{$info.name}">
+                    </div>
+                </div>
+                <div class="weui_cell">
+                    <div class="weui_cell_hd"><label class="weui_label">联系电话</label></div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <input class="weui_input" type="tel" placeholder="请输入联系电话" id="phone" name="mobilePhone" value="{$info.pID}">
+                    </div>
+                </div>
+
+                <div class="weui_cell">
+                    <div class="weui_cell_hd"><label class="weui_label">联系地址</label></div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <input class="weui_input" id="address" type="text" placeholder="请输入联系地址" name="address" value="{$info.mobilePhone}">
+                    </div>
+                </div>
+
+                <div class="weui_cell weui_cell_select weui_select_after cancel">
+                <div class="weui_cell_hd">
+                    收件方式
+                </div>
+                <div class="weui_cell_bd weui_cell_primary express_delivery">
+                    <select class="weui_select select_color select_pd" name="express" value="">
+                    <option value="0" selected="selected">请选择快递公司</option>
+                    <option value="上门自取">上门自取证明</option>
+                    <option value="中国邮政快递(货到付款)">中国邮政快递(货到付款)</option>
+                    <option value="EMS快递(货到付款)">EMS快递(货到付款)</option>
+                    <option value="顺丰快递(货到付款)">顺丰快递(货到付款)</option>
+                  
+                                      
+                    </select>
+                </div>
+            </div>
+
+
+            </div>
+        
+         <p class="weui_media_desc Warm">温馨提示：亲，我们为您寄出的证明是需要自费的哦！自动默认货到付款，请选择好您信赖的快递公司。谢谢！</p>
+
+            <div class="weui_btn_area btn_mg">
+                <input type="hidden" name="fID" value="{$fID|intval}" />
+                <input type="hidden" name="sub" value="sub">
+                <input class="weui_input" id="proveID" type="hidden" placeholder="证明ID" name="proveID" value="{$proveID}">
+              
+                <input class="weui_btn weui_btn_primary" target-form="form-horizontal" type="submit" value="确认申请">
+            </div>
+        </form>
+
+</div>
+
+    <script type="text/javascript" src="__STATIC__/WorkerService/check.js?v={:SITE_VERSION}"></script>
+
+
+
+<include file="./Addons/WorkerService/View/default/Wap/_foot.html"/>

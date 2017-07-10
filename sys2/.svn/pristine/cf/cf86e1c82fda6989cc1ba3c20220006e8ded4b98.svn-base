@@ -1,0 +1,173 @@
+<include file="./Addons/Paiqian/View/default/Wap/_head.html"/>
+<body>
+<div class="container">
+	<header class="header">
+        <a class="back" href="javascript:;" onClick="$.WeiPHP.back();"></a>
+        <span class="title">确认支付</span>
+        <a class="cate" href="javascript:;" onClick="$.WeiPHP.showPopCate();"></a>
+    </header>
+    
+    <div class="page with_foot_page">
+    	<div class="top_title">
+        	订单号：{$info.orderID}
+        </div>
+        <div class="weui_cells" style="margin-top:0">
+                <div class="weui_cell">
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>共有<span class="orange">{$info.person_count|intval}</span>人参保</p>
+                        <p>总计<span class="big orange">￥{$info.total}</span></p>
+                    </div>
+                </div>
+         </div>
+        <div class="weui_cells weui_cells_access">
+                <a class="weui_cell" href="javascript:;" onClick="$.WeiPHP.showActionSheet();">
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>选择支付方式</p>
+                    </div>
+                    <div class="weui_cell_ft">
+                        <img id="payImg" src="__STATIC__/paiqian/wxpay.png"/>
+                        <input type="hidden" name="pay_type" value="wxpay"/>
+                    </div>
+                </a>
+         </div>
+        <p class="top_title_al">缴交明细</p>
+        <ul>
+        <volist name="info.data" id="vo">
+            <li class="weui_cells" style="margin-top:0;">
+                <div class="weui_cell" href="javascript:;">
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>姓名</p>
+                    </div>
+                    <div class="weui_cell_ft">
+                       {$vo.name}
+                    </div>
+                </div>
+                <if condition="$vo[soInsurance]" >
+                <div class="weui_cell muti_inner_cells">
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>社保</p>
+                    </div>
+                    <div class="weui_cell_ft">
+                        <div class="weui_cell" href="javascript:;">
+                            <div class="weui_cell_bd weui_cell_primary">
+                                
+                            </div>
+                            <div class="weui_cell_ft">
+                                起缴月份:{$vo.soInsBeginMonth}
+                            </div>
+                        </div>
+                        <div class="weui_cell" href="javascript:;">
+                            <div class="weui_cell_bd weui_cell_primary">
+                                
+                            </div>
+                            <div class="weui_cell_ft">
+                                购买套餐:{$vo.soInsNeedMonthNum}个月(￥{$vo.soInsTotal}/月)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </if>
+                <if condition="$vo[housingFund]" >
+                <div class="weui_cell muti_inner_cells">
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>公积金</p>
+                    </div>
+                    <div class="weui_cell_ft">
+                        <div class="weui_cell" href="javascript:;">
+                            <div class="weui_cell_bd weui_cell_primary">
+                                
+                            </div>
+                            <div class="weui_cell_ft">
+                                起缴月份:{$vo.HFBeginMonth}
+                            </div>
+                        </div>
+                        <div class="weui_cell" href="javascript:;">
+                            <div class="weui_cell_bd weui_cell_primary">
+                                
+                            </div>
+                            <div class="weui_cell_ft">
+                                购买套餐:{$vo.HFNeedMonthNum}个月(￥{$vo.HFTotal}/月)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </if>
+                <div class="weui_cell cell_no_arrow">
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p></p>
+                    </div>
+                    <div class="weui_cell_ft">
+                		<span class="small">社保￥{$vo.soInsNeedMonthNumTotal}+公积金￥{$vo.HFNeedMonthNumTotal}+服务费￥{$vo.mCostNeedMonthNumTotal}=<span class="orange">￥<php> echo  ($vo['soInsNeedMonthNumTotal']+$vo['HFNeedMonthNumTotal']+$vo['mCostNeedMonthNumTotal']);</php></span></span>
+                    </div>
+                </div>
+            </li>
+            </volist>
+        </ul>
+        <div class="bottom_fixed_bar">
+            <a style="margin:5px 15px;" class="weui_btn weui_btn_primary" onClick="submitPay()" href="javascript:;">确认支付</a>
+        </div>
+       
+        
+    </div>
+    <include file="./Addons/Paiqian/View/default/Wap/_service.html"/>
+</div>
+<div id="alipayTips" style="display:none">
+	<div class="weui_mask_transition" style="display:block; background:RGBA(0,0,0,.8); color:#fff">
+		<img onClick="$('#alipayTips').hide()" src="__IMG__/new_open_tips.png" width="100%"/>
+        <p>这里请黄主任补充内容</p>
+	</div>
+</div>
+<div id="cardpayTips" style="display:none">
+	<div class="weui_mask_transition" style="display:block; background:RGBA(0,0,0,.8); color:#fff">		
+        <p>这里请黄主任补充内容</p>
+	</div>
+</div>
+<script type="text/html" id="actionSheetHtml">
+<div id="actionSheet_wrap">
+	<div class="weui_mask_transition" id="mask" style="display: none;"></div>
+	<div class="weui_actionsheet" id="weui_actionsheet">
+		<div class="weui_actionsheet_menu pay_type_menu">
+			<a data-type="wxpay" class="weui_actionsheet_cell">
+				<img src="__STATIC__/paiqian/wxpay.png"/>
+				<p class="tips">微信支付，安全快捷<br/><span></span></p>
+			</a>
+			<a data-type="alipay" class="weui_actionsheet_cell">
+				<img src="__STATIC__/paiqian/alipay.png"/>
+				<p class="tips">需要跳转到支付宝页面支付<br/><span>登录账号进行支付</span></p>
+			</a>
+			<a data-type="cardpay" class="weui_actionsheet_cell">
+				<img src="__STATIC__/paiqian/cardpay.png"/>
+				<p class="tips">通过转账进行支付<br/><span>即时到账,人工处理</span></p>
+			</a>
+			
+		</div>
+		<p class="weui_cells_tips"><a href="{:U('payIntroduce')}"><img src="__STATIC__/paiqian/question_icon.png" width="18" style="vertical-align:middle"/> 查看支付说明</a></p>
+		<div class="weui_actionsheet_action">
+			<div class="weui_actionsheet_cell" id="actionsheet_cancel">取消</div>
+		</div>
+	</div>
+</div>
+</script>
+<script type="text/javascript">
+$('body').on('click','.pay_type_menu a',function(){
+	var type = $(this).data('type');
+	$('#payImg').attr('src','__STATIC__/paiqian/'+type+'.png');
+	$('input[name="pay_type"]').val(type);
+	var mask = $('#mask');
+	var weuiActionsheet = $('#weui_actionsheet');
+	$.WeiPHP.hideActionSheet(weuiActionsheet,mask);
+})
+function submitPay(){
+	var type = $('input[name="pay_type"]').val();
+	if(type=='wxpay'){
+		window.location.href = "{$payUrl}&paytype=0";
+	}else if(type=='alipay'){
+// 		$('#alipayTips').show();
+		window.location.href = "{$payUrl}&paytype=1";
+// 		alert("{$payUrl}&paytype=1");
+	}else if(type=='cardpay'){
+		$('#cardpayTips').show();
+	}
+}
+</script>
+<include file="./Addons/Paiqian/View/default/Wap/_foot.html"/>

@@ -1,0 +1,52 @@
+<include file="./Addons/WorkerService/View/default/Wap/_head.html"/>
+
+<body>
+
+<div class="container">
+    <header class="header">
+        <a class="back" href="javascript:;" onClick="$.WeiPHP.back();"></a>
+        <span class="title">参保证明</span>
+        <a class="cate" href="javascript:;" onClick="$.WeiPHP.showPopCate();"></a>
+    </header>
+	<div class="page" style="margin-bottom: 23%;">
+  <p class="logo_img logo_img_bor">
+            <a href="{:U('index')}"><img src="/weixin/Public/static/paiqian/logo_img3.png" width="30%"></a>
+        </p><?php $id=4;?>
+        <form action="{:U('proveInfo','id='.$id)}" method="post" style="width:100%;height: 100%;">
+            <div class="news_detail hd news_title">
+                <p class="prove_title">
+                    参 保 证 明
+                </p>
+                <div class="content">
+                    <p class="p_Insured">
+                        兹有<u>&nbsp;{$personalData.name}&nbsp;</u>（身份证号码：<u>{$personalData.pID}</u>），我司员工，自<u>&nbsp;{$personalData.soInsBuyDate}&nbsp;</u>起在我司社保帐户中参保。参保险种包括：养老保险、医疗保险、工伤保险、失业保险、生育保险及住房公积金。
+                    </p>
+                    <p class="p_Id_Proof">
+                        特此证明
+                    </p>
+                    <p class="text p_Id_Firm">
+                        深圳市鑫锦程人力资源管理有限公司
+                    </p>
+                    <p class="text p_Id_time">
+                        {$nowTime}
+                    </p>
+                    <div class="weui_EC">
+                        <img src="/weixin/Public/static/WorkerService/gong_07.png" alt="">
+                    </div>
+                </div>
+            </div>
+<include file="./Addons/WorkerService/View/default/Wap/_btn.html"/>
+            
+        </form>
+	
+
+
+</form>
+
+
+
+
+
+
+
+<include file="./Addons/WorkerService/View/default/Wap/_foot.html"/>

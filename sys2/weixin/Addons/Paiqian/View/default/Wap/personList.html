@@ -1,0 +1,160 @@
+<include file="./Addons/Paiqian/View/default/Wap/_head.html"/>
+<body>
+<div class="container">
+	<header class="header">
+        <a class="back" href="javascript:;" onClick="$.WeiPHP.back();"></a>
+        <span class="title">参保人</span>
+        <a class="cate" href="javascript:;" onClick="$.WeiPHP.showPopCate();"></a>
+    </header>
+    
+    <div class="page with_foot_page">
+    	<div class="person_list_top">
+        	<a class="new_add" href="{:U('addPerson')}">新增参保人</a>
+            <a class="question" href="{:U('help',array('tpl'=>'helpAgentUser'))}">如何办理</a>
+        </div>
+        
+        <form id="form" action="{:U('createOrder')}" method="post" class="form-horizontal">
+        <ul>
+        <volist name="list_data" id="vo">
+            <li class="weui_cells weui_cells_access" style="margin-top:10px;">
+                <div class="weui_cell weui_cells_checkbox" href="javascript:;">
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <label class="weui_cell weui_check_label" for="s{$vo.fID}" style="padding:0">
+                            <div class="weui_cell_hd">
+                                <input type="checkbox" class="weui_check fid_check" name="fIDs[]" id="s{$vo.fID}" checked="checked" value="{$vo.fID}">
+                                <i class="weui_icon_checked"></i>
+                            </div>
+                            <div class="weui_cell_bd weui_cell_primary">
+                                <p>{$vo.name}</p>
+                            </div>
+                        </label>
+                    </div>
+                    <a class="weui_cell_ft" href="{:U('personDetail',array('fID'=>$vo['fID']))}" >
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </a>
+                </div>
+                <div class="weui_cell muti_inner_cells">
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>社保</p>
+                    </div>
+                    <div class="weui_cell_ft">
+                        <a class="weui_cell" href="{:U('baseSetting',array('fID'=>$vo[fID],'from'=>'personList'))}">
+                            <div class="weui_cell_bd weui_cell_primary">
+                                
+                            </div>
+                            <div class="weui_cell_ft">
+                                起缴月份:{$vo.soInsBeginMonth}
+                            </div>
+                        </a>
+                        <a class="weui_cell" href="{:U('baseSetting',array('fID'=>$vo[fID],'from'=>'personList'))}">
+                            <div class="weui_cell_bd weui_cell_primary">
+                                
+                            </div>
+                            <div class="weui_cell_ft">
+                                购买套餐::{$vo.soInsNeedMonthNum}个月(￥{$vo.soInsFun.total}/月)
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="weui_cell muti_inner_cells">
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>公积金</p>
+                    </div>
+                    <div class="weui_cell_ft">
+                        <a class="weui_cell" href="{:U('baseSetting',array('fID'=>$vo[fID],'from'=>'personList'))}">
+                            <div class="weui_cell_bd weui_cell_primary">
+                                
+                            </div>
+                            <div class="weui_cell_ft">
+                                起缴月份:{$vo.HFBeginMonth}
+                            </div>
+                        </a>
+                        <a class="weui_cell" href="{:U('baseSetting',array('fID'=>$vo[fID],'from'=>'personList'))}">
+                            <div class="weui_cell_bd weui_cell_primary">
+                                
+                            </div>
+                            <div class="weui_cell_ft">
+                                购买套餐:{$vo.HFNeedMonthNum}个月(￥{$vo.HFFun.total}/月)
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="weui_cell cell_no_arrow">
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p> <eq name="vo.status" value="5"><a href="javascript:;" onClick="delPerson(this,{$vo.fID})" class="delete_icon">&nbsp;</a></eq></p>
+                    </div>
+                    <div class="weui_cell_ft">
+                		<span class="small">社保￥{$vo.soInsFun.needMonthNumTotal}+公积金￥{$vo.HFFun.needMonthNumTotal}+服务费￥{$vo.mCostFun.needMonthNumTotal}=<span class="orange">￥<span class="money_list"><php> echo ($vo[soInsFun]['needMonthNumTotal']+$vo[HFFun]['needMonthNumTotal']+$vo[mCostFun]['needMonthNumTotal']); </php></span></span></span>
+                    </div>
+                </div>
+            </li>
+            </volist>
+        </ul>
+        <div class="bottom_fixed_bar">
+            <div class="weui_cells_checkbox">
+                <label class="weui_cell weui_check_label" for="ckeck_all">
+                    <div class="weui_cell_hd">
+                        <input type="checkbox" class="weui_check check-all" name="checkbox1" id="ckeck_all" checked="checked">
+                        <i class="weui_icon_checked"></i>
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>全选</p>
+                    </div>
+                </label>
+            </div>
+            <div class="fr total_info">
+            	<span class="big orange">总计：￥<span id="money_totao"></span></span>
+                <input type="hidden" name="total" id="input_money" />
+                <button class="btn ajax-post" id="do_btn"  target-form="form-horizontal">结算</button>
+            </div>
+        </div>
+       
+        </form>
+    </div>
+    <include file="./Addons/Paiqian/View/default/Wap/_service.html"/>
+</div>
+<script type="text/javascript">
+$(function(){
+	money_total();
+	$('.weui_check').click(function(){ money_total(); });
+	
+	$("#ckeck_all").click(function(){
+		$(".fid_check").prop("checked", this.checked);
+		money_total();
+	});
+})
+function money_total(){
+	var total = 0;
+	$('.fid_check').each(function(){
+		var is_check = $(this).is(':checked');
+		if(is_check==true){
+		   var money = parseFloat($(this).parent().parent().parent().parent().parent().find('.money_list').html());
+		   //console.log(money);
+		   total += money;
+		}
+	});
+	
+	$('#money_totao').html(fmoney(total));
+	$('#input_money').val(total);
+	if(total==0){
+	   	$('#do_btn').hide();
+	}else{
+		$('#do_btn').show();
+	}
+}
+function delPerson(_this, fID){
+	$.WeiPHP.confirm({msg:'确认删除该参保人吗?',rightCallback:function(){
+		$.post("{:U('personDel')}",{fID:fID},function(res){
+			if(res.result==1){
+				$(_this).parent().parent().parent().parent().remove();
+				money_total();
+			}else{
+
+				$.WeiPHP.toast(res.msg,0,3000);
+			}
+		})	
+	}});
+	
+}
+</script>
+<include file="./Addons/Paiqian/View/default/Wap/_foot.html"/>

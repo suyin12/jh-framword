@@ -1,0 +1,57 @@
+<include file="./Addons/WorkerService/View/default/Wap/_head.html"/>
+<style>
+    
+    .weui_cells_access .weui_cell_ft:after{top: 39px;}
+</style>
+
+<body>
+<div class="container">
+    <header class="header">
+        <a class="back" href="javascript:;" onClick="$.WeiPHP.back();"></a>
+        <span class="title">招聘信息</span>
+        <a class="cate" href="javascript:;" onClick="$.WeiPHP.showPopCate();"></a>
+    </header>
+
+    <div class="page" style="margin-bottom:15px;min-height: 600px;">
+        <p class="logo_img"><a href="{:U('index')}"><img src="/weixin/Public/static/paiqian/logo_img3.png" width="30%"></a></p>
+            
+        <foreach name="recruitmentInfo" item="vo">
+            <?php $year = date('Y', strtotime($vo['time']));
+            $month = date('m', strtotime($vo['time']));
+            $day = date('d', strtotime($vo['time']));
+                        ?>
+              <div class="user_action_list">
+            <div class="weui_cells weui_cells_access recruit_Information">
+                <a class="weui_cell" href="{:U('workDetails','ID='.$vo['ID'])}">
+                    <div class="weui_cell_hd"></div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p class="recruit">{$vo.position}</p>
+                        <p class="recruit">{$vo.company}</p>
+                        <p class="recruit">{$vo.workaddress}</p>
+
+                        <p class="recruit">{$year}年{$month}月{$day}日<span class="span_num">浏览更多</span></p>
+                    </div>
+                    <div class="weui_cell_ft">
+                        
+                    </div>
+                </a>
+
+   
+</div></div>
+        </foreach>
+
+    <div class="list_h"></div>
+
+    <script type="text/javascript">
+    $(function(){
+        $.WeiPHP.initJson2Select([{$json}]);
+    });
+</script>
+    <include file="./Addons/WorkerService/View/default/Wap/_menu.html"/>
+
+
+
+
+
+
+<include file="./Addons/WorkerService/View/default/Wap/_foot.html"/>

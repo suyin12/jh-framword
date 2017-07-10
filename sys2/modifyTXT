@@ -1,0 +1,126 @@
+2015-12-24
+
+1. 未支付参保人列表personList中的, "删除按钮", 需提醒是否删除; 结算按钮未跳转  --- done
+
+2. 求和的JS公式, 需强制转化为保留2位有效数字  ---- done
+
+3. 停缴页面, 个人详情页的页面 stopDetail->userDetail , 同时停缴按钮的CSS丢失, 也未提交参数  ---- done
+
+4. 申请退款时,首先弹出申请退款说明 , 其次, 选择可退款的人员,进行退款(停缴中,且有余额的人员)  ---done
+
+5. 个人参保设置, 确认按钮提交失效. ---- done
+
+7. 未对接: 参保人信息新增 / 修改  , 参保方案修改后确认提交 , 协议 , 退款 ---- done
+
+8. 支付成功后的返回方法, paidAction($param) ,$param= array('orderID'=>[$orderID],'payStatus'=>1); (注: 支付成功后需更新参保人状态)
+
+9. 新增人员无法添加, 照片也无法上传  ---- done
+
+10.  基数的输入框 , 增加验证, 最大跟最小基数 ---- done
+
+11. /addon/Paiqian/Wap/baseSetting/fID/16/from/personList.html&debug=1  中: soInsInsurance ,housingFund 只要不等于0 ,均选择 ---- done
+
+12. 参保人列表中的 <"停缴中">, 增加"取消停缴"按钮; 同样,个人详情页中,如果申请停缴中(只有停缴中才可取消),则显示 "取消停缴"按钮; 方法agentUserCancelStop() ,$param=array("[fIDArr]"=>array(1,2)) ---done
+
+13.agentUserDel 的参数调整为:$param=array("[fIDArr]"=>array(1,2)) ---- done
+
+14. 修改personList ,调用的 agentUserLists ->personLists ,其他保持不变 ---- done
+
+15. 参保人列表"停缴"-> 改名为"已停缴" ,对应的status : (1:正常 0: 已停缴) --done
+
+16. 批量停缴,对应的status : (1:正常 ,99:停缴中 ,0: 已停缴) , 状态status未正确传递 --done
+
+2015-12-27
+
+1. openID 要统一修改为 uniondID , 已申请第三方公众平台 --- done
+
+2. 对接:  如何让下单信息推送到个人的微信 ---done
+
+3. 参保人列表及停缴列表中, 选择状态后CSS没有对应显示 ---- done
+
+4. 消息通知接口 : 方法名 getMessageLists(),$param=array() --done
+
+5. 微客服,多人客服的问题
+
+2015-12-29
+
+1. 微信摇红包
+
+2. 微场景
+
+3. 申请退款方法 , ---done
+
+4. 修改个人信息时不初始化已经设置的参保方案, 使用方法agentUserEdit  ,同时调用方法出错  ---done
+
+5. function.php , get_cover 修改上传图片地址
+
+6. agentUserAdd  ,增加管理费初始化 ,---- done
+
+7. 服务器计算 $time->diff() 方法是错误的,要校验一下. ---- done
+
+2015-12-30
+
+1. 缴交设置中, 展现的CSS要改   ---- done
+
+2. 续缴人员列表的处理,: 续缴按钮  跳转错误, 未转移到status=2的personList中 ---done
+
+3. 退款说明中文字修改:  办理说明->"退款说明", "开始申缴"->删除 --done
+
+4. 参保人列表的格式显示为: 姓名,手机号 , 参保城市,参保类型, 到期时间; 同时已停缴的参数传递错误. ---done
+
+5. 参保人详情页:如果是停缴中的人员, 停缴按钮 改变为 取消停缴; 已停缴人员, "确认停缴",返回错误提示.同时转入"退款说明"; 增加参保人状态列;社保数据未获取 ---done
+
+
+2016-01-05
+
+1. 参保人列表,及停缴列表的CSS显示错误, andiro 手机的 显示CSS样式有误  ---done
+
+2. 参保人详情中, 社保及公积金的CSS显示错误  , 取消停缴按钮失效 ---done
+
+3. 缴交设置中的缴交比例未调用 counterPer()方法  , --done
+
+4. 续缴按钮  跳转错误, 未转移到status=2的personList中  ----done
+
+5. 个人信息修改中的保存返回,缴交设置"返回"按钮要设置 stopping=1 时, 返回personList的status=2  ----done
+
+6. 测算器中,增加分享按钮 ---done
+
+7. "我的", 流水账信息中 ,方法为:agentUserBill()  ,$param['userID']=1  ---done
+
+8. 有关退款的银行账号安全性问题, 待确认 ---done
+
+9. 提交银行账户信息是, 校验安全密码. ---done
+
+10. 服务费0月时的错误 ---done
+
+2016-01-07
+
+1. 支付成功后,paidAction 增加流水账信息,及个人余额  ---done
+
+2. 停缴日期设置为,通用设置中新增参数 insuranceInTurn ,如果当前日期小于 soInsInTurn 三天,则可以停缴本月,否则停缴次月, 及每月16日截止当月停缴日----done
+
+3. 订单中不同状态的显示CSS有误  , 同时退款状态 payStatus 为 98,99时, 进入退款详情页  --- done
+
+4. 退款详情的对接方法: refundDetail() , $param= array("orderID"=>"121212212") ---done
+
+2016-01-08
+
+1. 身份证照片需设置成, 必须上传 ---done
+
+2. 点击申缴时, 如果personList中有状态status=5的人员, 则直接转入 status=5, 不跳入新增  ---done
+
+3. 测算中公积金的计算结果是错误的 ----done
+
+4. 首页的资讯和活动均未显示   ----done
+
+5. basesetting 中选择套餐中的最后一项 "both" 设置成不可选择 ----done
+
+6. 支付宝支付
+
+7. 当退款状态不等于99时,不能取消退款 ---done
+
+2016-01-20
+
+1. 取消personLists中,当status=2 时, 不出现删除按钮 ---done
+
+2. 设置缴交类型时的JS 校验不准确, 比如 勾选购买, 未填写套餐及基数, 均可保存 ---done

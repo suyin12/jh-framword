@@ -1,0 +1,182 @@
+<include file="./Addons/Paiqian/View/default/Wap/_head.html"/>
+<body>
+<div class="container">
+	<header class="header">
+        <a class="back" href="javascript:;" onClick="$.WeiPHP.back();"></a>
+        <span class="title">停缴</span>
+        <a class="cate" href="javascript:;" onClick="$.WeiPHP.showPopCate();"></a>
+    </header>
+    <div class="with_foot_page">
+    <div class="page">
+    	<div class="common_tab">
+        <php>$status=I('status','1');$classCur[$status] = 'cur';</php>
+        	<a class="{$classCur[1]}" href="{:U('stopIndex',array('status'=>'1'))}">正常</a>
+            <a class="{$classCur[99]}" href="{:U('stopIndex',array('status'=>'99'))}">停缴中</a>
+            <a class="{$classCur[0]}" href="{:U('stopIndex',array('status'=>'0'))}">已停缴</a>
+        </div>
+        <ul class="weui_cells weui_cells_access">
+        <form id="form">
+        <volist name="list_data" id="vo">
+            <li class="weui_cell left_padding_cell" href="javascript:;">
+                <div class="weui_cell_hd weui_cells_checkbox">
+                    <label class="weui_check_label" for="s{$vo.fID}">
+                        <div class="weui_cell_hd">
+                            <input type="checkbox" class="weui_check fid_check" name="fIDs[]" id="s{$vo.fID}" value="{$vo.fID}" <neq name="status" value="1">checked="checked"</neq> >
+                            <i class="weui_icon_checked"></i>
+                        </div>
+                    </label>
+                </div>
+                <a class="weui_cell_bd weui_cell_primary" href="{:U('userDetail',array('fID'=>$vo['fID']))}">
+                     <p><strong>{$vo.name}</strong><span class="small">{$vo.pID}</span></p>
+                    <p>{$vo.city_title}/{$vo.cityInsurance_title}</p>
+                    <p class="small">{$vo.showTxt}</p>
+                </a>
+                <div class="weui_cell_ft"></div>
+            </li>
+            </volist>
+            </form>
+        </ul>
+        
+        <div class="bottom_fixed_bar">
+            <div class="weui_cells_checkbox">
+                <label class="weui_cell weui_check_label" for="ckeck_all">
+                    <div class="weui_cell_hd">
+                        <input type="checkbox" class="weui_check" name="checkbox1" id="ckeck_all" <neq name="status" value="1">checked="checked"</neq> >
+                        <i class="weui_icon_checked"></i>
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>全选</p>
+                    </div>
+                </label>
+            </div>
+            
+            <div class="fr total_info">
+            	<if condition="$status eq 99">
+                	<a class="btn" href="javascript:;" onClick="stopStop();">取消停缴</a>
+                    <a class="btn" href="javascript:;" onClick="do_deal();">申请退款</a>
+                <elseif condition="$status eq 0"/>
+               		<a class="btn" href="javascript:;" onClick="deal();">续缴</a>
+                <else/>
+            		<a class="btn" href="javascript:;" onClick="submitStop();">确认停缴</a>
+                </if>
+            </div>
+        </div>
+       
+        
+    </div>
+   	<include file="./Addons/Paiqian/View/default/Wap/_service.html"/>
+    </div>
+</div>
+<script type="text/html" id="actionSheetHtml">
+<div id="actionSheet_wrap">
+	<div class="weui_mask_transition" id="mask" style="display:block;"></div>
+	<div class="weui_actionsheet year_moonth_actionsheet" id="weui_actionsheet">
+		<p class="weui_cells_tips">选择停缴年月和停缴类型</p>
+		<div class="weui_actionsheet_menu">
+			
+			<div class="weui_cells weui_cells_form weui_cells_split weui_cells_checkbox">
+				<div class="weui_cell weui_cell_select weui_select_after">
+					<div class="weui_cell_hd">
+						停缴年月
+					</div>
+					<div class="weui_cell_bd weui_cell_primary">
+					<select class="weui_select chang_event" name="endMonth">
+						<option value="{$stopMonth}">{$stopMonth}</option>
+					</select>
+				</div>
+			   </div>
+                <label class="weui_cell weui_check_label" for="soInsurance">
+                    <div class="weui_cell_hd">
+                        <input type="checkbox" class="weui_check" value=1 name="soInsurance" id="soInsurance" checked="checked">
+                        <i class="weui_icon_checked"></i>
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>社保</p>
+                    </div>
+                </label>
+				<label class="weui_cell weui_check_label" for="housingFund">
+                    <div class="weui_cell_hd">
+                        <input type="checkbox" class="weui_check" name="housingFund" id="housingFund" checked="checked">
+                        <i class="weui_icon_checked"></i>
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>公积金</p>
+                    </div>
+                </label>
+            </div>
+		</div>
+		
+		<div class="weui_actionsheet_action">
+			<a style="margin:5px 10px;" href="javascript:;" onClick="confirmStop();" class="weui_btn weui_btn_primary">确认停缴</a>
+		</div>
+	</div>
+</div>
+</script>
+<script type="text/javascript">
+function deal(){
+	var url = "{:U('agentUserRenew')}";
+	var query = $('#form').serialize();
+	
+	$.post(url, query, function(res){
+		 if(res.status==0){
+			  $.WeiPHP.toast(res.msg,0,2000);
+		  }else{
+			  window.location.href = res.url;
+		  }
+	});
+}
+function submitStop(){
+	$.WeiPHP.showActionSheet();
+}
+function do_deal(){
+	var fIDs = '';
+	$('.fid_check').each(function() {
+        if($(this).is(":checked")){
+			fIDs += $(this).val()+'_';
+		}
+    });
+	
+	var url = "{:U('help',array('tpl'=>helpRefundIntro2))}&fIDs="+fIDs;
+	
+	window.location.href = url;
+}
+function confirmStop(){
+	var endMonth = $('select[name="endMonth"]').val();
+	var soInsurance = $('#soInsurance').is(":checked")==true?1:0;
+	var housingFund = $('#housingFund').is(":checked")==true?1:0;
+
+	var url = "{:U('stopDeal')}";
+	var query = $('#form').serialize()+'&type=1&soIns='+soInsurance+'&HF='+housingFund+'&stopMonth='+endMonth;
+	
+	$.post(url, query, function(res){
+		 if(res.status==0||res.result==0){
+			  $.WeiPHP.toast(res.msg,0,2000);
+		  }else{
+			  window.location.href = "{:U('stopIndex',array('status'=>99))}";
+		  }
+	});
+
+}
+function stopStop(){
+	var url = "{:U('stopDeal')}";
+	var query = $('#form').serialize()+'&type=0';
+	
+	$.post(url, query, function(res){
+		 if(res.status==0){
+			  $.WeiPHP.toast(res.msg,0,2000);
+		  }else{
+			 $.WeiPHP.toast(res.msg,1,2000);
+			setTimeout(function(){
+			   window.location.href = window.location.href;
+		    },2000)			  
+		  }
+	});
+}
+$(function(){
+	$("#ckeck_all").click(function(){
+		$(".fid_check").prop("checked", this.checked);
+		money_total();
+	});
+});
+</script>
+<include file="./Addons/Paiqian/View/default/Wap/_foot.html"/>

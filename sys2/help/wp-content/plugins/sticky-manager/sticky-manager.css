@@ -1,0 +1,135 @@
+#apsm hr { 
+	border-width: 1px 0 0 0; 
+}
+#apsm #already-sticky {
+	margin-bottom:30px;
+}
+#apsm-add-sticky-posts {
+	width: 100%;
+	float:left;
+	clear:both;
+	margin-bottom:10px;
+}
+#apsm-search-posts {
+	width:49%;
+	float:left;
+	margin-right:1%;
+}
+#apsm-sticky-posts {
+	width:49%;
+	float:left;
+	margin-left:1%;
+}
+#apsm-sticky-posts span {
+	display: block;
+	float: left;
+	font-size: 11px;
+	white-space: nowrap;
+	font-weight: bold;
+}
+#apsm-sticky-posts .apsm-deletebtn {
+	margin: 3px 0pt 0pt 5px;
+	cursor: pointer;
+	width: 10px;
+	height: 10px;
+	display: block;
+	float: left;
+	text-indent: -9999px;
+	overflow: hidden;
+}
+#apsm-sticky-posts .apsm-deletebtn {
+	background: url(../../../wp-admin/images/xit.gif) no-repeat;
+}
+#apsm-sticky-posts .apsm-deletebtn:hover {
+	background: url(../../../wp-admin/images/xit.gif) no-repeat -10px 0;
+}
+#apsm-search-wrap {
+	float:left;
+	height:30px;
+	width:100%;
+	
+}
+#apsm-search {
+	width: 100%;
+	float: left;
+	margin:0;
+}
+#apsm-results {
+	margin: 5px 0 0 0;
+	padding: 0;
+	height: 200px;
+	overflow: auto;
+	border-width: 2px;
+	border-style: solid;
+	border-color: #aaa;
+	line-height: 20px;
+	list-style: none;
+	clear:both;
+}
+#apsm-results a {
+	float: left;
+}
+apsm-search-utility {
+	overflow: hidden;
+	width: 100%;
+}
+#apsm-results ul {
+	margin: 0;
+	padding: 0;
+	overflow: auto;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+#apsm-results ul li {
+	line-height: 25px;
+	padding: 3px 0;
+	margin: 0;
+	clear: both;
+	overflow: hidden;
+	width: 100%;
+}
+#apsm-results ul li:hover {
+	background-color:#ffee99;
+}
+#apsm-results ul li a {
+	margin: 0 10px;
+	display:block;
+	height:25px;
+	width:100%;
+}
+#apsm-results ul .alt {
+	background: #f1f1f1;
+	padding: 3px 0;
+}
+#apsm-sticky-posts-list-label {
+	height: 30px;
+	float:left;
+}
+#apsm-sticky-posts-list-wrap {
+	margin: 5px 0 0 0;
+	border-width: 2px;
+	border-style: solid;
+	border-color: #cee1ef;
+	overflow: auto;
+	height: 200px;
+	list-style: none;
+	clear:both;
+	background: #fff;
+}
+#apsm-sticky-posts-list li {
+	clear: both;
+	padding:10px 10px;
+}
+#apsm-sticky-posts-list a {
+	float: left;
+}
+
+#apsm .column-title {
+	width:30%;
+}
+.column-excerpt {
+	width:65%;
+}
+.column-unstick {
+	width:10%;
+}

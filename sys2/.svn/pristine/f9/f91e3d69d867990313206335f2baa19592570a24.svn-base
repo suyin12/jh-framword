@@ -1,0 +1,6 @@
+.services .col .image div {
+	display:block;
+	height:auto;
+	margin-top:expression((this.offsetHeight < this.parentNode.offsetHeight) ? (this.parentNode.offsetHeight - this.offsetHeight)/2 + "px" : "0px");
+}
+* html body{width:expression(document.documentElement.clientWidth < 1000 ? "1000px" : "auto");}

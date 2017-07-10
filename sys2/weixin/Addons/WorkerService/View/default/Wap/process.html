@@ -1,0 +1,112 @@
+<include file="./Addons/WorkerService/View/default/Wap/_head.html"/>
+<style>
+    .user_action_list{margin-bottom: 3em;}
+</style>
+
+<body>
+<div class="container">
+    <header class="header">
+        <a class="back" href="javascript:;" onClick="$.WeiPHP.back();"></a>
+        <span class="title">申请进度查询</span>
+        <a class="cate" href="javascript:;" onClick="$.WeiPHP.showPopCate();"></a>
+    </header>
+
+    <div class="page" style="margin-bottom:15px;min-height: 600px;">
+        <p class="logo_img"><a href="{:U('index')}"><img src="/weixin/Public/static/paiqian/logo_img3.png" width="30%"></a></p>
+    
+        
+  <div class="user_action_list">
+
+                 <foreach name="mergeData" item="vo">
+
+            <div class="weui_cells weui_cells_access cells_down">
+                 <a class="weui_cell" href="#">
+                    <div class="weui_cell_hd"></div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>{$vo.provetype}<span class="span_num span_schedule">
+                            <if condition="($vo.status eq 0)">未审核
+                            <elseif condition="$vo.status eq 1" />已审核
+                            <elseif condition="$vo.status eq 2" />已邮寄
+                            <else />已回退
+                        </if>
+                    </span></p>
+                    </div>
+                </a>
+                <a class="weui_cell" href="#">
+                    <div class="weui_cell_hd"></div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>快递公司<span class="span_num span_schedule">{$vo.express}</span></p>
+                    </div>
+
+                </a>
+                <a class="weui_cell" href="#">
+                    <div class="weui_cell_hd"></div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>快递单号<span class="span_num span_schedule">
+                            <if condition="($vo.status eq 0)">稍后更新
+                                <elseif condition="$vo.status eq 1" />稍后更新
+                                <else />{$vo.expressNumber}
+                                </if>
+                        </span></p>
+                    </div>
+                    
+                </a>
+                <if condition="($vo.status eq 2)">
+                    <div class="weui_cell cell_no_arrow" style="display: none">
+                        <div class="weui_cell_bd weui_cell_primary">
+                            <p> <a href="javascript:" onclick="delPerson(this,{$vo.proveID})" class="delete_icon">&nbsp;</a></p>
+                        </div>
+                        <div class="weui_cell_ft">
+                            <span class="small"><span class="orange"><span class="money_list"></span></span></span>
+                        </div>
+
+                    </div>
+                <else />
+                <div class="weui_cell cell_no_arrow cell_none">
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p> <a href="javascript:" onclick="delPerson(this,{$vo.proveID})" class="delete_icon">&nbsp;</a></p>
+                    </div>
+                    <div class="weui_cell_ft">
+                         <span class="small"><span class="orange"><span class="money_list"></span></span></span>
+                    </div>
+                </div>
+                </if>
+
+</div>
+</foreach>
+                
+        <div style="margin-top: 5em;"></div>
+
+</a>
+</div>
+
+
+<script type="text/javascript">
+    $(function(){
+        $.WeiPHP.initJson2Select([{$json}]);
+    });
+
+// 删除功能
+
+
+function delPerson(_this, proveID){
+    $.WeiPHP.confirm({msg:'确认是否删除?',rightCallback:function(){
+        $.post("{:U('proveDel')}",{proveID:proveID},function(res){
+            if(res.result==1){
+                $(_this).parent().parent().parent().parent().remove();
+            }else{
+                $.WeiPHP.toast(res.msg,0,3000);
+            }
+        })  
+    }});
+    
+}
+</script>
+
+    <include file="./Addons/WorkerService/View/default/Wap/_menu.html"/>
+    
+
+
+
+
+<include file="./Addons/WorkerService/View/default/Wap/_foot.html"/>

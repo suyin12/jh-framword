@@ -1,0 +1,354 @@
+<include file="./Addons/Paiqian/View/default/Wap/_head.html"/>
+<body>
+<div class="container">
+	<header class="header">
+        <a class="back" href="javascript:;" onClick="$.WeiPHP.back();"></a>
+        <span class="title">缴交类型设置</span>
+        <a class="cate" href="javascript:;" onClick="$.WeiPHP.showPopCate();"></a>
+    </header>
+    
+    <div class="page with_foot_page">
+    	<div class="person_list_top">
+        	<a class="fl" href="javascript:;">当前缴交类型：{$info.city_title}/{$info.cityInsurance_title}</a>
+            <a class="question small" href="{:U('help',array('tpl'=>'helpSetting'))}">查看设置说明</a>
+        </div>
+       <form id="form" action="{:U('saveBaseSetting')}" method="post" class="form-horizontal">
+    	<div class="weui_cells weui_cells_form weui_cells_split" style="margin-top:5px">
+        	<div class="weui_cell weui_cell_select weui_select_after">
+                <div class="weui_cell_hd">
+                    参保城市
+                </div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <select class="weui_select chang_event" name="city" id="city">
+                    	
+                    </select>
+                </div>
+            </div>
+            <div class="weui_cell weui_cell_select weui_select_after">
+                <div class="weui_cell_hd">
+                    参保类型
+                </div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <select class="weui_select chang_event" name="cityInsurance" id="cityInsurance">
+                    	
+                    </select>
+                </div>
+            </div>
+               
+         	<div class="weui_cell weui_cells_checkbox">
+                <label class="weui_cell weui_check_label" for="soInsurance" style="padding:0">
+                        <div class="weui_cell_hd">
+                            <input type="checkbox" class="weui_check chang_event" name="soInsurance" id="soInsurance" <neq  name="info.soInsurance" value="0">checked="checked"</neq > value="1">
+                            <i class="weui_icon_checked"></i>
+                        </div>
+                    </label>
+                    <div class="weui_cell_bd weui_cell_primary">
+                       社保基数<span class="small">({$data.minRadix}~{$data.maxRadix})</span> <input style="border:1px solid #ccc; padding:5px; width:70%" class="weui_input chang_event" id="radix" onBlur="rad()" type="text" placeholder="请输入社保基数" name="radix" value="{$info.radix}">
+                    </div>
+                    
+              </div>
+			  <div class="weui_cell weui_cell_select weui_select_after">
+                    <div class="weui_cell_hd">
+                        起缴月份
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <select class="weui_select chang_event" name="soInsBeginMonth">
+                        <volist name="info.soInsBeginMonthList" id="vo">
+                            <option value="{$key}" <eq name="info.soInsBeginMonth" value="$key">selected="selected"</eq> >{$vo}</option>
+                        </volist>
+                        </select>
+                    </div>
+               </div>
+               <div class="weui_cell weui_cell_select weui_select_after">
+                    <div class="weui_cell_hd">
+                        购买套餐
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <select class="weui_select chang_event" name="soInsNeedMonthNum">
+                        <volist name="programmeList" id="vo">
+                        <if condition="$key === 'both'" >
+                        <option value="{$key}" disabled="disabled">{$vo.txt}</option>
+                        <else/>
+                            <option value="{$key}" <eq name="info.soInsNeedMonthNum" value="$key">selected="selected"</eq> >{$vo.txt}</option>
+                        </if>
+                        </volist>
+                        </select>
+                        
+                    </div>
+               </div>
+        </div>
+        <div class="weui_cells weui_cells_form weui_cells_split">
+        	
+         	<div class="weui_cell weui_cells_checkbox">
+                <label class="weui_cell weui_check_label" for="housingFund" style="padding:0">
+                        <div class="weui_cell_hd">
+                            <input type="checkbox" class="weui_check chang_event" name="housingFund" id="housingFund" <neq name="info.housingFund" value="0">checked="checked"</neq> value="1">
+                            <i class="weui_icon_checked"></i>
+                        </div>
+                    </label>
+                    <div class="weui_cell_bd weui_cell_primary">
+                       公积金基数<span class="small">({$data.minRadix}~{$data.maxRadix})</span> <input style="border:1px solid #ccc; padding:5px; width:70%" class="weui_input chang_event" type="text" placeholder="请输入公积金基数" name="HFRadix" id="HFRadix" onBlur="HFRad()" value="{$info.HFRadix}">
+                    </div>
+              </div>
+			  <div class="weui_cell weui_cell_select weui_select_after">
+                    <div class="weui_cell_hd">
+                        起缴月份
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <select class="weui_select chang_event" name="HFBeginMonth">
+                        <volist name="info.HFBeginMonthList" id="vo">
+                            <option value="{$key}" <eq name="info.HFBeginMonth" value="$key">selected="selected"</eq> >{$vo}</option>
+                        </volist>
+                        </select>
+                    </div>
+               </div>
+               <div class="weui_cell weui_cell_select weui_select_after">
+                    <div class="weui_cell_hd">
+                        购买套餐
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <select class="weui_select chang_event" name="HFNeedMonthNum">
+                        <volist name="programmeList" id="vo">
+                        <if condition="$key === 'both'" >
+                        <option value="{$key}" disabled="disabled">{$vo.txt}</option>
+                        <else/>
+                        <option value="{$key}" <eq name="info.HFNeedMonthNum" value="$key">selected="selected"</eq> >{$vo.txt}</option>
+                        </if>
+                            
+                        </volist>
+                        </select>
+                    </div>
+               </div>
+        </div>
+       
+        <div class="weui_cells shebao_detail_cells" id="detail_info"></div>
+       
+       	<div class="bottom_fixed_bar two_btn_wrap">
+            <input type="hidden" name="fID" value="{$info.fID}">
+            <input type="hidden" name="status" value="{$info.status}">
+        	<a class="weui_btn weui_btn_warn" href="{:U('personList',array('status'=>$info[status]))}">返回</a>
+            <button class="weui_btn weui_btn_primary ajax-post" target-form="form-horizontal">确认</button>
+        </div>
+       
+       </form>
+       <p class="bottom_tips" onClick="$.WeiPHP.showActionSheet();"><img src="__STATIC__/paiqian/question_icon.png" style="width:24px; vertical-align:middle;"/> 缴费比例说明</p>
+        <include file="./Addons/Paiqian/View/default/Wap/_service.html"/>
+    </div>
+    
+</div>
+<div id="actionSheet_wrap">
+	<div class="weui_mask_transition" id="mask" style="display: none;"></div>
+	<div class="weui_actionsheet" id="weui_actionsheet">
+		<div class="weui_actionsheet_menu pay_type_menu">
+        	<p class="ca_detail_title">缴费比例说明</p>
+            <div style="margin:0 15px;">
+			<table class="ca_detail_table" width="100%">
+				<thead>
+                	<tr>
+                    	<th width="34%">类型</th>
+                        <th width="33%">个人</th>
+                        <th width="33%">单位</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                	<tr>
+                    	<td>养老</td>
+                        <td>{$data.pPension}</td>
+                        <td>{$data.uPension}</td>
+                    </tr>
+                	<tr>
+                    	<td>医疗</td>
+                        <td>{$data.pHospitalization}</td>
+                        <td>{$data.uHospitalization}</td>
+                    </tr>
+                	<tr>
+                    	<td>工伤</td>
+                        <td>{$data.pEmploymentInjury}</td>
+                        <td>{$data.uEmploymentInjury}</td>
+                    </tr>   
+                	<tr>
+                    	<td>失业</td>
+                        <td>{$data.pUnemployment}</td>
+                        <td>{$data.uUnemployment}</td>
+                    </tr>
+                	<tr>
+                    	<td>生育</td>
+                        <td>{$data.pBirth}</td>
+                        <td>{$data.uBirth}</td>
+                    </tr>                    
+                	<tr>
+                    	<td>残障金</td>
+                        <td>{$data.pPDIns}</td>
+                        <td>{$data.uPDIns}</td>
+                    </tr>                      
+                	<tr>
+                    	<td>公积金</td>
+                        <td>{$data.pHFPer}</td>
+                        <td>{$data.uHFPer}</td>
+                    </tr>
+                                                        
+                </tbody>
+			</table>
+			</div>
+		</div>
+		
+		<div class="weui_actionsheet_action">
+			<div class="weui_actionsheet_cell" id="actionsheet_cancel">关闭</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+$.WeiPHP.initJson2Select([{$json}]);
+
+function rad(){
+	if(!$('#soInsurance').is(':checked'))
+	return false;
+	
+	var rad = $("#radix").val();
+	var minR = "{$data.minRadix}";
+	minR=parseInt(minR);
+	var maxR = "{$data.maxRadix}";
+	maxR=parseInt(maxR);
+	if(rad < minR){
+	   alert("社保基数过小");
+	}
+	if(rad > maxR){
+	   alert("社保基数过大");
+	}
+
+}
+
+function HFRad(){
+	  if(!$('#housingFund').is(':checked'))
+	  return false;
+	  
+	  var rad = $("#HFRadix").val();
+	  var minR = "{$data.minRadix}";
+	  minR=parseInt(minR);
+	  var maxR = "{$data.maxRadix}";
+	  maxR=parseInt(maxR);
+	  if(rad < minR){
+	     alert("公积金基数过小");
+	  }
+	  if(rad > maxR){
+	     alert("公积金基数过大");
+	  }
+
+}
+		
+
+</script>
+<script type="text/javascript">
+$(function(){
+	getDetail();
+   $('.chang_event').change(function(){ getDetail(); });
+})
+function formatCurrency(num) {
+    num = num.toString().replace(/\$|\,/g,'');
+    if(isNaN(num))
+    num = "0";
+    sign = (num == (num = Math.abs(num)));
+    num = Math.floor(num*100+0.50000000001);
+    cents = num%100;
+    num = Math.floor(num/100).toString();
+    if(cents<10)
+    cents = "0" + cents;
+    for (var i = 0; i < Math.floor((num.length-(1+i))/3); i++)
+    num = num.substring(0,num.length-(4*i+3))+','+
+    num.substring(num.length-(4*i+3));
+    return (((sign)?'':'-') + num + '.' + cents);
+}
+function getDetail(){
+	
+	var query = $('#form').serialize();
+	console.log(query);
+	$.post("{:U('baseSetting')}",query,function(res){
+		//console.log(res);
+		//return false;
+		var html = '<p class="weui_cells_tips">保费金额明细</p>';
+		var all_total = 0;
+		if(res.soInsurance==1){
+			html  +=	  '<div class="shebao_wrap">'
+						+ '<p class="title"><img src="__STATIC__/paiqian/shebao.png"/>每月保费明细</p>'
+						//+ '<p class="sub_title">'+res.soInsMonth+'</p>'
+						+ '<div class="shebao_detail">'		
+						+ '<table class="ca_detail_table" width="100%" cellpadding="0" cellspacing="0">'
+							+ '<thead>'
+								+ '<tr>'
+									+ '<th width="25%">类型</th>'
+									+ '<th width="25%">个人</th>'
+									+ '<th width="25%">单位</th>'
+									+ '<th width="25%">合计</th>'
+								+ '</tr>'
+							+ '</thead>'
+							+ '<tbody>'	
+						+ '<tr class="item"><td class="small">养老</td><td>'+res.soInsFun.pPension+'</td><td>'+res.soInsFun.uPension+'</td><td class="orange">'+res.soInsFun.pension+'</td></tr>'
+						+ '<tr class="item"><td class="small">医疗</td><td>'+res.soInsFun.pHospitalization+'</td><td>'+res.soInsFun.uHospitalization+'</td><td class="orange">'+res.soInsFun.hospitalization+'</td></tr>'
+						+ '<tr class="item"><td class="small">工伤</td><td>'+0+'</td><td>'+res.soInsFun.uEmploymentInjury+'</td><td class="orange">'+res.soInsFun.employmentInjury+'</td></tr>'
+						+ '<tr class="item"><td class="small">失业</td><td>'+res.soInsFun.pUnemployment+'</td><td>'+res.soInsFun.uUnemployment+'</td><td class="orange">'+res.soInsFun.unemployment+'</td></tr>'
+						+ '<tr class="item"><td class="small">残障险</td><td>'+0+'</td><td>'+res.soInsFun.uPDIns+'</td><td class="orange">'+res.soInsFun.uPDIns+'</td></tr>'
+						+ '<tr class="item"><td class="small">合计</td><td>'+res.soInsFun.pTotal+'</td><td>'+res.soInsFun.uTotal+'</td><td class="orange">'+res.soInsFun.total+'</td></tr>'
+						+ '</tbody>'
+						+ '</table>'
+					 + '</div>';
+					 all_total += res.soInsFun.needMonthNumTotal;					 
+		}
+		if(res.housingFund==1){
+			html  +=	'<p class="title"><img src="__STATIC__/paiqian/gongjijin.png"/>每月公积金明细</p>'
+						//+ '<p class="sub_title">'+res.HFMonth+'</p>'
+						+ '<div class="shebao_detail">'
+						+ '<table class="ca_detail_table" width="100%" cellpadding="0" cellspacing="0">'
+							+ '<thead>'
+								+ '<tr>'
+									+ '<th width="25%">类型</th>'
+									+ '<th width="25%">个人</th>'
+									+ '<th width="25%">单位</th>'
+									+ '<th width="25%">合计</th>'
+								+ '</tr>'
+							+ '</thead>'
+							+ '<tbody>'	
+						+ '	<tr class="item"><td class="small">公积金</td><td>'+res.HFFun.pTotal+'</td><td>'+res.HFFun.uTotal+'</td><td class="orange">'+res.HFFun.total+'</td></tr>'
+						+ '</tbody>'	
+						+ '</table>'	
+						+ '</div>'
+					 all_total += res.HFFun.needMonthNumTotal;			
+//			html  +=	  '<div class="shebao_wrap">'
+//						+ '<p class="title"><img src="__STATIC__/paiqian/gongjijin.png"/>公积金明细</p>'
+//						+ '<p class="sub_title">'+res.HFMonth+'</p>'
+//						+ '<div>'
+//						+ '	<span class="orange"><center>每月￥'+res.HFFun.total+'</center></span>'
+//						+ '</div>'
+//					 + '</div>';
+		}
+		//TODO 服务费
+		if(all_total>0){
+			html  +=	'<p class="title"><img src="__STATIC__/paiqian/fuwufei.png"/>服务费用</p>'
+						+ '<div class="shebao_detail">'
+						+ '<table class="ca_detail_table" width="100%" cellpadding="0" cellspacing="0">'
+							+ '<thead>'
+								+ '<tr>'
+									+ '<th width="33%">每月服务费</th>'
+									+ '<th width="33%">缴交月数</th>'
+									+ '<th width="34%">合计</th>'
+								+ '</tr>'
+							+ '</thead>'
+							+ '<tbody>'	
+						+ '	<tr class="item"><td class="small">￥'+res.mCostFun.total+'</td><td>'+res.mCostFun.needMonthNum+'</td><td class="orange">￥'+res.mCostFun.needMonthNumTotal+'</td></tr>'
+						+ '</tbody>'	
+						+ '</table>'	
+						+ '</div>'
+						
+						
+			all_total += res.mCostFun.needMonthNumTotal;		
+		}
+		if(res.housingFund==1 || res.soInsurance==1){
+			html  +=	  '	<div><br/><span class="big orange"><center>共计 ￥'+formatCurrency(all_total)+'</center></span>'
+						+ '</div>'
+					 + '</div>';
+		}					 
+		$('#detail_info').html(html);
+	});
+}
+</script>
+<include file="./Addons/Paiqian/View/default/Wap/_foot.html"/>

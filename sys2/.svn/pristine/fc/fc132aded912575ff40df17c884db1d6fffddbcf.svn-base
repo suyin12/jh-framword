@@ -1,0 +1,36 @@
+<include file="./Addons/Paiqian/View/default/Wap/_head.html"/>
+<body>
+<div class="container">
+	<header class="header">
+        <a class="back" href="javascript:;" onClick="$.WeiPHP.back();"></a>
+        <span class="title">办理说明</span>
+        <a class="cate" href="javascript:;" onClick="$.WeiPHP.showPopCate();"></a>
+    </header>
+    
+    <<div class="page">
+    	<div class="hd help_content">
+        	<P class="title"><img src="__STATIC__/paiqian/question_icon.png"/>办理说明</P>
+        	<div class="content">
+            	 <p>1.你是具有中国国籍的中国公民</p>
+                 <p>2.您的年龄在16周岁到法定退休年龄之前</p>
+                 <p>3.请准备好参保人的信息，如姓名、手机号、身份证</p>
+            </div>
+        </div>
+        <div class="hd help_content">
+        	<P class="title"><i class="weui_icon_safe weui_icon_safe_success"></i>资金安全</P>
+            <div class="content">
+            	
+                <p class="title">资金有第三方权威机构承担保障安全</p>
+                
+            </div>
+        </div> 
+        <div class="weui_cells_tips">点击下方“开始申缴”按钮，进行在线办理。</div>      
+         <div class="weui_btn_area">
+            <a class="weui_btn weui_btn_primary" href="{$url}">开始申缴</a>
+        </div>
+    </div>
+    <include file="./Addons/Paiqian/View/default/Wap/_service.html"/>
+</div>
+<script type="text/javascript">
+</script>
+<include file="./Addons/Paiqian/View/default/Wap/_foot.html"/>

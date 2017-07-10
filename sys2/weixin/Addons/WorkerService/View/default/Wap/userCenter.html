@@ -1,0 +1,112 @@
+<include file="./Addons/WorkerService/View/default/Wap/_head.html"/>
+
+
+<body>
+<div class="container">
+<include file="./Addons/WorkerService/View/default/Wap/_menu.html"/>
+        <div class="user_page_head">
+            <header class="header" style="position:static">
+                <a class="back" href="javascript:;" onClick="$.WeiPHP.back();"></a>
+                <a class="cate" href="javascript:;" onClick="$.WeiPHP.showPopCate();"></a>
+            </header>
+            <img class="user_head" src="{$myinfo.headimgurl}"/>
+            <P class="name">{$myinfo.nickname}</P>
+            <a href="javascript:;" onClick="$.WeiPHP.showQrcode('请扫描我的分享二维码','http://qr.topscan.com/api.php?text={:U('index',array('invite_uid'=>$mid))}');" class="qrcode"></a>
+        </div>
+    <div class="page pages">
+      
+
+		     <div class="user_action_list">
+        	<div class="weui_cells weui_cells_access">
+
+                <a class="weui_cell weui_pad" href="{:U('workerInfo')}">
+                    <div class="weui_cell_hd"></div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>
+                        
+                        <div class="weui_cell_hd" style="float: left;padding-left: 0.1em;"><img src="/weixin/Public/static/WorkerService/user.png"></div>
+
+                        <span class="fa_recruit" style="padding-left: 0.5em;">个人信息</span>
+                        </p>
+                    </div>
+                    <div class="weui_cell_ft">
+                        
+                    </div>
+                </a>
+                
+                 <a class="weui_cell weui_pad" href="{:U('process')}">
+                    <div class="weui_cell_hd"></div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>
+                        <div class="weui_cell_hd" style="float: left;"><img src="/weixin/Public/static/WorkerService/list_gray.png"></div>
+                        <span class="fa_recruit" style="padding-left:0.5em;">申请进度查询</span>
+                        </p>
+                    </div>
+                    <div class="weui_cell_ft">
+                        
+                    </div>
+                </a>
+                <a class="weui_cell weui_pad" href="{:U('groom')}">
+                    <div class="weui_cell_hd"></div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>
+                        <span class="fa  fa-lightbulb-o fa-2x linght_font"></span>
+                        
+                        <span class="fa_recruit" style="padding-left: 0.98em;">招聘信息</span>
+                        </p>
+                    </div>
+                    <div class="weui_cell_ft">
+                        
+                    </div>
+                </a>
+
+       
+                <a class="weui_cell" href="{:U('share')}">
+                    <div class="weui_cell_hd"><img class="share_img" src="/weixin/Public/static/paiqian/share_gray.png"></div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>分享推荐</p>
+                    </div>
+                    <div class="weui_cell_ft">
+
+                    </div>
+                </a>
+
+                <a class="weui_cell weui_pad" href="{:U('about')}">
+                    <div class="weui_cell_hd"></div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                       
+                            <p>
+                        <div class="weui_cell_hd" style="float: left;"><img src="/weixin/Public/static/WorkerService/about_gray.png" style="width:20px;padding-left: 0.1em;"></div>
+                        <span class="fa_recruit" style="padding-left: 0.7em;">关于我们</span>
+                        </p>
+                    </div>
+                    <div class="weui_cell_ft">
+                        
+                    </div>
+
+				
+                
+
+    
+   
+</div>
+
+ 		  
+
+<script type="text/javascript">
+    $(function(){
+        $.WeiPHP.initJson2Select([{$json}]);
+    });
+</script>
+</a>
+</div>
+
+
+	
+	
+
+
+
+
+
+<include file="./Addons/WorkerService/View/default/Wap/_foot.html"/>

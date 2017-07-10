@@ -1,0 +1,130 @@
+<include file="./Addons/Paiqian/View/default/Wap/_head.html"/>
+<body>
+<div class="container">
+	
+    <include file="./Addons/Paiqian/View/default/Wap/_menu.html"/>
+    <div class="page user_page">
+    	<div class="user_page_head">
+        	<header class="header" style="position:static">
+                <a class="back" href="javascript:;" onClick="$.WeiPHP.back();"></a>
+                <a class="cate" href="javascript:;" onClick="$.WeiPHP.showPopCate();"></a>
+            </header>
+            <img class="user_head" src="{$myinfo.headimgurl}"/>
+            <P class="name">{$myinfo.nickname}</P>
+            <a href="javascript:;" onClick="$.WeiPHP.showQrcode('请扫描我的分享二维码','http://qr.topscan.com/api.php?text={:U('index',array('invite_uid'=>$mid))}');" class="qrcode"></a>
+        </div>
+        <div class="user_action_list">
+        	<div class="weui_cells weui_cells_access">
+
+                <a class="weui_cell" href="{:U('orderIndex')}">
+                    <div class="weui_cell_hd"><img src="__STATIC__/paiqian/list_gray.png"></div>
+                    <div class="weui_cell_bd weui _cell_primary">
+                        <p>我的订单</p>
+                    </div>
+                    <div class="weui_cell_ft">
+                        
+                    </div>
+                </a>
+                 <a class="weui_cell" href="{:U('userList')}">
+                    <div class="weui_cell_hd"><img src="__STATIC__/paiqian/person_gray.png"></div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>参保人</p>
+                    </div>
+                    <div class="weui_cell_ft">
+                        
+                    </div>
+                </a>
+                 <a class="weui_cell" href="{:U('stopIndex')}">
+                    <div class="weui_cell_hd"><img src="__STATIC__/paiqian/stop_gray.png"></div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>批量停缴</p>
+                    </div>
+                    <div class="weui_cell_ft">
+                        
+                    </div>
+                </a>
+                <a class="weui_cell" href="{:U('userAccount')}">
+                    <div class="weui_cell_hd"><img src="__STATIC__/paiqian/money.png"></div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>账户流水</p>
+                    </div>
+                    <div class="weui_cell_ft">
+                        
+                    </div>
+                </a>
+<!--                <a class="weui_cell"  href="{:U('help',array('tpl'=>'helpRefundIntro'))}">
+                    <div class="weui_cell_hd"><img src="__STATIC__/paiqian/refund.png"></div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>退款</p>
+                    </div>
+                    <div class="weui_cell_ft">
+                        
+                    </div>
+                </a>-->
+                
+            </div>
+            <div class="weui_cells weui_cells_access">
+
+                <a class="weui_cell" href="{:U('newsIndex',array('cate_id'=>'1'))}">
+                    <div class="weui_cell_hd"><img src="__STATIC__/paiqian/act_gray.png"></div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>活动</p>
+                    </div>
+                    <div class="weui_cell_ft">
+                        
+                    </div>
+                </a>
+                 <a class="weui_cell" href="{:U('message')}">
+                    <div class="weui_cell_hd"><img src="__STATIC__/paiqian/notice_gray.png"></div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>消息</p>
+                    </div>
+                    <div class="weui_cell_ft">
+                        
+                    </div>
+                </a>
+                 
+                
+            </div>
+            
+            <div class="weui_cells weui_cells_access">
+
+                <a class="weui_cell" href="{:U('share')}">
+                    <div class="weui_cell_hd"><img src="__STATIC__/paiqian/share_gray.png" style="width:20px;"></div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>分享推荐</p>
+                    </div>
+                    <div class="weui_cell_ft">
+                        
+                    </div>
+                </a>
+                <a class="weui_cell" href="{:U('agreement',array('from'=>'userCenter'))}">
+                    <div class="weui_cell_hd"><img src="__STATIC__/paiqian/docs.png" style="width:20px;"></div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>代理协议</p>
+                    </div>
+                    <div class="weui_cell_ft">
+                        
+                    </div>
+                </a>
+                 <a class="weui_cell" href="{:U('help',array('tpl'=>'helpAboutMe'))}">
+                    <div class="weui_cell_hd"><img src="__STATIC__/paiqian/about_gray.png" style="width:20px;"></div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>关于我们</p>
+                    </div>
+                    <div class="weui_cell_ft">
+                        
+                    </div>
+                </a>
+                 
+                
+            </div>
+            
+       </div>
+       <include file="./Addons/Paiqian/View/default/Wap/_service.html"/>
+    </div>
+   
+</div>
+<script type="text/javascript">
+</script>
+<include file="./Addons/Paiqian/View/default/Wap/_foot.html"/>

@@ -1,0 +1,37 @@
+<include file="./Addons/Paiqian/View/default/Wap/_head.html"/>
+<body>
+<div class="container">
+	<header class="header">
+        <a class="back" href="javascript:;" onClick="$.WeiPHP.back();"></a>
+        <span class="title" onClick="$('.news_menu_wrap').show();">{$cate_title}<em class="news_toggle_icon">&nbsp;</em></span>
+        <a class="cate" href="javascript:;" onClick="$.WeiPHP.showPopCate();"></a>
+    </header>
+    <include file="./Addons/Paiqian/View/default/Wap/_menu.html"/>
+    <div class="page">
+    	 <ul class="news_list weui_cells weui_cells_access">
+         <volist name="list_data" id="vo">
+            <a class="weui_cell" href="{:U('newsDetail',array('id'=>$vo['id']))}">
+                <img src="{$vo.cover|get_cover_url}"/>
+                <p>{$vo.title}</p>
+            </a>
+            </volist>
+         </ul>
+          <!-- 分页 -->
+        <div class="page_hd"> {$_page|default=''} </div>
+        
+    </div>
+    <div class="news_menu_wrap" style="display:none">
+    	<div class="news_menu_layer" onClick="$('.news_menu_wrap').hide();"></div>
+        <em></em>
+        <ul>
+            <li><a href="{:U('newsIndex',array('cate_id'=>0))}">全部资讯</a></li>
+            <volist name="category_list" id="cate">
+                <li><a href="{:U('newsIndex',array('cate_id'=>$key))}">{$cate}</a></li>
+            </volist>
+        </ul>
+    </div>
+    <include file="./Addons/Paiqian/View/default/Wap/_service.html"/>
+</div>
+<script type="text/javascript">
+</script>
+<include file="./Addons/Paiqian/View/default/Wap/_foot.html"/>

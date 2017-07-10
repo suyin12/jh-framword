@@ -1,0 +1,573 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: budeyan 1.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-02-12 17:17+0800\n"
+"PO-Revision-Date: \n"
+"Last-Translator: 5ihllcn@163.com <5ihllcn@163.com>\n"
+"Language-Team: Budeyan <http://www.budeyan.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Chinese\n"
+"X-Poedit-Country: CHINA\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: _e;__\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: 404.php:13
+msgid "404 error"
+msgstr "404 错误"
+
+#: 404.php:16
+msgid "Welcome to 404 error page!"
+msgstr "欢迎来到 404 页面"
+
+#: 404.php:17
+msgid "Welcome to this customized error page. You've reached this page because you've clicked on a link that does not exist. This is probably our fault... but instead of showing you the basic '404 Error' page that is confusing and doesn't really explain anything, we've created this page to explain what went wrong."
+msgstr "欢迎您的到来. 您会到达这个页面证明您刚刚点击了失效的链接. 当然, 也可能是我们搞错了... 但与其向您展示一个混乱的, 没有任何说明的 404 出错页面, 我们创建这个页面可以向您解释究竟出了些什么问题."
+
+#: 404.php:18
+msgid "You can either (a) click on the 'back' button in your browser and try to navigate through our site in a different direction, or (b) click on the following link to go to homepage."
+msgstr "您现在可以 (a) 点击浏览器上的 \"返回\" 按钮并尝试通过其他方式进入我们的页面, 或者 (b) 点击下方的链接转跳到网站的首页."
+
+#: 404.php:20
+msgid "Back to homepage &raquo;"
+msgstr "回到博客首页 &raquo;"
+
+#: archive.php:11
+#, php-format
+msgid "Keyword: &#8216;%1$s&#8217;"
+msgstr "关键字: &#8216;%1$s&#8217;"
+
+#: archive.php:12
+msgid "Can not find what you want? Why not try another keyword?"
+msgstr "找不到您想要的？何不换个关键词试试？"
+
+#: archive.php:20
+msgid "Archive for Categories"
+msgstr "分类归档列表"
+
+#: archive.php:25
+msgid "Archive for Tags"
+msgstr "标签归档列表"
+
+#: archive.php:31
+#: archive.php:36
+#: archive.php:41
+#, php-format
+msgid "Archive for %1$s"
+msgstr "%1$s 的存档"
+
+#: archive.php:31
+#: archive.php:65
+#: archives.php:11
+#: baidu-ditu-api.php:18
+#: comments.php:81
+#: functions.php:526
+#: image.php:10
+#: index.php:22
+#: links.php:18
+#: page.php:7
+#: qq-weibo-api.php:18
+msgid "F jS, Y"
+msgstr "Y年n月j日"
+
+#: archive.php:36
+msgid "F, Y"
+msgstr "Y年n月"
+
+#: archive.php:41
+msgid "Y"
+msgstr "Y年"
+
+#: archive.php:48
+msgid "<p>Displaying the most recent of "
+msgstr "<p>作者笔耕不缀，最近更新了 "
+
+#: archive.php:48
+msgid " posts written by</p>"
+msgstr " 篇文章</p>"
+
+#: archive.php:55
+#: sidebar.php:121
+msgid "Blog Archives"
+msgstr "博客存档"
+
+#: archive.php:67
+#: archives.php:11
+#: comments.php:82
+#: functions.php:529
+#: image.php:10
+#: index.php:22
+#: page.php:8
+msgid "Edit"
+msgstr "编辑"
+
+#: archive.php:68
+#: index.php:22
+msgid "No Comments &#187;"
+msgstr "发表评论 &#187;"
+
+#: archive.php:68
+#: index.php:22
+msgid "1 Comment &#187;"
+msgstr "1 条评论 &#187;"
+
+#: archive.php:68
+#: index.php:22
+msgid "% Comments &#187;"
+msgstr "% 条评论 &#187;"
+
+#: archive.php:68
+#: index.php:22
+msgid "Comments Closed"
+msgstr "评论关闭."
+
+#: archive.php:72
+#: index.php:25
+msgid "Read more..."
+msgstr "阅读全文..."
+
+#: archive.php:76
+#: image.php:31
+#: index.php:28
+msgid "Categories: "
+msgstr "分类: "
+
+#: archive.php:76
+#: image.php:31
+#: index.php:28
+msgid "Tags: "
+msgstr "标签: "
+
+#: archive.php:81
+#: archives.php:37
+#: baidu-ditu-api.php:180
+#: image.php:34
+#: image.php:48
+#: index.php:33
+#: links.php:35
+#: page.php:25
+#: qq-weibo-api.php:34
+msgid "Sorry, no posts matched your criteria."
+msgstr "对不起, 不存在相应的文章."
+
+#: archive.php:89
+#: index.php:41
+msgid "Newer Entries"
+msgstr "上一页"
+
+#: archive.php:90
+#: index.php:42
+msgid "Older Entries"
+msgstr "下一页"
+
+#: archives.php:7
+#: image.php:6
+msgid "Go to homepage"
+msgstr "转到首页"
+
+#: archives.php:7
+#: image.php:6
+msgid "Home"
+msgstr "首页"
+
+#: archives.php:11
+#: baidu-ditu-api.php:19
+#: comments.php:28
+#: image.php:10
+#: links.php:21
+#: page.php:10
+#: qq-weibo-api.php:21
+msgid "Leave a comment"
+msgstr "发表评论"
+
+#: archives.php:11
+#: baidu-ditu-api.php:19
+#: image.php:10
+#: links.php:21
+#: page.php:11
+#: qq-weibo-api.php:21
+msgid "Go to comments"
+msgstr "阅读评论"
+
+#: comments.php:5
+msgid "Enter your password to view comments."
+msgstr "请输入密码再查看评论内容."
+
+#: comments.php:23
+#: comments.php:25
+msgid "Comments"
+msgstr "评论"
+
+#: comments.php:23
+msgid "Trackbacks"
+msgstr "Trackbacks"
+
+#: comments.php:31
+msgid "Trackback"
+msgstr "Trackback"
+
+#: comments.php:52
+msgid "No comments yet."
+msgstr "本文目前尚无任何评论."
+
+#: comments.php:64
+msgid "Comment pages"
+msgstr "评论分页"
+
+#: comments.php:81
+#: functions.php:526
+#, php-format
+msgid "%1$s at %2$s"
+msgstr "%1$s%2$s"
+
+#: comments.php:81
+#: functions.php:526
+msgid "H:i"
+msgstr "H:i"
+
+#: comments.php:89
+msgid "No trackbacks yet."
+msgstr "本文目前尚无任何 trackbacks 和 pingbacks."
+
+#: comments.php:103
+msgid "Comments are closed."
+msgstr "本文的评论功能被关闭了."
+
+#: comments.php:114
+#, php-format
+msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
+msgstr "您必须在 <a href=\"%s\">登录</a> 后才能发布评论."
+
+#: comments.php:130
+msgid "Logged in as"
+msgstr "登录帐号:"
+
+#: comments.php:131
+msgid "Log out of this account"
+msgstr "退出登录"
+
+#: comments.php:131
+msgid "Logout &raquo;"
+msgstr "登出 &raquo;"
+
+#: comments.php:137
+#, php-format
+msgid "Welcome back <strong>%s</strong>."
+msgstr "欢迎回来, <strong>%s</strong>"
+
+#: comments.php:138
+msgid "Change &raquo;"
+msgstr "更改 &raquo;"
+
+#: comments.php:139
+msgid "Close &raquo;"
+msgstr "隐藏 &raquo;"
+
+#: comments.php:146
+msgid "Name"
+msgstr "昵称"
+
+#: comments.php:146
+#: comments.php:150
+msgid "(required)"
+msgstr "(必填)"
+
+#: comments.php:150
+msgid "E-Mail (will not be published)"
+msgstr "电子邮箱 (我们会为您保密)"
+
+#: comments.php:154
+msgid "Website"
+msgstr "网址"
+
+#: comments.php:171
+msgid "Subscribe to comments feed"
+msgstr "订阅评论"
+
+#: comments.php:173
+msgid "Submit Comment"
+msgstr "提交评论"
+
+#: footer.php:15
+msgid "Subscribe RSS"
+msgstr "订阅 RSS"
+
+#: footer.php:34
+msgid "budeyan blog"
+msgstr "不得言博客"
+
+#: footer.php:34
+msgid "budeyan"
+msgstr "不得言"
+
+#: footer.php:36
+msgid "This site is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 2.5 License."
+msgstr "本站遵循“署名-非商业性使用-相同方式共享”创作共用协议."
+
+#: functions.php:14
+msgid "Berries"
+msgstr "草莓"
+
+#: functions.php:19
+msgid "Cherry Blossoms"
+msgstr "盛开的樱花"
+
+#: functions.php:24
+msgid "Concave"
+msgstr "凹面"
+
+#: functions.php:29
+msgid "Fern"
+msgstr "蕨"
+
+#: functions.php:34
+msgid "Forest Floor"
+msgstr "树荫森林"
+
+#: functions.php:39
+msgid "Inkwell"
+msgstr "墨渍"
+
+#: functions.php:44
+msgid "Path"
+msgstr "林荫小道"
+
+#: functions.php:49
+msgid "Sunset"
+msgstr "日落黄昏"
+
+#: functions.php:221
+#: functions.php:230
+msgid "Current Theme Options"
+msgstr "当前主题选项"
+
+#: functions.php:235
+msgid "icp"
+msgstr "ICP备案"
+
+#: functions.php:239
+msgid "Add icp number."
+msgstr "添加 ICP 备案号 在博客底部"
+
+#: functions.php:242
+msgid "icp_num:"
+msgstr "ICP备案号："
+
+#: functions.php:252
+msgid "Menubar"
+msgstr "菜单栏"
+
+#: functions.php:256
+msgid "Show pages as menu."
+msgstr "将页面列表作为菜单"
+
+#: functions.php:260
+msgid "Show categories as menu."
+msgstr "将分类列表作为菜单"
+
+#: functions.php:270
+msgid "Posts Options"
+msgstr "日志选项"
+
+#: functions.php:274
+msgid "Show author on posts."
+msgstr "显示文章作者"
+
+#: functions.php:278
+msgid "Show categories on posts."
+msgstr "显示文章分类"
+
+#: functions.php:282
+msgid "Show tags on posts."
+msgstr "显示文章标签"
+
+#: functions.php:293
+#: sidebar.php:30
+msgid "t_qq"
+msgstr "腾讯微博"
+
+#: functions.php:297
+msgid "Add QQ button."
+msgstr "添加 腾讯微博 按钮."
+
+#: functions.php:297
+#: functions.php:314
+msgid "Follow Budeyan"
+msgstr "收听 不得言"
+
+#: functions.php:300
+msgid "t_qq_name:"
+msgstr "腾讯微博用户名："
+
+#: functions.php:310
+#: sidebar.php:28
+msgid "Twitter"
+msgstr "Twitter"
+
+#: functions.php:314
+msgid "Add Twitter button."
+msgstr "添加 Twitter 按钮."
+
+#: functions.php:317
+msgid "Twitter username:"
+msgstr "Twitter 用户名:"
+
+#: functions.php:328
+msgid "Notice"
+msgstr "公告栏"
+
+#: functions.php:330
+#: functions.php:352
+#: functions.php:375
+#: functions.php:401
+#: functions.php:424
+msgid "HTML enabled"
+msgstr "HTML 可用"
+
+#: functions.php:335
+msgid "This notice bar display at the top of homepage."
+msgstr "把公告栏显示在首页文章区域上方。"
+
+#: functions.php:350
+msgid "Showcase"
+msgstr "橱窗"
+
+#: functions.php:359
+msgid "Displayed in the sidebar at the top."
+msgstr "显示在侧边栏顶部。"
+
+#: functions.php:373
+msgid "Web Analytics"
+msgstr "网站分析"
+
+#: functions.php:380
+msgid "Add web analytics code to your site."
+msgstr "将分析代码添加到网站中。"
+
+#: functions.php:384
+msgid "div display or not"
+msgstr "隐藏统计代码。"
+
+#: functions.php:399
+msgid "ad1"
+msgstr "广告一"
+
+#: functions.php:405
+#: functions.php:428
+msgid "ad1_title:"
+msgstr "广告标题:"
+
+#: functions.php:408
+msgid "Displayed ad in the sidebar"
+msgstr "显示侧边栏广告"
+
+#: functions.php:422
+msgid "ad2"
+msgstr "广告二"
+
+#: functions.php:431
+msgid "Displayed ad in single page"
+msgstr "显示文章页广告"
+
+#: functions.php:443
+msgid "Save Changes"
+msgstr "保存更改"
+
+#: functions.php:527
+msgid "Reply"
+msgstr "回复"
+
+#: functions.php:527
+msgid "Quote"
+msgstr "引用"
+
+#: functions.php:531
+msgid "Advanced edit"
+msgstr "高级编辑"
+
+#: functions.php:534
+msgid "Your comment is awaiting moderation."
+msgstr "您的评论需要经过管理员审核通过后才会生效."
+
+#: header.php:25
+msgid "RSS 2.0 - all posts"
+msgstr "RSS 2.0 - 所有文章"
+
+#: header.php:26
+msgid "RSS 2.0 - all comments"
+msgstr "RSS 2.0 - 所有评论"
+
+#: links.php:19
+#: qq-weibo-api.php:19
+msgid "Add link"
+msgstr "添加链接"
+
+#: links.php:19
+#: qq-weibo-api.php:19
+msgid "Edit links"
+msgstr "编辑链接"
+
+#: sidebar-footer.php:16
+#: sidebar.php:61
+msgid "Rand Post"
+msgstr "随机日志"
+
+#: sidebar-footer.php:26
+msgid "Recent Comments"
+msgstr "最新评论"
+
+#: sidebar-footer.php:35
+msgid "Calendar"
+msgstr "日历"
+
+#: sidebar.php:25
+msgid "Subscribe to this blog..."
+msgstr "订阅这个博客的文章"
+
+#: sidebar.php:25
+msgid "<abbr title=\"Really Simple Syndication\">RSS</abbr>"
+msgstr "订阅"
+
+#: sidebar.php:26
+msgid "Subscribe to this blog via email..."
+msgstr "通过电子邮件订阅这个博客的文章"
+
+#: sidebar.php:26
+msgid "Email feed"
+msgstr "邮件订阅"
+
+#: sidebar.php:28
+msgid "Follow me!"
+msgstr "收听我！"
+
+#: sidebar.php:38
+msgid "future posts"
+msgstr "博文预告"
+
+#: sidebar.php:46
+#, php-format
+msgid "Post #%s"
+msgstr "ID为 %s 的博文"
+
+#: sidebar.php:48
+#, php-format
+msgid "( in future %s published )"
+msgstr "( 将于 %s 发布 )"
+
+#: sidebar.php:61
+msgid "Newest Post"
+msgstr "最新日志"
+
+#: sidebar.php:102
+msgid "Categories"
+msgstr "分类列表"
+
+#: sidebar.php:106
+msgid "Blogroll"
+msgstr "友情链接"
+

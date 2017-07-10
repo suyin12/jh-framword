@@ -1,0 +1,119 @@
+<?php
+/**
+ * Created by  Great sToNe.
+ * Email: shi35dong@gmail.com
+ * DateTime: 2016/8/11 - 11:53
+ *
+ * 工资推送确认
+ */
+#验证权限
+require_once '../auth.php';
+#连接模板文件
+require_once sysPath . 'templateConfig.php';
+#通用函数库
+require_once sysPath . 'common.function.php';
+#链接数据函数
+require_once sysPath . 'dataFunction/unit.data.php';
+#页面标题
+$title = "工资推送确认";
+
+if ($_GET ['month']) {
+    $month = $_GET ['month'];
+} else {
+    header ( "location:" . httpPath . "workerService/salarySendConfim.php?month=" . date("Ym",strtotime(date("Ymd",time()). "-1 month")));
+}
+
+$unitManager = unit_manager($pdo, "2_1",NULL,"1");
+$js_unitManager = json_encode($unitManager);
+#生成单位ID
+if ($_GET ['mID']) {
+    $mID = $_GET ['mID'];
+    foreach ($unitManager as $uValue) {
+        if ($uValue ['mID'] == $mID) {
+            foreach ($uValue ['unit'] as $uV) {
+                $sqlV .= "'" . $uV ['unitID'] . "',";
+            }
+        }
+    }
+    $sqlV = rtrim($sqlV, ",");
+    if ($_GET ['unitID']) {
+        $unitID = $_GET ['unitID'];
+        $sqlUnit .= " and unitID like '$unitID' ";
+    } else
+        $sqlUnit .= " and unitID in(" . $sqlV . ")";
+} else {
+    if (!$_GET ['wCS'])
+        $mID = $_SESSION ['exp_user'] ['mID'];
+}
+//遍历客户经理,单位数组
+foreach ($unitManager as $um_v) {
+    foreach ($um_v as $um_v_k => $um_v_v) {
+        if ($um_v ['mID'] == $mID) {
+            //构造get后,单位数组
+            $um [0] = array("mID" => $um_v ['mID'], "mName" => $um_v ['mName'], "unit" => $um_v ['unit']);
+        } else {
+            //构造get后,单位数组,除get外其余的客户经理
+            $um_m [$um_v ['mID']] = array("mID" => $um_v ['mID'], "mName" => $um_v ['mName']);
+        }
+    }
+}
+#推送状态
+$sql = "select sendStatus,salaryDate,unitID from a_originalFee where salaryDate like '$month'";
+$sql = $sql . $sqlUnit;
+$sql .=" group by unitID ";
+$res = $pdo->prepare($sql);
+$res->execute();
+$ret1 = $res->fetchAll(PDO::FETCH_ASSOC);
+
+$sql = "select rewardDate,sendStatus,unitID from a_rewardfee where rewardDate like '$month'";
+$sql = $sql . $sqlUnit;
+$sql .=" group by unitID ";
+$ret = $pdo->prepare($sql);
+$ret->execute();
+$ret2 = $ret->fetchAll(PDO::FETCH_ASSOC);
+
+#构造get后,单位数组
+if ($um) {
+    $um = array_merge($um, $um_m);
+    $smarty->assign("unitManager", $um);
+} else {
+    $smarty->assign("unitManager", $unitManager);
+//    //重构数组
+//    foreach($unitManager as $key => $value){
+//        foreach($value as $k => $v){
+//            foreach ($v as $kk => $va){
+//                foreach($ret1 as $rk => $rv){
+//                    if($rv['unitID'] == $kk){
+//                        $sendStatusTemp[][$value['unit']]=array_merge($va,$rv);
+//                    }
+//                }
+//
+//            }
+//
+//        }
+//    }
+
+}
+#获取半年月份
+for($i=1;$i<7;$i++){
+    $salaryDateArr[] =date("Ym",strtotime(date("Ymd",time()). "-". $i. "month"));
+}
+
+$toMonth = date("Ym",time());
+if ($month) {
+    $s_month = $month;
+} else {
+    $s_month = $toMonth;
+}
+#变量配置
+$smarty->assign("s_month", $s_month);
+$smarty->assign("ret1",$ret1);
+$smarty->assign("ret2",$ret2);
+$smarty->assign("salaryDateArr", $salaryDateArr);
+$smarty->assign(array("s_mID" => $mID,"s_unitID"=>$unitID));
+$smarty->assign("js_unitManager",$js_unitManager);
+
+#模板配置
+$smarty->assign ( array ("title" => $title, "css" => httpPath . "css/main.css", "httpPath" => httpPath ) );
+$smarty->display ( "workerService/salarySendConfim.tpl" );
+?>

@@ -1,0 +1,51 @@
+<include file="./Addons/Paiqian/View/default/Wap/_head.html"/>
+<body>
+<div class="container">
+	<header class="header">
+        <a class="back" href="javascript:;" onClick="$.WeiPHP.back();"></a>
+        <span class="title">订单</span>
+        <a class="cate" href="javascript:;" onClick="$.WeiPHP.showPopCate();"></a>
+    </header>
+    <include file="./Addons/Paiqian/View/default/Wap/_menu.html"/>
+    <div class="page">
+    	<div class="common_tab">
+        	<a class="{$cur_1001}" href="{:U('orderIndex',array('status'=>'-1'))}">全部</a>
+            <a class="{$cur_999}" href="{:U('orderIndex',array('status'=>'1'))}">已支付</a>
+            <a class="{$cur_1000}" href="{:U('orderIndex',array('status'=>'0'))}">未支付</a>
+            <a class="{$cur_901}" href="{:U('orderIndex',array('status'=>'99'))}">退款</a>
+        </div>
+        <ul>
+        <php>$status_class[0]='status_red';$status_class[1]='status_green';$status_class[99]='status_yellow';$status_class[98]='status_green';</php>
+        	<volist name="list_data" id="vo">
+            <li class="weui_cells weui_cells_access">
+            	<eq name="vo.orderType" value="99">
+                	<a class="weui_cell cell_center_arrow" href="{:U('refundDetail',array('orderID'=>$vo['orderID']))}">
+                <else/>
+                	<a class="weui_cell cell_center_arrow" href="{:U('orderDetail',array('orderID'=>$vo['orderID']))}">
+                </eq>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p class="l_title">订单号:{$vo.orderID}</p>
+                        <p class="gray l_title">共<span class="orange">{$vo.person_count}</span>人参保</p>
+                    </div>
+                    <div class="weui_cell_ft">
+                    	<!--
+                        	class使用方式
+                        	status_red 未支付
+                            status_red 确认中
+                            status_green 已支付
+                        -->
+                        <p><span class="status {$status_class[$vo[payStatus]]}">{$vo.payStatus_title}</span></p>
+                        <p class="gray">&nbsp;</p>
+                         <p class="gray need_position l_title">订单金额<span class="orange">￥{$vo.total}</span></p>
+                    </div>
+                </a>
+            </li>
+            </volist>
+        </ul>
+        
+    </div>
+    <include file="./Addons/Paiqian/View/default/Wap/_service.html"/>
+</div>
+<script type="text/javascript">
+</script>
+<include file="./Addons/Paiqian/View/default/Wap/_foot.html"/>

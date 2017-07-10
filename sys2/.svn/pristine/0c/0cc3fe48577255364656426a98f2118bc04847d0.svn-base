@@ -1,0 +1,50 @@
+<script type="text/html" id="pop_cate">
+
+
+<div class="pop_cate">
+
+<div class="Pop-ups_div"></div>
+
+
+            <section class="index_cate" style="background:#171717;">
+        <ul class="cate_lists cate_pop_up">
+            <li class="cate_cancel_l">
+            <a class="item item_color shake_a_shake item_m" href="{:U('warning')}">
+            
+            
+                 <div class="auto_down">
+                    <span class="icon" style="margin-bottom: 12px;"> <i  style="margin-top: 5px;height: 52px;"  class="fa fa-warning fa-4x"></i></span>
+                      </div>
+                <span class="txt">经营预警</span>
+            </a>
+            </li>
+            <li class="cate_cancel_r">
+            <a class="item item_color item_m" href="{:U('workerStat')}">
+                <span class="icon" style="margin-bottom: 12px;"><i style="margin-top: 5px;height: 52px;" class="fa fa-user-plus fa-4x"></i></span>
+                <span class="txt">入离职报告</span>
+            </a>
+            </li>
+            
+            
+         </ul>
+       <ul class="cate_lists cate_pop_up">
+        <li class="cate_cancel_l">
+            <a class="item item_color item_m" href="{:U('allowMoney')}">
+                <span class="icon" style="margin-bottom: 12px;"><i style="margin-top: 5px;height: 52px;" class="fa fa-rmb fa-4x"></i></span>
+
+                <span class="txt">费用审批</span>
+            </a>
+            </li>
+            <li class="cate_cancel_r">
+            <a class="item item_color item_m" href="{:U('requireMoney')}">
+                <span class="icon" style="margin-bottom: 12px;"><i style="margin-top: 5px;height: 52px;" class="fa fa-money fa-4x"></i></span>
+                <span class="txt">未收回欠款</span>
+            </a>
+            </li>
+            </ul>
+        </section>
+    <center><br/><a href="javascript:;" class="close"><img src="__STATIC__/paiqian/close_page.png" width="50"/></a></center>
+</div>
+</script>
+</body>
+</html>
