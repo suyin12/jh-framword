@@ -1,0 +1,121 @@
+<include file="./Addons/BusinessAnalysis/View/default/Wap/_head.html"/>
+<style>
+
+    .weui_cells_access .weui_cell_ft:after {
+        top: 39px;
+    }
+</style>
+
+<body>
+<div class="container">
+    <header class="header">
+        <a class="back" href="javascript:;" onClick="$.WeiPHP.back();"></a>
+        <span class="title">经营预警</span>
+        <a class="cate" href="javascript:;" onClick="$.WeiPHP.showPopCate();"></a>
+    </header>
+
+    <div class="page" style="margin-bottom:15px;min-height: 600px;">
+        <p class="logo_img"><a href="{:U('index')}"><img src="/weixin/Public/static/paiqian/logo_img3.png" width="30%"></a>
+        </p>
+
+        <article class="weui_article">
+            <div class="user_action_list">
+                <div class="weui_cells weui_cells_access recruit_Information">
+                    <a class="weui_cell" href="#">
+                        <div class="weui_cell_hd"></div>
+                        <div class="weui_cell_bd weui_cell_primary">
+                            <h1><span class="weui_icon_warn"></span>重要提醒 : 费用超支</h1>
+                            <section>
+                                <p class="recruit"><span style="">深圳市罗湖区文体局</span> 在 2016年7月 较年度平均费用上升超过5% ,上浮金额为: 23124.12 元</p>
+                            </section>
+
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="user_action_list">
+                <div class="weui_cells weui_cells_access recruit_Information">
+                    <a class="weui_cell" href="#">
+                        <div class="weui_cell_hd"></div>
+                        <div class="weui_cell_bd weui_cell_primary">
+                            <h1><span class="weui_icon_warn"></span>重要提醒 : 人员离职率过高</h1>
+                            <section>
+                                <p class="recruit"><span style="">深圳市速递物流(EMS)有限公司福田分公司</span> 在 2016年7月 离职率超过10% ,离职人数为: 7人</p>
+                            </section>
+
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="user_action_list">
+                <div class="weui_cells weui_cells_access recruit_Information">
+                    <a class="weui_cell" href="#">
+                        <div class="weui_cell_hd"></div>
+                        <div class="weui_cell_bd weui_cell_primary">
+                            <h1><span class="weui_icon_warn"></span>重要提醒 : 未发放工资</h1>
+                            <section>
+                                <p class="recruit"><span style="">中国建筑一局</span> 未发放 2016年6月 工资 ,请客户经理联系查询详情</p>
+                            </section>
+
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="user_action_list">
+                <div class="weui_cells weui_cells_access recruit_Information">
+                    <a class="weui_cell" href="#">
+                        <div class="weui_cell_hd"></div>
+                        <div class="weui_cell_bd weui_cell_primary">
+                            <h1><span class="weui_icon_warn"></span>重要提醒 : 未购买社保</h1>
+                            <section>
+                                <p class="recruit"><span style="">邮储银行</span> 新入职人员有3人未购买社保 ,请客户经理联系查询详情</p>
+                            </section>
+
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="user_action_list">
+                <div class="weui_cells weui_cells_access recruit_Information">
+                    <a class="weui_cell" href="#">
+                        <div class="weui_cell_hd"></div>
+                        <div class="weui_cell_bd weui_cell_primary">
+                            <h1><span class="weui_icon_info"></span>友情提醒 :  垫付款</h1>
+                            <section>
+                                <p class="recruit"><span style="">深圳市速递物流(EMS)有限公司</span> 需垫付 219,211.21 元,用于垫付</p>
+                            </section>
+
+                        </div>
+                    </a>
+                </div>
+                <div class="user_action_list">
+                    <div class="weui_cells weui_cells_access recruit_Information">
+                        <a class="weui_cell" href="#">
+                            <div class="weui_cell_hd"></div>
+                            <div class="weui_cell_bd weui_cell_primary">
+                                <h1><span class="weui_icon_info"></span>友情提醒 :  缺工</h1>
+                                <section>
+                                    <p class="recruit"><span style="">中国邮政集团深圳分公司</span> 需招聘213人, 用于< 中秋促销员 > ,请安排招聘事宜</p>
+                                </section>
+
+                            </div>
+                        </a>
+                    </div>
+            </div>
+        </article>
+
+        <div class="list_h"></div>
+
+        <script type="text/javascript">
+            $(function () {
+                $.WeiPHP.initJson2Select([{$json}]);
+            });
+        </script>
+        <include file="./Addons/BusinessAnalysis/View/default/Wap/_menu.html"/>
+
+
+        <include file="./Addons/BusinessAnalysis/View/default/Wap/_foot.html"/>

@@ -1,0 +1,98 @@
+<include file="./Addons/BusinessAnalysis/View/default/Wap/_head.html"/>
+<style>
+
+    .weui_cells_access .weui_cell_ft:after {
+        top: 39px;
+    }
+</style>
+
+<body>
+<div class="container">
+    <header class="header">
+        <a class="back" href="javascript:;" onClick="$.WeiPHP.back();"></a>
+        <span class="title"> 费用审批 </span>
+        <a class="cate" href="javascript:;" onClick="$.WeiPHP.showPopCate();"></a>
+    </header>
+
+    <div class="page" style="margin-bottom:15px;min-height: 600px;">
+        <p class="logo_img"><a href="{:U('index')}"><img src="/weixin/Public/static/paiqian/logo_img3.png" width="30%"></a>
+        </p>
+
+        <article class="weui_article">
+
+
+            <div class="user_action_list">
+                <div class="weui_cells weui_cells_access recruit_Information">
+                    <a class="weui_cell" href="#">
+                        <div class="weui_cell_hd"></div>
+                        <div class="weui_cell_bd weui_cell_primary">
+                            <h1><span class="weui_icon_info_circle"></span>友情提醒 :  垫付款</h1>
+                            <section>
+                                <p class="recruit"><span style="">深圳市速递物流(EMS)有限公司</span> 需垫付 219,211.21 元,用于 < 发放奖金 > </p>
+                            </section>
+
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+
+            <div class="user_action_list">
+                <div class="weui_cells weui_cells_access recruit_Information">
+                    <a class="weui_cell" href="#">
+                        <div class="weui_cell_hd"></div>
+                        <div class="weui_cell_bd weui_cell_primary">
+                            <h1><span class="weui_icon_info_circle"></span>友情提醒 :  工资发放</h1>
+                            <section>
+                                <p class="recruit"><span style="">中国邮政集团深圳分公司</span> 需发放工资,金额为: 450,414.22 元</p>
+                            </section>
+
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="user_action_list">
+                <div class="weui_cells weui_cells_access recruit_Information">
+                    <a class="weui_cell" href="#">
+                        <div class="weui_cell_hd"></div>
+                        <div class="weui_cell_bd weui_cell_primary">
+                            <h1><span class="weui_icon_info_circle"></span>友情提醒 :  工资发放</h1>
+                            <section>
+                                <p class="recruit"><span style="">深圳市中邮物流</span> 需发放工资,金额为: 150,778.45 元</p>
+                            </section>
+
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="user_action_list">
+                <div class="weui_cells weui_cells_access recruit_Information">
+                    <a class="weui_cell" href="#">
+                        <div class="weui_cell_hd"></div>
+                        <div class="weui_cell_bd weui_cell_primary">
+                            <h1><span class="weui_icon_info_circle"></span>友情提醒 :  工资发放</h1>
+                            <section>
+                                <p class="recruit"><span style="">中国邮政储蓄银行深圳分行</span> 需发放工资,金额为: 80,678.95 元</p>
+                            </section>
+
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+    </div>
+    </article>
+
+    <div class="list_h"></div>
+
+    <script type="text/javascript">
+        $(function () {
+            $.WeiPHP.initJson2Select([{$json}]);
+        });
+    </script>
+    <include file="./Addons/BusinessAnalysis/View/default/Wap/_menu.html"/>
+
+
+    <include file="./Addons/BusinessAnalysis/View/default/Wap/_foot.html"/>

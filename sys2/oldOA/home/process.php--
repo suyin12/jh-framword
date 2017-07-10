@@ -1,0 +1,129 @@
+<?php require_once "../companyHeader.php"; ?>
+
+  <div id="right" name="right">
+<?php 
+//require_once '../header/leaderheader.php';
+//if(!defined('ALLOW'))exit();
+?>
+<body onLoad="inSel()">
+	<form method="post" action="process.php">
+	<br /><br />
+	<div align="center">
+	请选择年份：<select name ="selYear" class = "selAll">
+		<?php 
+			for($j=-1;$j<2;$j++){
+				echo " <option value='".(date('Y')+$j)."'>".(date('Y')+$j)."</option>";
+			}
+		?>
+	</select>
+	请选月份：<select name ="selMothon" class = "selAll">
+		<?php 
+			for($i=1;$i<=12;$i++)
+			{
+				echo "<option value='$i'>$i</option>";
+			}
+		?>
+	</select>
+	发布人(可选)：
+	<select name="selcolumn" class = "selAll">
+		<option value="">请选择</option>
+		<option value="admin">admin</option>
+		<option value="钟木灵">钟木灵</option>
+		<option value="铁东远">铁东远</option>
+		<option value="陈健恒">陈健恒</option>
+		<option value="冯小娟">冯小娟</option>
+		<option value="汪慧研">汪慧研</option>
+		<option value="罗平超">罗平超</option>
+		<option value="zhangdi">zhangdi</option>
+	</select>
+	<input type="submit" value="提交" > 
+	<br /></div>
+	<br />
+	 <?php 
+	 
+	 		require_once '../header/companyHeader.php';
+			if(!defined('ALLOW'))exit();
+		 	require_once "../settings.inc";
+		 	$selYear = $_POST["selYear"];
+			$selMothon = $_POST["selMothon"];
+			$selcolumn = $_POST["selcolumn"];
+			$selLastYear = $selYear;
+			$time1 = $selYear."-".($selMothon-1)."-"."21";
+			$time2 = $selYear."-".$selMothon."-"."20";
+			$time1 = date("Ymd",strtotime($time1));
+			$time2 = date("Ymd",strtotime($time2));
+			if ($selYear != ""){
+			$qUser = "SELECT CASE GroupID
+					WHEN CAST( 6 AS UNSIGNED ) THEN '企业' WHEN 7 THEN '个人'
+					END AS GroupID, DATE_FORMAT( FROM_UNIXTIME(RegisterDate),'%Y') AS time, count(*) FROM cwps_user
+					WHERE DATE_FORMAT(FROM_UNIXTIME(RegisterDate),'%Y%m%d' ) 
+					BETWEEN '".$time1."' AND '".$time2."'
+					AND (GroupID =6 OR GroupID =7)
+					GROUP BY GroupID";
+			$rsUser= mysql_query($qUser); 
+			echo "<div align='center'>";
+			echo "<table border='1' cellspacing='0' cellpadding='0' width = '600' bordercolor='#000000' bordercolordark='#FFFFFF' bgcolor='#FFFFFF' >";
+			echo "<tr><td align='center'>用户</td><td align='center'>注册数量</td></tr>";
+			$bool = true;
+			while($row = mysql_fetch_array($rsUser)){
+				$bool = false;
+				echo "<tr><td align='center'>$row[0]</td><td align='center'>$row[2]</td></tr>";
+			}
+			if($bool){echo "<tr><td align='center' colspan='4' style='color:red'>null</td></tr>"; }
+			echo "<br /><br />";
+		}
+
+			require_once "../settings1.inc";
+			$selYear = $_POST["selYear"];
+			$selMothon = $_POST["selMothon"];
+			$selcolumn = $_POST["selcolumn"];	
+			if ($selYear != ""){
+				echo "<div  align='center'><h3>".$selYear."年".$selMothon."月注册信息</h3></div>";
+				$qvName = "select uname,uinfo,Name,DATE_FORMAT(time,'%Y-%m-%d'),count(*) as number from v_name";
+				$qvName = $qvName." where DATE_FORMAT(time,'%Y%m%d')  between '" .$time1."' and '".$time2."'";
+				if( $selcolumn != "")
+				{
+					$qvName = $qvName." and uinfo = '".$selcolumn."'";
+				}
+				$qvName= $qvName." group by uinfo,Name order by time DESC";
+				$rs = mysql_query($qvName); 
+				
+					echo "<table border='1' cellspacing='0' cellpadding='0'  width = '600' bordercolor='#000000' bordercolordark='#FFFFFF' bgcolor='#FFFFFF' >"; 
+					echo "<tr><td align='center'>用户</td><td align='center'>栏目</td><td align='center'>发布数量</td></tr>";
+				$bool = true;
+				while($row = mysql_fetch_row($rs)) {
+					$bool = false;
+					echo "<tr><td align='center'>$row[1]</td><td align='center'>$row[2]</td><td align='center'>$row[4]</td></tr>"; 
+				}
+				echo "<br /><br />";
+				echo "<div  align='center'><h3>".$selYear."年".$selMothon."月".$selcolumn."发布信息</h3></div>";
+				if($bool){echo "<tr><td align='center' colspan='4' style='color:red'>null</td></tr>"; }
+					$q1 = "SELECT sum(number) FROM v_sum where time between '" .$time1."' and '".$time2."'";
+					if( $selcolumn != "")
+					{
+						$q1 = $q1." and uinfo = '".$selcolumn."' order by time";
+					}
+	
+					$rs1 = mysql_query($q1); 
+					$row1 = mysql_fetch_row($rs1);
+					echo "<tr><td colspan='2' align='center'>统计</td><td>".($row1[0]+0)."</td></tr>";
+					echo "</table></div>"; 
+				
+			}
+		 ?>
+		 
+		<br /><br />
+	</form>
+</body>
+</html>
+<script type="text/javascript">
+	function inSel()
+	{
+		document.getElementById("selYear").value= <?php echo $_POST['selYear']; ?>;
+		document.getElementById("selMothon").value= <?php echo $_POST['selMothon']; ?>;
+
+	}
+</script>
+</div>
+</body>
+</html>

@@ -1,0 +1,138 @@
+@CHARSET "UTF-8";
+
+p {
+	font: bold 14px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+}
+hr{
+	width:80%;
+		
+}
+#conn{
+	width:100%;
+	height:100%;
+	margin: 0 0 10px 0;
+
+}
+code{
+font-size: 125%;
+font-style: inherit;
+font-weight: inherit;
+font-family: inherit;
+color: #800;
+border-bottom: 1px solid #fafafa;
+text-shadow: 0 1px 0 #fff,1px 2px 2px #aaa;
+}
+#list{
+	padding:20px;
+	font-size: 125%;
+	font-style: inherit;
+	font-weight: inherit;
+	font-family: inherit;
+	color: #800;
+	border-bottom: 1px solid #fafafa;
+	text-shadow: 0 1px 0 #fff,1px 2px 2px #aaa;
+	
+	
+}
+#list li{
+	padding:5px;
+	
+}
+	
+#tab{
+	padding:10px;
+	
+}
+.mytable{
+	
+	width:50%; 
+}
+.mytable th
+{
+    background:#328aa4 url(images/tr_back.gif) repeat-x;
+    color:#fff;
+    border: 1px solid #B7C3CC;
+    border-bottom: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    vertical-align: center;
+    padding: 8px;
+    text-align: center;
+}
+.mytable td
+{
+    text-align: center;
+    padding: 8px; 
+    border-bottom: 1px solid #fff;
+    border-top: 1px solid #fff;
+}
+.mytable tr:nth-child(odd)    { background:#f8fbfc;}
+.mytable tr:nth-child(even)    { background:#e5f1f4; }
+.mytable tr.red { background: #fbe3e4; color: #8a1f11; border-color: #fbc2c4; }
+.mytable tfoot tr td
+{
+    background:#ecfbd4;
+    color: #339;
+    font-weight:  bold;
+}
+.mytable tbody tr:hover 
+{
+    background:#ecfbd4;
+    color: #339;
+}
+
+.btnList2{
+   width:700px;
+	height:135px;
+	
+}
+.btnList2 >ul>li
+{
+	width:200px;
+	float:left;
+    padding-left:40px;
+
+}
+.accordion {
+   margin-top:50px;
+	width: 95%;
+	border: solid 1px #c4c4c4;
+	
+}
+.accordion h3 {
+	background: #e9e7e7 url(images/arrow-square.gif) no-repeat right -51px;
+	padding: 7px 15px;
+	color:#6a8caf;
+	margin: 0;
+	font: bold 12px Arial, Helvetica, sans-serif;
+	border: solid 1px #c4c4c4;
+	border-bottom: none;
+	cursor: pointer;
+	
+}
+.accordion h3:hover {
+	background-color: #99c4f0;
+}
+.accordion h3.active {
+	background-position: right 5px;
+	background-color: #99c4f0;
+}
+
+.accordion p {
+	font: bold 18px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+	background: #c4c4c4;
+	color:#205791;
+	margin: 0;
+	padding: 10px 15px 20px;
+	border-left: solid 1px #c4c4c4;
+	border-right: solid 1px #c4c4c4;
+	text-shadow: 0 1px 0 #fff,1px 2px 2px #aaa;
+}
+fieldset {
+    border:1px #ddd solid;
+    background:#fafafa;
+    margin:10px 0 5px 0;
+    padding:0.5em;
+}
+#errorRet{
+margin-left:20px;
+}

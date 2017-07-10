@@ -1,0 +1,36 @@
+<footer class="footer">
+<div class="weui_tabbar">
+        <a href="{:U('lastSalaryDetail')}" class="weui_tabbar_item weui_bar_item_on">
+          <div class="weui_tabbar_icon">
+          <!--  <i class="fa fa-search fa-2x"></i> -->
+
+           <img class="img_Width_i img_public" src="/weixin/Public/static/WorkerService/query.png" alt="">
+
+          </div>
+          <p class="weui_tabbar_label">工资查询</p>
+        </a>
+        <a href="{:U('proveList')}" class="weui_tabbar_item">
+          <div class="weui_tabbar_icon">
+            <i class="fa fa-pencil-square-o fa-2x fa_color"></i>
+          </div>
+          <p class="weui_tabbar_label">开具证明</p>
+        </a>
+        <a href="{:U('groom')}" class="weui_tabbar_item ">
+
+            <div class="weui_tabbar_icon">
+
+            <i class="fa fa-lightbulb-o fa-2x fa_color"></i>
+          </div>
+          <p class="weui_tabbar_label">招聘信息</p>
+        </a>
+        <a href="{:U('userCenter')}" class="weui_tabbar_item">
+          <div class="weui_tabbar_icon">
+
+               <img class="img_Width_i img_public" src="/weixin/Public/static/WorkerService/user_gray.png" alt="">
+          </div>
+          <p class="weui_tabbar_label">个人中心</p>
+        </a>
+
+      </div>
+
+      </footer>

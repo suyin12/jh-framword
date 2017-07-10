@@ -1,0 +1,196 @@
+#
+# An unexpected error has been detected by HotSpot Virtual Machine:
+#
+#  EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x77bfa4fb, pid=152, tid=1312
+#
+# Java VM: Java HotSpot(TM) Client VM (1.5.0_08-b03 mixed mode)
+# Problematic frame:
+# C  [MSVCRT.dll+0x1a4fb]
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x370c6790):  JavaThread "Worker-8" [_thread_in_native, id=1312]
+
+siginfo: ExceptionCode=0xc0000005, reading address 0xa571f39a
+
+Registers:
+EAX=0x35182df0, EBX=0xa571f39a, ECX=0x6e616c2e, EDX=0x000c8770
+ESP=0x37b2f458, EBP=0x37b2f474, ESI=0x3710876c, EDI=0x00000019
+EIP=0x77bfa4fb, EFLAGS=0x00010246
+
+Top of Stack: (sp=0x37b2f458)
+0x37b2f458:   00000001 37fe810c 37108770 35186198
+0x37b2f468:   00000fa0 77c0a5eb 6e616c2e 37b2f4b8
+0x37b2f478:   77bfc25d 00371ea4 37108770 37fe810c
+0x37b2f488:   37b2f4e8 00000001 37b2f4e8 37104340
+0x37b2f498:   6d691b1f 00371ea4 37b2f484 37b2f07c
+0x37b2f4a8:   37b2fb64 77c05c94 77be2070 00000000
+0x37b2f4b8:   77bfc21b 6d691342 37108770 37b2f688
+0x37b2f4c8:   37b2f4e8 37b2f694 370c6700 6d69127d 
+
+Instructions: (pc=0x77bfa4fb)
+0x77bfa4eb:   f6 c1 01 89 4d fc 0f 85 d7 02 00 00 53 8d 1c 31
+0x77bfa4fb:   8b 13 89 55 f4 8b 56 fc 89 55 f8 8b 55 f4 f6 c2 
+
+
+Stack: [0x37a30000,0x37b30000),  sp=0x37b2f458,  free space=1021k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+C  [MSVCRT.dll+0x1a4fb]
+C  [MSVCRT.dll+0x1c25d]
+
+Java frames: (J=compiled Java code, j=interpreted, Vv=VM code)
+j  org.eclipse.wst.jsdt.core.search.SearchEngine.<init>()V+5
+j  org.eclipse.wst.jsdt.core.JavaScriptCore.initializeAfterLoad(Lorg/eclipse/core/runtime/IProgressMonitor;)V+197
+j  org.eclipse.wst.jsdt.internal.ui.InitializeAfterLoadJob$RealJob.run(Lorg/eclipse/core/runtime/IProgressMonitor;)Lorg/eclipse/core/runtime/IStatus;+20
+j  org.eclipse.core.internal.jobs.Worker.run()V+31
+v  ~StubRoutines::call_stub
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x370f84b0 JavaThread "Worker-10" [_thread_blocked, id=1300]
+  0x370dcd10 JavaThread "PHP Debugger Daemon Thread  - Port: 20080" daemon [_thread_in_native, id=1940]
+  0x370db390 JavaThread "PHP Debugger Daemon Thread  - Port: 10137" daemon [_thread_in_native, id=120]
+  0x370d2d00 JavaThread "Worker-9" [_thread_in_native, id=2044]
+  0x370c9660 JavaThread "Thread-11" daemon [_thread_in_native, id=4084]
+=>0x370c6790 JavaThread "Worker-8" [_thread_in_native, id=1312]
+  0x370c6a40 JavaThread "Worker-7" [_thread_blocked, id=544]
+  0x370c5510 JavaThread "Worker-6" [_thread_blocked, id=4060]
+  0x370c5950 JavaThread "Worker-5" [_thread_blocked, id=4080]
+  0x370c5cf0 JavaThread "Worker-4" [_thread_blocked, id=4092]
+  0x3705ae70 JavaThread "JavaScript indexing" daemon [_thread_blocked, id=1444]
+  0x00967140 JavaThread "Worker-3" [_thread_in_native, id=3276]
+  0x009596c0 JavaThread "Thread-3" [_thread_in_native, id=3464]
+  0x00956e70 JavaThread "Worker-2" [_thread_in_native, id=3456]
+  0x00948870 JavaThread "Worker-1" [_thread_blocked, id=3332]
+  0x00945110 JavaThread "Worker-0" [_thread_in_native, id=3364]
+  0x009243f0 JavaThread "Start Level Event Dispatcher" daemon [_thread_blocked, id=3468]
+  0x009247e0 JavaThread "Framework Event Dispatcher" daemon [_thread_blocked, id=3376]
+  0x009226a0 JavaThread "State Data Manager" daemon [_thread_blocked, id=844]
+  0x00901a60 JavaThread "Low Memory Detector" daemon [_thread_blocked, id=568]
+  0x00900e70 JavaThread "CompilerThread0" daemon [_thread_blocked, id=3108]
+  0x008ffc00 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=3284]
+  0x008fd310 JavaThread "Finalizer" daemon [_thread_blocked, id=1632]
+  0x008fc090 JavaThread "Reference Handler" daemon [_thread_blocked, id=3128]
+  0x008f4e70 JavaThread "main" [_thread_in_native, id=1556]
+
+Other Threads:
+  0x008fb370 VMThread [id=3132]
+  0x00902570 WatcherThread [id=1768]
+
+VM state:not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+Heap
+ def new generation   total 9216K, used 8386K [0x02ca0000, 0x03690000, 0x05400000)
+  eden space 8256K,  96% used [0x02ca0000, 0x03469bd0, 0x034b0000)
+  from space 960K,  42% used [0x035a0000, 0x03606d68, 0x03690000)
+  to   space 960K,   0% used [0x034b0000, 0x034b0000, 0x035a0000)
+ tenured generation   total 121024K, used 48842K [0x05400000, 0x0ca30000, 0x22ca0000)
+   the space 121024K,  40% used [0x05400000, 0x083b28a0, 0x083b2a00, 0x0ca30000)
+ compacting perm gen  total 41984K, used 41847K [0x22ca0000, 0x255a0000, 0x32ca0000)
+   the space 41984K,  99% used [0x22ca0000, 0x2557dcf8, 0x2557de00, 0x255a0000)
+No shared spaces configured.
+
+Dynamic libraries:
+0x00400000 - 0x0040e000 	d:\Zend Studio\ZendStudio.exe
+0x7c920000 - 0x7c9b4000 	C:\WINDOWS\system32\ntdll.dll
+0x7c800000 - 0x7c91c000 	C:\WINDOWS\system32\kernel32.dll
+0x77d10000 - 0x77d9f000 	C:\WINDOWS\system32\USER32.dll
+0x77ef0000 - 0x77f37000 	C:\WINDOWS\system32\GDI32.dll
+0x5d170000 - 0x5d207000 	C:\WINDOWS\system32\COMCTL32.dll
+0x77da0000 - 0x77e49000 	C:\WINDOWS\system32\ADVAPI32.dll
+0x77e50000 - 0x77ee1000 	C:\WINDOWS\system32\RPCRT4.dll
+0x77be0000 - 0x77c38000 	C:\WINDOWS\system32\MSVCRT.dll
+0x76300000 - 0x7631d000 	C:\WINDOWS\system32\IMM32.DLL
+0x62c20000 - 0x62c29000 	C:\WINDOWS\system32\LPK.DLL
+0x73fa0000 - 0x7400b000 	C:\WINDOWS\system32\USP10.dll
+0x72000000 - 0x72014000 	d:\Zend Studio\plugins\org.eclipse.equinox.launcher.win32.win32.x86_1.0.100.v20080509-1800\eclipse_1114.dll
+0x77bd0000 - 0x77bd8000 	C:\WINDOWS\system32\VERSION.dll
+0x6d6c0000 - 0x6d85b000 	d:\Zend Studio\jre\bin\client\jvm.dll
+0x76b10000 - 0x76b3a000 	C:\WINDOWS\system32\WINMM.dll
+0x6d280000 - 0x6d288000 	d:\Zend Studio\jre\bin\hpi.dll
+0x76bc0000 - 0x76bcb000 	C:\WINDOWS\system32\PSAPI.DLL
+0x6d690000 - 0x6d69c000 	d:\Zend Studio\jre\bin\verify.dll
+0x6d300000 - 0x6d31d000 	d:\Zend Studio\jre\bin\java.dll
+0x6d6b0000 - 0x6d6bf000 	d:\Zend Studio\jre\bin\zip.dll
+0x6d4c0000 - 0x6d4d3000 	D:\Zend Studio\jre\bin\net.dll
+0x71a20000 - 0x71a37000 	C:\WINDOWS\system32\WS2_32.dll
+0x71a10000 - 0x71a18000 	C:\WINDOWS\system32\WS2HELP.dll
+0x719c0000 - 0x719fe000 	C:\WINDOWS\System32\mswsock.dll
+0x76ef0000 - 0x76f17000 	C:\WINDOWS\system32\DNSAPI.dll
+0x76f80000 - 0x76f88000 	C:\WINDOWS\System32\winrnr.dll
+0x76f30000 - 0x76f5c000 	C:\WINDOWS\system32\WLDAP32.dll
+0x76f90000 - 0x76f96000 	C:\WINDOWS\system32\rasadhlp.dll
+0x60fd0000 - 0x61025000 	C:\WINDOWS\system32\hnetcfg.dll
+0x71a00000 - 0x71a08000 	C:\WINDOWS\System32\wshtcpip.dll
+0x5adc0000 - 0x5adf7000 	C:\WINDOWS\system32\uxtheme.dll
+0x33ae0000 - 0x33b09000 	C:\Program Files\360safe\safemon\safemon.dll
+0x7d590000 - 0x7dd82000 	C:\WINDOWS\system32\SHELL32.dll
+0x77f40000 - 0x77fb6000 	C:\WINDOWS\system32\SHLWAPI.dll
+0x76990000 - 0x76acd000 	C:\WINDOWS\system32\ole32.dll
+0x770f0000 - 0x7717c000 	C:\WINDOWS\system32\OLEAUT32.dll
+0x77180000 - 0x77282000 	C:\WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.2180_x-ww_a84f1ff9\COMCTL32.dll
+0x73640000 - 0x7366e000 	C:\WINDOWS\system32\msctfime.ime
+0x6d4e0000 - 0x6d4e9000 	D:\Zend Studio\jre\bin\nio.dll
+0x34230000 - 0x34285000 	D:\Zend Studio\configuration\org.eclipse.osgi\bundles\410\1\.cp\swt-win32-3448.dll
+0x76320000 - 0x76367000 	C:\WINDOWS\system32\comdlg32.dll
+0x76680000 - 0x76722000 	C:\WINDOWS\system32\WININET.dll
+0x765e0000 - 0x76672000 	C:\WINDOWS\system32\CRYPT32.dll
+0x76db0000 - 0x76dc2000 	C:\WINDOWS\system32\MSASN1.dll
+0x342e0000 - 0x342f4000 	D:\Zend Studio\configuration\org.eclipse.osgi\bundles\410\1\.cp\swt-gdip-win32-3448.dll
+0x4ae90000 - 0x4b033000 	C:\WINDOWS\WinSxS\x86_Microsoft.Windows.GdiPlus_6595b64144ccf1df_1.0.2600.2180_x-ww_522f9f82\gdiplus.dll
+0x34650000 - 0x34658000 	D:\Zend Studio\configuration\org.eclipse.osgi\bundles\113\1\.cp\os\win32\x86\localfile_1_0_0.dll
+0x76d70000 - 0x76d92000 	C:\WINDOWS\system32\Apphelp.dll
+0x76d30000 - 0x76d48000 	C:\WINDOWS\system32\iphlpapi.dll
+0x76d10000 - 0x76d28000 	C:\WINDOWS\system32\MPRAPI.dll
+0x77c90000 - 0x77cc2000 	C:\WINDOWS\system32\ACTIVEDS.dll
+0x76de0000 - 0x76e05000 	C:\WINDOWS\system32\adsldpc.dll
+0x5fdd0000 - 0x5fe24000 	C:\WINDOWS\system32\NETAPI32.dll
+0x76af0000 - 0x76b01000 	C:\WINDOWS\system32\ATL.DLL
+0x76e50000 - 0x76e5e000 	C:\WINDOWS\system32\rtutils.dll
+0x71b70000 - 0x71b83000 	C:\WINDOWS\system32\SAMLIB.dll
+0x76060000 - 0x761b6000 	C:\WINDOWS\system32\SETUPAPI.dll
+0x74be0000 - 0x74c0c000 	C:\WINDOWS\system32\oleacc.dll
+0x75ff0000 - 0x76055000 	C:\WINDOWS\system32\MSVCP60.dll
+0x76fa0000 - 0x7701f000 	C:\WINDOWS\system32\CLBCATQ.DLL
+0x77020000 - 0x770ba000 	C:\WINDOWS\system32\COMRes.dll
+0x76370000 - 0x764dc000 	C:\WINDOWS\system32\shdocvw.dll
+0x75430000 - 0x754a1000 	C:\WINDOWS\system32\CRYPTUI.dll
+0x76c00000 - 0x76c2e000 	C:\WINDOWS\system32\WINTRUST.dll
+0x76c60000 - 0x76c88000 	C:\WINDOWS\system32\IMAGEHLP.dll
+0x77fc0000 - 0x77fd1000 	C:\WINDOWS\system32\Secur32.dll
+0x75c60000 - 0x75cfc000 	C:\WINDOWS\system32\urlmon.dll
+0x75e00000 - 0x75eae000 	C:\WINDOWS\system32\SXS.DLL
+0x367f0000 - 0x36d39000 	C:\WINDOWS\system32\xpsp2res.dll
+0x74cf0000 - 0x74d81000 	C:\WINDOWS\system32\mlang.dll
+0x762f0000 - 0x762f5000 	C:\WINDOWS\system32\msimg32.dll
+0x349c0000 - 0x349cf000 	D:\Zend Studio\configuration\org.eclipse.osgi\bundles\116\1\.cp\jWinHttp.dll
+0x4a410000 - 0x4a468000 	C:\WINDOWS\system32\WINHTTP.dll
+0x359b0000 - 0x359c3000 	C:\Program Files\360safe\Antispy.dll
+
+VM Arguments:
+jvm_args: -Xms128M -Xmx512M -XX:MaxPermSize=256m
+java_command: <unknown>
+Launcher Type: generic
+
+Environment Variables:
+PATH=d:/Zend Studio/jre/bin/client;d:/Zend Studio/jre/bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;d:\XAMPP\php
+USERNAME=sToNe
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=x86 Family 6 Model 23 Stepping 6, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows XP Build 2600 Service Pack 2
+
+CPU:total 2 (cores per cpu 2, threads per core 1) family 6 model 7 stepping 6, cmov, cx8, fxsr, mmx, sse, sse2
+
+Memory: 4k page, physical 2094996k(1241904k free), swap 4036640k(3336012k free)
+
+vm_info: Java HotSpot(TM) Client VM (1.5.0_08-b03) for windows-x86, built on Jul 26 2006 01:10:50 by "java_re" with MS VC++ 6.0
+

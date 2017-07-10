@@ -1,0 +1,88 @@
+<?php
+
+/*
+ * 数据库连接,系统目录连接
+ */
+if (realpath ( __FILE__ ) == realpath ( $_SERVER ['SCRIPT_FILENAME'] )) {
+	exit ( '禁止访问' );
+}
+#设置时区
+date_default_timezone_set ( "PRC" );
+#屏蔽警告性错误
+error_reporting ( E_ALL & ~ (E_NOTICE | E_WARNING) );
+//error_reporting(E_ALL ^ (E_NOTICE | E_DEPRECATED));
+#开启SESSION
+session_start ();
+$_SESSION ['access'] = 1;
+//$_SESSION['web_worker'] =array('wID'=>'445','expires'=> '1366863450');
+#链接数据库
+define ( "db_user", "root" );
+define ( "db_pass", "1qa2WS3ed4RF" );
+define ( "db_port", "3306" );
+define ( "db_host", "192.168.0.8" );//localhost
+define ( "db_name", "testdispatchsys" );
+function dbConnect($db_host, $db_name, $db_port, $db_user, $db_pass) {
+	$dsn = "mysql:host=$db_host;port=$db_port;dbname=$db_name";
+	try {
+		$pdo = new PDO ( $dsn, $db_user, $db_pass );
+	} catch ( PDOException $e ) {
+		header ( "Content-type: text/html; charset=utf-8" );
+		exit ( '数据库连接失败' );
+	}
+	return $pdo;
+}
+
+$pdo = dbConnect ( db_host, db_name, db_port, db_user, db_pass );
+$pdo->query ( "SET NAMES 'UTF8'" );
+#系统目录定义
+$sysPath = str_replace ( "web", "sys", $_SERVER ['DOCUMENT_ROOT'] ) . '/';
+$webSysPath = $_SERVER ['DOCUMENT_ROOT'] . '/';
+$httpPath = "http://" . $_SERVER ['HTTP_HOST'] . '/';
+define ( "httpPath", $httpPath );
+define ( "sysPath", $sysPath );
+define ( "webSysPath", $webSysPath );
+define ( "smartyLibPath", $sysPath . 'smartyLibs/' );
+
+#开启$_GET及$_POST过滤
+if (!defined("TRIM_SPACE"))
+    define("TRIM_SPACE", "1");
+$_GET = saddslashes($_GET, TRIM_SPACE);
+$_POST = saddslashes($_POST, TRIM_SPACE);
+$_COOKIE = saddslashes($_COOKIE, TRIM_SPACE);
+function saddslashes($string, $trimSpace)
+{
+    if (!get_magic_quotes_gpc()) {
+        if (is_array($string)) { //如果转义的是数组则对数组中的value进行递归转义
+            foreach ($string as $key => $val) {
+				if(!is_array($val))
+					$trimSpace==1 ? $val = trim($val) : $val = $val;
+                $string[$key] = saddslashes($val);
+            }
+        }
+        else {
+            $trimSpace==1 ? $string = trim($string) : $string = $string;
+            $string = addslashes($string); //对单引号（'）、双引号（"）、反斜线（\）与 NUL（NULL 字符），进行转义
+        }
+        return $string;
+    }
+    else {
+        if (is_array($string)) { //如果转义的是数组则对数组中的value进行递归转义
+            foreach ($string as $key => $val) {
+				if(!is_array($val))
+					$trimSpace==1 ? $val = trim($val) : $val = $val;
+                $string[$key] = saddslashes($val);
+            }
+        }
+        return $string;
+    }
+}
+
+#包含各公司配置文件
+#公司版权信息相关
+$authorCompany = "深圳市鑫锦程人力资源有限公司";
+$authorUrl = "http://www.cnhrmo.com";
+
+require_once (sysPath . 'host.php');
+require_once (sysPath . 'config.php');
+
+?>

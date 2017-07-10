@@ -1,0 +1,46 @@
+<include file="./Addons/WorkerService/View/default/Wap/_head.html"/>
+<style>
+    .link{
+  font-stretch: inherit;
+    font-size: 14px;
+    vertical-align: baseline;
+    -webkit-font-smoothing: antialiased;
+
+    white-space: normal;
+    background-color: #fff;
+    padding: 0;
+    margin-bottom: 0.8em;
+    color: red;
+
+}
+</style>
+
+<body>
+<div class="container">
+    <header class="header">
+        <a class="back" href="javascript:;" onClick="$.WeiPHP.back();"></a>
+        <span class="title">招聘信息详情</span>
+        <a class="cate" href="javascript:;" onClick="$.WeiPHP.showPopCate();"></a>
+    </header>
+	<div class="page" style="margin-bottom: 30%;">
+	<p class="logo_img logo_img_bor"><a href="{:U('index')}"><img src="/weixin/Public/static/paiqian/logo_img3.png" width="30%"></a></p>
+	<div class="news_detail hd hd_B">
+	<h2 class="details_title">{$recruitmentDetails.position}</h2>
+    {$recruitmentDetails.content}
+
+	</div>
+
+	 
+    <script type="text/javascript">
+    $(function(){
+        $.WeiPHP.initJson2Select([{$json}]);
+    });
+</script>
+<include file="./Addons/WorkerService/View/default/Wap/_menu.html"/>
+	
+
+
+
+
+
+<include file="./Addons/WorkerService/View/default/Wap/_foot.html"/>

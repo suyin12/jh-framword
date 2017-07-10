@@ -1,0 +1,57 @@
+<include file="./Addons/WorkerService/View/default/Wap/_head.html"/>
+
+
+<body>
+<div class="container">
+    <header class="header">
+        <a class="back" href="javascript:;" onClick="$.WeiPHP.back();"></a>
+        <span class="title">工资查询</span>
+        <a class="cate" href="javascript:;" onClick="$.WeiPHP.showPopCate();"></a>
+    </header>
+
+    <div class="page page_down">
+        <p class="logo_img"><a href="{:U('index')}"><img src="/weixin/Public/static/paiqian/logo_img3.png" width="30%"></a></p>
+            <div class="common_tab common_bor">
+        <php>$status=I('status','1');$classCur[$status] = 'cur';</php>
+            <a class="{$classCur[1]}  uer_a" href="{:U('lastSalaryDetail',array('status'=>'1'))}">当前月份</a>
+            <a class="{$classCur[0]}  uer_a" href="{:U('moreSalaryList',array('status'=>'0'))}">过去3个月</a>
+        </div>
+                <foreach name="data" item="val" key="key" >
+                    <div class="user_action_list">
+                        <div class="weui_cells weui_cells_access">
+                         <foreach name="val" item="vo" key="kk">
+                             <a class="weui_cell" href="#" style="background:#F0F0F0;">
+                                 <div class="weui_cell_hd"></div>
+                                 <div class="weui_cell_bd weui_cell_primary">
+                                     <p><span class="span_num"></span></p>
+                                 </div>
+                                 </a>
+                             <foreach name="vo" item="v" key="k">
+                                 <switch name="k">
+                                     <case value="month"></case>
+                                     <default/>
+                                     <if condition="$v neq 0" >
+                                     <a class="weui_cell" href="#">
+                                         <div class="weui_cell_hd"></div>
+                                         <div class="weui_cell_bd weui_cell_primary">
+                                             <if condition="$k eq 'bID'">
+                                                 <?php $v=substr_replace($v,'********',5,6)?>
+                                                 <p>{$engToChs[$k]}<span class="span_num">{$v}</span></p>
+                                                 <elseif condition="$k eq 'pSoInsMoney'"/>
+                                                 <p>收回欠款<span class="span_num"></span></p>
+                                                 <p>{$engToChs[$k]}<span class="span_num">{$v}</span></p>
+                                                 <elseif condition="$k neq 'bID'"/>
+                                                 <p>{$engToChs[$k]}<span class="span_num">{$v}</span></p>
+
+                                             </if>
+                                         </div>
+                                     </a>
+                                     </if>
+                                 </switch>
+                             </foreach>
+                         </foreach>
+                        </div>
+                    </div>
+                </foreach>
+    <include file="./Addons/WorkerService/View/default/Wap/_menu.html"/>
+<include file="./Addons/WorkerService/View/default/Wap/_foot.html"/>

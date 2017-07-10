@@ -1,0 +1,101 @@
+<include file="./Addons/WorkerService/View/default/Wap/_head.html"/>
+
+
+<body>
+<div class="container">
+    <header class="header">
+        <a class="back" href="javascript:;" onClick="$.WeiPHP.back();"></a>
+        <span class="title">个人信息</span>
+        <a class="cate" href="javascript:;" onClick="$.WeiPHP.showPopCate();"></a>
+    </header>
+
+    <div class="page" style="margin-bottom:15px;">
+        <p class="logo_img"><a href="{:U('index')}"><img src="/weixin/Public/static/paiqian/logo_img3.png" width="30%"></a></p>
+
+        <form id="form" action="{:U('addPerson')}" method="post" class="form-horizontal">
+            <div class="weui_cells weui_cells_form label_5em">
+                <div class="weui_cell">
+                    <div class="weui_cell_hd"><label class="weui_label">姓名：</label></div>
+                    <div class="weui_cell_bd weui_cell_primary" style="padding-left: 2em;">
+                        {$Personal_data.name}
+                    </div>
+                </div>
+                <div class="weui_cell">
+                    <div class="weui_cell_hd"><label class="weui_label label_em">身份证号码：</label></div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        {$pID}
+                    </div>
+                </div>
+
+                <div class="weui_cell">
+                    <div class="weui_cell_hd"><label class="weui_label label_em">手机号码：</label></div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        {$Personal_data.mobilePhone}
+                    </div>
+                </div>
+                
+
+                <div class="weui_cell">
+                    <div class="weui_cell_hd"><label class="weui_label label_em">联系地址：</label></div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        {$Personal_data.homeAddress}
+                    </div>
+                </div>
+
+               <div class="weui_cell">
+                    <div class="weui_cell_hd"><label class="weui_label label_em">银行卡账号：</label></div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        {$bID}
+                    </div>
+                </div>
+
+                <div class="weui_cell">
+                    <div class="weui_cell_hd"><label class="weui_label label_em">单位名称：</label></div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        {$uName}
+                    </div>
+                </div>
+
+                <div class="weui_cell">
+                    <div class="weui_cell_hd"><label class="weui_label label_em">合同到期时间：</label></div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        {$Personal_data.cEndDay}
+                    </div>
+                </div>
+
+                <div class="weui_cell">
+                    <div class="weui_cell_hd"><label class="weui_label label_em">紧急联系人：</label></div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        {$Personal_data.contact}
+                    </div>
+                </div>
+
+                <div class="weui_cell">
+                    <div class="weui_cell_hd"><label class="weui_label label_em">紧急联系人电话：</label></div>
+                    <div class="weui_cell_bd weui_cell_primary cell_content">
+                    {$Personal_data.contactPhone}
+                    </div>
+                </div>
+                
+
+
+           
+            </div>
+            
+        </form>
+    <div class="weui_media_desc Info_foot">声明：鑫锦程负责提交信息，并对您的身份信息保密，绝不传播或用于其他地方，请放心填写。</div>
+
+     
+    </div>
+
+   <include file="./Addons/WorkerService/View/default/Wap/_menu.html"/>
+</div>
+<script type="text/javascript">
+    $(function(){
+        $.WeiPHP.initJson2Select([{$json}]);
+    });
+</script>
+
+
+     
+<include file="./Addons/WorkerService/View/default/Wap/_foot.html"/>

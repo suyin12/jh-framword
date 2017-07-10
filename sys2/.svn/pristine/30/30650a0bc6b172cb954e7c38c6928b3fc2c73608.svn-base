@@ -1,0 +1,221 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: stone <shi35dong@gmail.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+
+#. Text in function
+#: typebased/archive.php:53
+#: typebased/search.php:40
+#: typebased/index.php:41
+msgid "&laquo; Older Entries"
+msgstr "条目"
+
+#. Text in echo
+#: typebased/footer.php:25
+msgid "2009 TypeBased. All Rights Reserved."
+msgstr ""
+
+#. Text in echo
+#: typebased/archive.php:14
+msgid "Archive by Author"
+msgstr "以作者归档"
+
+#. Text in echo
+#: typebased/archive.php:11
+#: typebased/archive.php:12
+msgid "Archive for"
+msgstr "归档依据"
+
+#. Text in echo
+#: typebased/archive.php:13
+msgid "Archive for the year"
+msgstr "以年份归档"
+
+#. Text in echo
+#: typebased/footer.php:17
+msgid "Articles"
+msgstr "章"
+
+#. Text in echo
+#: typebased/footer.php:29
+msgid "Design by"
+msgstr "设计者"
+
+#. Text in echo
+#: typebased/404.php:12
+msgid "Error 404 - Page not found!"
+msgstr ""
+
+#. Text in echo
+#: typebased/header.php:28
+msgid "Home"
+msgstr "首页"
+
+#. Text in echo
+#: typebased/footer.php:15
+msgid "If you enjoyed the post, make sure you subscribe to the RSS feed"
+msgstr "如果你喜欢这些文章,点击订阅吧"
+
+#. Text in echo
+#: typebased/footer.php:5
+msgid "Most Popular Articles"
+msgstr "最热门文章"
+
+#. Text in echo
+#: typebased/search.php:50
+msgid "No matches. Please try again, or use the navigation menus to find what you search for"
+msgstr ""
+
+#. Text in echo
+#: typebased/includes/theme-widgets.php:13
+msgid "Photos on"
+msgstr ""
+
+#. Text in echo
+#: typebased/footer.php:29
+msgid "Powered by"
+msgstr "版权所有"
+
+#. Text in function
+#: typebased/archive.php:53
+#: typebased/search.php:40
+#: typebased/index.php:41
+msgid "Recent Entries &raquo;"
+msgstr "近期文章 &raquo;"
+
+#. Text in echo
+#: typebased/search.php:8
+#: typebased/search.php:45
+msgid "Search results"
+msgstr "查询结果"
+
+#. Text in echo
+#: typebased/single.php:28
+msgid "Sorry, no posts matched your criteria"
+msgstr ""
+
+#. Text in echo
+#: typebased/footer.php:14
+msgid "Subscribe to RSS"
+msgstr "订阅"
+
+#. Text in echo
+#: typebased/archive.php:16
+msgid "Tag Archives:"
+msgstr "文章标签"
+
+#. Text in echo
+#: typebased/404.php:13
+msgid "The page you trying to reach does not exist, or has been moved. Please use the menus or the search box to find what you are looking for."
+msgstr ""
+
+#. Text in function
+#: typebased/includes/theme-comments.php:20
+msgid "Your comment is awaiting moderation"
+msgstr ""
+
+#: comments.php:5
+msgid "Enter your password to view comments."
+msgstr "请输入密码再查看评论内容."
+
+#: comments.php:23
+#: comments.php:25
+msgid "Comments"
+msgstr "评论"
+
+#: comments.php:23
+msgid "Trackbacks"
+msgstr "Trackbacks"
+
+#: comments.php:31
+msgid "Trackback"
+msgstr "Trackback"
+
+#: comments.php:52
+msgid "No comments yet."
+msgstr "本文目前尚无任何评论."
+
+#: comments.php:64
+msgid "Comment pages"
+msgstr "评论分页"
+
+#: comments.php:81
+#: functions.php:526
+#, php-format
+msgid "%1$s at %2$s"
+msgstr "%1$s%2$s"
+
+#: comments.php:81
+#: functions.php:526
+msgid "H:i"
+msgstr "H:i"
+
+#: comments.php:89
+msgid "No trackbacks yet."
+msgstr "本文目前尚无任何 trackbacks 和 pingbacks."
+
+#: comments.php:103
+msgid "Comments are closed."
+msgstr "   "
+
+#: comments.php:114
+#, php-format
+msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
+msgstr "您必须在 <a href=\"%s\">登录</a> 后才能发布评论."
+
+#: comments.php:130
+msgid "Logged in as"
+msgstr "登录帐号:"
+
+#: comments.php:131
+msgid "Log out of this account"
+msgstr "退出登录"
+
+#: comments.php:131
+msgid "Logout &raquo;"
+msgstr "登出 &raquo;"
+
+#: comments.php:137
+#, php-format
+msgid "Welcome back <strong>%s</strong>."
+msgstr "欢迎回来, <strong>%s</strong>"
+
+#: comments.php:138
+msgid "Change &raquo;"
+msgstr "更改 &raquo;"
+
+#: comments.php:139
+msgid "Close &raquo;"
+msgstr "隐藏 &raquo;"
+
+#: comments.php:146
+msgid "Name"
+msgstr "昵称"
+
+#: comments.php:146
+#: comments.php:150
+msgid "(required)"
+msgstr "(必填)"
+
+#: comments.php:150
+msgid "E-Mail (will not be published)"
+msgstr "电子邮箱 (我们会为您保密)"
+
+#: comments.php:154
+msgid "Website"
+msgstr "网址"
+
+#: comments.php:171
+msgid "Subscribe to comments feed"
+msgstr "订阅评论"
+
+#: comments.php:173
+msgid "Submit Comment"
+msgstr "提交评论"
+

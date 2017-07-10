@@ -1,0 +1,120 @@
+<include file="./Addons/Paiqian/View/default/Wap/_head.html"/>
+<body>
+<div class="page_loading"></div>
+<div class="container" style="display:none">
+	<header class="header">
+        <a class="back" href="javascript:;" onClick="$.WeiPHP.back();"></a>
+        <span class="title">首页</span>
+        <a class="cate" href="javascript:;" onClick="$.WeiPHP.showPopCate();"></a>
+    </header>
+    <include file="./Addons/Paiqian/View/default/Wap/_menu.html"/>
+    <div class="page with_foot_page">
+    	
+        <section class="banner">
+            <ul>
+            <volist name="slideshow" id="vo">
+            	<li>
+                    <a href="{$vo.url}"><img src="{$vo.img}"/></a>
+                </li>
+                </volist>
+            </ul>
+            <span class="identify">
+                        <volist name="slideshow" id="vo"><em></em></volist>
+            </span>
+        </section>
+        <section class="index_cate index_cate_bg">
+        <ul class="cate_lists cate_list_color" style="background:#F0F0F0;">
+        	<li>
+            <a class="item color1 shake_a_shake" href="{:U('helpAddPerson')}" style="background:#1ab0ee; color: #fff;">
+                <span class="icon icon_cancel"><img src="__STATIC__/paiqian/pay.png"/></span>
+                <span class="txt">申缴</span>
+            </a>
+            </li>
+            <li>
+            <a class="item color2" href="{:U('userList')}" style="background: #c266ed; color: #fff;">
+                <span  class="icon icon_cancel"><img src="__STATIC__/paiqian/person.png"/></span>
+                <span class="txt">参保人</span>
+            </a>
+            </li>
+             <li>
+            <a class="item color3" href="{:U('stopIndex')}" style="background: #6bb022; color: #fff;">
+                <span  class="icon icon_cancel"><img src="__STATIC__/paiqian/stop.png"/></span>
+                <span class="txt">停缴</span>
+            </a>
+            </li>
+            <li>
+            <a class="item color4" href="{:U('orderIndex')}" style="background: #c04819; color: #fff;">
+                <span  class="icon icon_cancel"><img src="__STATIC__/paiqian/list.png"/></span>
+                <span class="txt">订单</span>
+            </a>
+            </li>
+            
+         </ul>
+         <ul  class="cate_lists cate_list_color"style="background:#F0F0F0;">
+            <li>
+            <a class="item color5" href="{:U('calculate')}" style="color: #fff;">
+                <span  class="icon icon_cancel"><img src="__STATIC__/paiqian/calculator.png"/></span>
+                <span class="txt">测算</span>
+            </a>
+            </li>
+            <li>
+            <a class="item color6" href="{:U('help',array('tpl'=>'helpNone'))}" style="color: #fff;">
+                <span  class="icon icon_cancel"><img src="__STATIC__/paiqian/act.png"/></span>
+                <span class="txt">活动</span>
+            </a>
+            </li>
+            <li>
+            <a class="item color7" href="{:U('service')}" style="color: #fff;">
+                <span  class="icon icon_cancel"><img src="__STATIC__/paiqian/service.png"/></span>
+                <span class="txt">客服</span>
+            </a>
+            </li>
+            <li>
+            <a class="item color8" href="{:U('userCenter')}" style="color: #fff;">
+                <span  class="icon icon_cancel"><img src="__STATIC__/paiqian/me.png"/></span>
+                <span class="txt">我的</span>
+            </a>
+            </li>
+        </ul>
+        </section>
+        <!-- 资讯 -->
+        <div class="index_news">
+        	<div class="weui_cells weui_cells_access">
+                <a class="weui_cell" href="{:U('newsIndex')}">
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>最新资讯</p>
+                    </div>
+                    <div class="weui_cell_ft">
+                        更多
+                    </div>
+                </a>
+            </div>
+            <ul class="news_list weui_cells weui_cells_access">
+            <volist name="news" id="vo">
+            	<a class="weui_cell" href="{:U('newsDetail', array('id'=>$vo['id']))}">
+                    <img src="{$vo.cover|get_cover_url}"/>
+                    <p>{$vo.title}</p>
+                </a>
+                </volist>
+            </ul>
+        	<include file="./Addons/Paiqian/View/default/Wap/_service.html"/>
+    </div>
+    
+</div>
+<script type="text/javascript">
+$(function(){
+	//所有图片加载完毕
+	var imgNum=$('.index_cate img').size();
+	for(var i=0;i<imgNum;i++){
+		$('.index_cate img')[i].onload = function(){
+			if(!--imgNum){
+				$.WeiPHP.initBanner(false,5000);
+			}
+		}
+	}
+	
+	$('.container').show();
+	$('.page_loading').hide();
+})
+</script>
+<include file="./Addons/Paiqian/View/default/Wap/_foot.html"/>

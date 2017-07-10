@@ -1,0 +1,260 @@
+<include file="./Addons/WorkerService/View/default/Wap/_head.html"/>
+<script type="text/javascript" src="__STATIC__/fileUpload/js/vendor/jquery.ui.widget.js"></script>
+<script type="text/javascript" src="__STATIC__/fileUpload/js/jquery.iframe-transport.js"></script>
+<script type="text/javascript" src="__STATIC__/fileUpload/js/jquery.fileupload.js"></script>
+
+<style>
+  
+  /*.img_item{margin-left: 3.2%;}*/
+  em{position: relative;
+        top: 1.5em;
+    left: 4.8em;
+      }
+   
+    #checkbox-1-1,label,.pp,.del_IMG{cursor: pointer;}
+   .del_IMG{width: 18%;position:relative;left: 4em;}
+  .del_png{width: 100%;height: 100%;}
+
+</style>
+
+<body>
+<div class="container">
+    <header class="header">
+        <a class="back" href="javascript:;" onClick="$.WeiPHP.back();"></a>
+        <span class="title">开具证明</span>
+        <a class="cate" href="javascript:;" onClick="$.WeiPHP.showPopCate();"></a>
+    </header>
+
+    <div class="page" style="margin-bottom:15px;">
+        <p class="logo_img"><a href="{:U('index')}"><img src="/weixin/Public/static/paiqian/logo_img3.png" width="30%"></a></p>
+        <?php $id=6;?>
+        <form id="form" action="{:U('proveInfo','id='.$id)}" method="post" class="form-horizontal" enctype="multipart/form-data" onsubmit="return check()">
+            <div class="common_tab common_bor">
+        <php>$status=I('status','1');$classCur[$status] = 'cur';</php>
+         <a class="{$classCur[1]} uer_a" href="{:U('proveList',array('status'=>'1'))}">常用证明</a>
+        
+            <a class="{$classCur[0]} uer_a" href="{:U('personal',array('status'=>'0'))}">自定义证明</a>
+        </div>
+        <div class="wage"></div>
+         <div class="user_action_list">
+          <div class="weui_cells weui_cells_access">
+
+        
+        
+
+          <div class="weui_cell">
+                    <div class="weui_cell_hd"><label class="weui_label label_input">证明名称</label></div>
+                    <div class="weui_cell_bd weui_cell_primary" >
+                        <input class="weui_input" type="text" id="proveName" placeholder="请填写证明名称" name="proveName" value="{$info.name}" >
+                    </div>
+                </div>
+                <div class="weui_cell">
+                    <div class="weui_cell_hd"><label class="weui_label label_input">受理单位</label></div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <input class="weui_input" id="pid" name="acceptUnit"  type="text" placeholder="证明受理单位" maxlength="25">
+                    </div>
+                </div>
+                <div class="weui_cell">
+                    <div class="weui_cell_hd"><label class="weui_label" style="width: 4em;">开具事由</label></div>
+                    
+                </div>
+<div class="weui_cells weui_cells_form">
+  <div class="weui_cell">
+    <div class="weui_cell_bd weui_cell_primary">
+      <textarea  class="weui_textarea" maxlength=200 id="text_con" name="content" placeholder="请填写开具证明事由" rows="3" value=""></textarea>
+      <div class="weui_textarea_counter"><span id="word">200</span>/200</div>
+    
+    </div>
+  </div>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+
+<p class="p_up">证明范本</p>
+<div class="weui_cells weui_cells_form">
+        <div class="weui_cell">
+            <div class="weui_cell_bd weui_cell_primary" style="margin-bottom: 12%;">
+                
+
+
+              <div class="form-group" style="margin-bottom: 0;">
+        <span class="btn_boot btn_boot-success fileinput-button">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+            <span>添加范本</span>
+            <input class="fileupload" type="file" multiple="" tabindex="9">
+
+        </span>
+        <br>
+        <br>
+        
+        <div id="progress" class="progress" style="display:none;">
+            <div class="progress-bar progress-bar-success"></div>
+        </div>
+        
+
+        <div id="filesError" class="filesError"></div>
+        
+        </div>
+        <div id="filesList" class="filesList"></div>
+        <div class="img_none" style="display: none;">
+        <div id="upload_u"><img class="img_item" src="" alt=""></div>
+ 
+    </div>
+
+
+            
+              <br>
+
+                </div>
+
+            </div>
+   
+    </div>
+       <input type="submit" id="sub_n" class="weui_btn weui_btn_primary confirm" target-form="form-horizontal" value="提交确认">
+</form>
+<p class="weui_media_desc wont_foot">温馨提示：亲，因为您办理的证明涉及部分需要您亲自确认，所以，请到返回公众号联系我们的客服预约时间领取证明。谢谢！</p>
+<div class="div_prove"></div>
+<script>
+$(document).ready(function() {
+    //文本框字体数量限制
+    $("#text_con").keyup(function() {
+        var maxLen = 200;
+        var len = $(this).val().length;
+        var num = maxLen - len;
+        if (num < 0) {
+            return num;
+        } else {
+            $("#word").text(num);
+        }
+    });
+});
+   //判断表单内容
+   
+     function check(){
+        var name = $('#proveName').val();
+        if (name == '') {
+            $.WeiPHP.toast('请填写证明名称', 0, 3000);
+            return false;
+        }
+
+        var pid = $('#pid').val();
+        if (pid == '') {
+            $.WeiPHP.toast('请填写证明受理单位', 0, 3000);
+            return false;
+        }
+
+        var text_con = $('#text_con').val();
+        if (text_con == '') {
+            $.WeiPHP.toast('请填写开具事由', 0, 3000);
+            return false;
+        }
+
+    }
+//文件上传
+$(function() {
+    'use strict';
+    // Change this to the location of your server-side upload handler:
+    var url = "{:U('fileUpload')}";
+    // 显示时间
+    var d = new Date();
+    var Month = d.getMonth() + 1;
+    var Month = times(Month);
+    var Dates = d.getDate();
+    var Dates = times(Dates);
+    var str = d.getFullYear() + "" + Month + "" + Dates;
+    function times(Dates) {
+        if (Dates < 10) {
+            return "0" + Dates;
+        } else {
+            return Dates;
+        }
+
+    }
+    $('.fileupload').fileupload({
+
+        url: url,
+        dataType: 'json',
+        done: function(e, data, tages) {
+            $('#progress').fadeOut(2000);
+
+            $.each(data.result.files,
+            function(index, file) {
+                var oDate = new Date();
+                if (file.error) {
+                    $(".text-danger").remove();
+                    $('<span class="text-danger"/>').text(file.error).appendTo('#filesError');
+                } else {
+                    $(".text-danger").remove();
+
+                    var fileType = fileExt(file.name);
+
+                    switch (fileType) {
+                    case "isImage":
+
+                        var addImg = $("<div class='up_img'><div class='del_IMG'><img class='del_png' src='/weixin/Public/static/WorkerService/del.png' alt='' /></div><img class='up_Files_img' src='Uploads/userFiles/proveFiles/" + str + "/" + file.name + "' alt='' /><div class='Flie_img'>" + file.name + "</div></div>");
+                        addImg.insertBefore($('.img_none'));
+                        var uploadImgWidth = $('#upload_u .img_item').width("100%");
+
+                        var uploadImgHeight = $('#upload_u .img_item').height("100%");
+                        $('#upload_u .img_item').height(uploadImgHeight).width(uploadImgWidth);
+                      
+                        $('#upload_u').css({
+                            'width': '30%',
+                            'height': '6.8em'
+                        });
+                        
+                        $('.del_IMG').click(function() {
+
+                            $(this).parent().remove();
+                            
+                        })
+
+                       
+                        break;
+                    default:
+                     
+                        $("<div class='check_File' />").html("<input type='checkbox' id='checkbox-1-1' name='files[]' value='" + file.name + "' checked><div class='del_IMG'><img class='del_png' src='/weixin/Public/static/WorkerService/del.png' alt='' /></div><label for='checkbox-1-1'></label>  <i style='font-size:5em;color:gray;margin-left:9%;' class='fa fa-file-" + fileType + "o'></i>" + "<div class='flieName'>" + file.name + "</div>").appendTo('#filesList');
+
+                        $('.del_IMG').click(function() {
+
+                            $(this).parent().remove();
+                          
+                        }) 
+                        break;
+                    }
+
+                }
+
+            });
+        },
+        progressall: function(e, data) {
+            $('#progress').css("display", "block");
+            var progress = parseInt(data.loaded / data.total * 100, 10);
+            $('#progress .progress-bar').css('width', progress + '%');
+        },
+        fail: function(e, data) {
+            $.each(data.files,
+            function(index) {
+                $(".text-danger").remove();
+                $('<span class="text-danger"/>').text('文件上传失败').appendTo('#filesError');
+            })
+        }
+    }).prop('disabled', !$.support.fileInput).parent().addClass($.support.fileInput ? undefined: 'disabled');
+
+
+});
+  
+   
+    
+</script>
+
+
+<!-- 底部标签 -->
+<include file="./Addons/WorkerService/View/default/Wap/_menu.html"/>
+<include file="./Addons/WorkerService/View/default/Wap/_foot.html"/>

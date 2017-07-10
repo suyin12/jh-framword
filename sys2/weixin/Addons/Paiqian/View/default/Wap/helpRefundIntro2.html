@@ -1,0 +1,29 @@
+<include file="./Addons/Paiqian/View/default/Wap/_head.html"/>
+<body>
+<div class="container">
+	<header class="header">
+        <a class="back" href="javascript:;" onClick="$.WeiPHP.back();"></a>
+        <span class="title">退款说明</span>
+        <a class="cate" href="javascript:;" onClick="$.WeiPHP.showPopCate();"></a>
+    </header>
+    <div class="page">
+    	<div class="hd help_content">
+        	<P class="title">退款说明</P>
+        	<div class="content">
+            	 <p>1.等待黄主任添加内容</p>
+                 <p>2.等待黄主任添加内容</p>
+                 <p>3.等待黄主任添加内容</p>
+            </div>
+        </div>
+        
+        <div class="weui_cells_tips">点击下方按钮，进行在线办理。</div>      
+         <div class="weui_btn_area two_btn_wrap">
+         <php>$param['fIDs'] = $_GET[fIDs]; $url = U('stopRefund',$param); </php>
+            <a class="weui_btn weui_btn_primary" href="{$url}">确认退款</a>
+        </div>
+    </div>
+    <include file="./Addons/Paiqian/View/default/Wap/_service.html"/>
+</div>
+<script type="text/javascript">
+</script>
+<include file="./Addons/Paiqian/View/default/Wap/_foot.html"/>

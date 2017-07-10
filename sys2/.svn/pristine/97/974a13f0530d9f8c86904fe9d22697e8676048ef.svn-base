@@ -1,0 +1,14 @@
+body {
+font: normal 15px auto "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+color: #4f6b72;
+}
+
+#headindex
+{
+background-image: url(list_title_bg1.gif);
+width:100%;
+height:15px;
+text-align:left;
+font-size:12px;
+border-bottom-color:#999999; border-bottom-style:inset; border-bottom-width:1px; padding:2px 0 2px 0;
+}

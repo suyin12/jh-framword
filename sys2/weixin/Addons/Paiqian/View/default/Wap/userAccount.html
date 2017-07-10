@@ -1,0 +1,52 @@
+<include file="./Addons/Paiqian/View/default/Wap/_head.html"/>
+<body>
+<div class="container">
+	<header class="header">
+        <a class="back" href="javascript:;" onClick="$.WeiPHP.back();"></a>
+        <span class="title">账户流水</span>
+        <a class="cate" href="javascript:;" onClick="$.WeiPHP.showPopCate();"></a>
+    </header>
+    <include file="./Addons/Paiqian/View/default/Wap/_menu.html"/>
+    <div class="with_foot_page">
+    <div class="page">
+    	
+        <p class="top_title_al">账户流水记录</p>
+        <div class="hd record_list" style="margin-top:0">
+        	<ul>
+        	<li>
+                	<p><strong>当前余额:</strong><span class="orange big">￥{$list.remainder}</span></p>
+                	
+                </li>
+        	<volist name='list.detail' id='vo' >
+                <li>
+                	<p><span><strong></strong>{$vo.monthTxt}</span><span><strong>月结余额:</strong></span><span class="orange">￥{$vo.monthRemainder}</span></p>
+				
+				   <volist name='vo' id='v'>
+					<eq name='v.billModel' value='income'>
+                    <p class="small"><span class="circle_shou">收</span>:<span ><span class="orange lit">￥+{$v.income}</span>  [  {$v.billTypeTxt} ]</span> </p>
+                    </eq>
+                    <eq name='v.billModel' value='expenditure'>
+                     <p class="small"><span class="circle_zhi">支</span>:<span ><span class="orange lit">￥{$v.expenditure}</span>  [ {$v.billPaymentTxt} ]</span> </p>
+                     </eq>
+                     
+                    </volist>
+                  
+                    
+                </li>
+                </volist>
+                
+                        
+            </ul>
+              <!-- 分页 -->
+        <div class="page_hd"> {$_page|default=''} </div>
+        </div>
+       
+       
+        
+    </div>
+    <include file="./Addons/Paiqian/View/default/Wap/_service.html"/>
+    </div>
+</div>
+<script type="text/javascript">
+</script>
+<include file="./Addons/Paiqian/View/default/Wap/_foot.html"/>

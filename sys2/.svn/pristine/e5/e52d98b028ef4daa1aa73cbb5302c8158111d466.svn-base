@@ -1,0 +1,7 @@
+<footer class="footer" style="width: 100%; height: 51px;">
+		<div class="two_btn_wrap bth_h">
+        	<button class="weui_btn weui_btn_warn" type="button" onClick="getDetail()" style="margin-left: 29px;">保存证明</button>
+           
+            <input class="weui_btn weui_btn_primary weui_a"  type="submit" style="margin-right: 22px;" value="申请证明"/>
+        </div>
+        </footer>

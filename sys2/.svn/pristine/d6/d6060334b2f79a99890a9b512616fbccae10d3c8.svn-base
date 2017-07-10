@@ -1,0 +1,500 @@
+<script language='JavaScript'>
+
+function checkData()
+{
+	if(document.db_export.month.value.length==0){
+	     alert("请选择月份!");
+	     document.db_export.month.focus();
+	     return false;
+	    }
+}
+</script>
+<?php
+//print_r($_SESSION);
+//输出表单头部
+function fieldHeader($tab)
+{
+    $i=$tab;
+    switch ($i)
+    {
+        case"so_bal_1":
+               $fieldHeader='<div style=""><table border="0" cellspacing="1" cellpadding="2" align="center" bgcolor="#666666" width="95%"> 
+		<thead>
+		<tr bgcolor="#CAE8EA" style="text-align:center;">
+    <td rowspan="2">批次</td>
+    <td rowspan="2">月份</td>
+    <td rowspan="2">单位名称</td>
+    <td rowspan="2">姓名</td>
+    <td rowspan="2">电脑号</td>
+    <td rowspan="2">是否深户</td>
+    <td rowspan="2">缴交基数</td>
+    <td colspan="2">养老保险</td>
+    <td colspan="2">医疗保险</td>
+    <td rowspan="2">工伤保险</td>
+    <td rowspan="2">失业保险</td>
+    <td rowspan="2">生育保险</td>
+    <td rowspan="2">住房公积金</td>
+    <td colspan="2">社保合计</td>
+    <td rowspan="2">残障金</td>
+    <td colspan="2">收回单位欠款</td>
+    <td colspan="2">挂帐</td>
+    <td rowspan="2">冲减挂帐</td>
+  </tr>
+  <tr bgcolor="#CAE8EA" style="text-align:center;">
+    <td>单位</td>
+    <td>个人</td>
+    <td>单位</td>
+    <td>个人</td>
+    <td>单位社保</td>
+    <td>个人社保</td>
+    <td>单位</td>
+    <td>个人</td>
+    <td>单位</td>
+    <td>个人</td>
+  </tr>
+  </thead>';
+            
+            break;
+        case"so_bal_2":
+          $fieldHeader='<div style=""><table border="0" cellspacing="1" cellpadding="2" align="center" bgcolor="#666666" width="95%"> 
+		<thead>
+		<tr bgcolor="#CAE8EA" style="text-align:center;">
+    <td rowspan="2">社保账号</td>
+    <td rowspan="2">个人编号</td>
+    <td rowspan="2">姓名</td>
+   <td rowspan="2">身份证号</td>
+    <td rowspan="2">应收合计</td>
+    <td height="25" colspan="2">应收金额</td>
+    <td rowspan="2">实收管理费</td>
+  </tr>
+  <tr bgcolor="#CAE8EA" style="text-align:center;">
+    <td height="27">个人合计</td>
+    <td>单位合计</td>
+   
+  </tr>
+		</thead>';
+             break;
+        case "so_bal_2_tmp":
+            $fieldHeader='<div style=""><table border="0" cellspacing="1" cellpadding="2" align="center" bgcolor="#666666" width="95%"> 
+		<thead>
+		<tr bgcolor="#CAE8EA" style="text-align:center;">
+		<td>电脑号</td>
+		<td>姓名</td>
+		<td>应收合计</td>
+		<td>个人缴交</td>
+		<td>单位缴交</td>';
+            break;
+         case"so_bal_3_tmp":
+          $fieldHeader='<div style=""><table border="0" cellspacing="1" cellpadding="2" align="center" bgcolor="#666666" width="95%"> 
+		<thead>
+		<tr bgcolor="#CAE8EA" style="text-align:center;">
+    <td rowspan="3" align="center">组织名称</td>
+    <td rowspan="3" align="center">姓名</td>
+    <td rowspan="3" align="center">身份证</td>
+    <td colspan="3" align="center">本月应缴金额</td>
+    <td colspan="4" align="center">补缴金额</td>
+    <td colspan="3" align="center">社保差异金额</td>
+    <td colspan="2" align="center">实缴金额</td>
+	<td rowspan="3" align="center">资金帐套</td>
+	<td colspan="2" align="center">员工服务费</td>
+	
+  </tr>
+  <tr bgcolor="#CAE8EA">
+    <td colspan="2" align="center">社保</td>
+    <td rowspan="2" align="center">公积金</td>
+    <td rowspan="2" align="center">起始日期</td>
+    <td colspan="2" align="center">社保</td>
+    <td rowspan="2" align="center">公积金</td>
+    <td colspan="2" align="center">社保</td>
+    <td rowspan="2" align="center">公积金</td>
+    <td rowspan="2" align="center">个人</td>
+    <td rowspan="2" align="center">公司</td>
+	<td rowspan="2" align="center">服务费</td>
+    <td rowspan="2" align="center">补缴服务费</td>
+    
+  </tr>
+  <tr bgcolor="#CAE8EA">
+    <td align="center">个人</td>
+    <td align="center">公司</td>
+    <td align="center">个人</td>
+    <td align="center">公司</td>
+    <td align="center">个人</td>
+    <td align="center">公司</td>
+    
+  </tr>
+		</thead>';
+             break;
+         case "so_bal_4":
+             $fieldHeader='<div style=""><table border="0" cellspacing="1" cellpadding="2" align="center" bgcolor="#666666" width="95%"> 
+		<thead>
+		<tr bgcolor="#CAE8EA" style="text-align:center;">
+		<td>姓名</td>
+		<td>电脑号</td>
+		<td>劳动保障卡号</td>
+		<td>性别</td>
+		<td>身份证号</td>
+		</tr>
+		</thead>';
+             break;
+             case "so_bal_5":
+             $fieldHeader='<div style=""><table border="0" cellspacing="1" cellpadding="2" align="center" bgcolor="#666666" width="95%"> 
+		<thead>
+		<tr bgcolor="#CAE8EA" style="text-align:center;">
+		<td>社保帐户</td>
+		<td>电脑号</td>
+		<td>身份证号</td>
+		<td>姓名</td>
+		<td>补缴合计</td>
+		<td>实收管理费</td>
+		</tr>
+		</thead>';
+             break;
+           case "so_bal_6_tmp":
+             $fieldHeader='<div style=""><table border="0" cellspacing="1" cellpadding="2" align="center" bgcolor="#666666" width="95%"> 
+		<thead>
+		<tr bgcolor="#CAE8EA" style="text-align:center;">
+		<td>不知道</td>
+		<td>申报日期</td>
+		<td>单位账号</td>
+		<td>个人账号</td>
+		<td>基数</td>
+		<td>单位比例</td>
+		<td>个人比例</td>
+		<td>金额</td>	
+		<td>缴存月份</td>
+		<td>身份证号</td>			
+		</tr>
+		</thead>';
+             break;    
+             
+    }
+    return $fieldHeader;
+}
+	
+	
+
+function print_error( $msg )
+	{
+		print <<<END
+		<tr>
+			<td colspan=5><font color=red><b>Error: </b></font>$msg</td>
+			<td><font color=red><b>Rejected</b></font></td>
+		</tr>
+END;
+	}
+
+function getHeader( $exc, $data )
+{
+		// string
+	
+		$ind = $data['data'];
+		if( $exc->sst[unicode][$ind] )
+			return convertUnicodeString ($exc->sst['data'][$ind]);
+		else
+			return $exc->sst['data'][$ind];
+
+}
+
+
+function convertUnicodeString( $str )
+{
+	for( $i=0; $i<strlen($str)/2; $i++ )
+	{
+		$no = $i*2;
+		$hi = ord( $str[$no+1] );
+		$lo = $str[$no];
+		
+		if( $hi != 0 )
+			continue;
+		elseif( ! ctype_alnum( $lo ) )
+			continue;
+		else
+			$result .= $lo;
+	}
+	
+	return $result;
+}
+function getmicrotime() {
+    list($usec, $sec) = explode(" ",microtime());
+    return ((float)$usec + (float)$sec);
+}
+
+function uc2html($str) {
+	$ret = '';
+	for( $i=0; $i<strlen($str)/2; $i++ ) {
+		$charcode = ord($str[$i*2])+256*ord($str[$i*2+1]);
+		// $ret .= '&#'.$charcode; 
+ $ret .= u2utf8($charcode); 
+
+	}
+	return $ret;
+}
+ // ����u2utf8Ϊ   
+ 
+function u2utf8($c) { 
+$str=""; 
+if ($c < 0x80) { 
+  $str.=chr($c); 
+} else if ($c < 0x800) { 
+  $str.=chr(0xC0 | $c>>6); 
+  $str.=chr(0x80 | $c & 0x3F); 
+} else if ($c < 0x10000) { 
+  $str.=chr(0xE0 | $c>>12); 
+  $str.=chr(0x80 | $c>>6 & 0x3F); 
+  $str.=chr(0x80 | $c & 0x3F); 
+} else if ($c < 0x200000) { 
+  $str.=chr(0xF0 | $c>>18); 
+  $str.=chr(0x80 | $c>>12 & 0x3F); 
+  $str.=chr(0x80 | $c>>6 & 0x3F); 
+  $str.=chr(0x80 | $c & 0x3F); 
+}
+return $str; 
+}
+
+
+
+
+
+function show_time() {
+	global $time_start,$time_end;
+
+	$time = $time_end - $time_start;
+	echo "Parsing done in $time seconds<hr size=1><br>";
+}
+
+function fatal($msg = '') {
+	echo '[错误提示]';
+	if( strlen($msg) > 0 )
+		echo ": $msg";
+	echo "<br>\n读取脚本终止<br>\n";
+	if( $f_opened) @fclose($fh);
+	exit();
+};
+
+
+    
+  
+
+
+function   get(   $exc,   $data   )   
+  {   
+  switch(   $data['type']   )   
+  {   
+  //   string   
+  case   0:   
+  $ind   =   $data['data'];   
+  if(   $exc->sst[unicode][$ind]   )   {   
+  return   uc2html($exc->sst['data'][$ind]);//
+  }else   
+  return   $exc->sst['data'][$ind];   
+  //   integer   
+  case   1:   
+  return   (integer)   $data['data'];   
+  //   float   
+  case   2:   
+  return   (float)   $data['data'];   
+                  case   3:   
+  return   gmdate("m-d-Y",$exc->xls2tstamp($data[data]));   
+  default:   
+  return   '';   
+  }   
+  }
+
+
+
+
+
+
+
+function getTableData ( $ws, $exc ) {
+		
+	global $excel_file, $db_table;
+	global $db_host, $db_name, $db_user, $db_pass;
+	
+	if ( !isset ( $_POST['useheads'] ) )
+		$_POST['useheads'] = "";
+	
+	$data = $ws['cell'];
+	
+echo <<<FORM
+     <div>
+	<form action="" method="POST" name="db_export" onsubmit="return checkData()" >
+	<!--<table border="0" cellspacing="1" cellpadding="2" align="center" bgcolor="#666666" width="100%">-->
+	<div style="visibility:hidden">
+	<table>
+	<tr>
+FORM;
+
+// Form fieldnames
+	
+if ( !$_POST['useheaders'] ) {
+	for ( $j = 0; $j <= $ws['max_col']; $j++ ) {
+
+		$field = "field" . $j;
+						
+		echo <<<HEADER
+
+		<td>
+		<input type="checkbox" name="fieldcheck[$j]" value="$j" checked title="Check to proceed this field">
+		<input type="text" name="fieldname[$j]" value="$field" title="Field name" style="width:50px;">
+	</td>
+
+HEADER;
+	}
+	
+}
+else {
+	for ( $j = 0; $j <= $ws['max_col']; $j++ ) {
+		
+		$field = getHeader ( $exc, $data[0][$j] );
+			
+		$field = ereg_replace ( "^[0-9]+", "", $field );
+		
+		if (empty ($field) )
+			$field = "field" . $j;
+		
+		echo <<<HEADER
+
+		<td>
+		<input type="checkbox" name="fieldcheck[$j]" value="$j" checked title="Check to proceed this field">
+		<input type="text" name="fieldname[$j]" value="$field" title="Field name" >
+		</td>
+  
+HEADER;
+	}
+}
+
+	
+	echo "</tr></table></div>";
+	
+	echo fieldHeader($_GET['table']);
+	foreach( $data as $i => $row ) { // Output data and prepare SQL instructions
+		
+				
+		if ( $i == 0 && $_POST['useheaders'] )
+		continue;
+		
+		echo "<tr bgcolor=\"#ffffff\">";
+		
+		for ( $j = 0; $j <= $ws['max_col']; $j++ ) {
+		
+			$cell = get ( $exc, $row[$j] );
+			echo "<td>$cell</td>";
+					
+		}
+		
+		echo "</tr>";
+		$i++;
+	}
+	
+	if ( empty ( $db_table ) )
+		$db_table = "Table1";
+
+					
+echo <<<FORM2
+   
+	
+	</table></div><br>
+	<table align="center" width="100%">
+	<tr><!--<td>请选择月份:</td>--><td>
+	<!--<input type="text" name="db_table" value="$db_table">-->
+	<input  type="hidden" name="db_table" value="$_GET[table]"/>
+	<select name="month">
+<option value="">--请选择月份--</option>
+FORM2;
+
+	
+$todayY=date('Y',time());
+$todayM=date('m',time());
+
+for($i=1;$i<=12;$i++){
+if($i<10){$k="0".$i;}else {$k=$i;}
+$option_1="<option value=".($todayY-1).$k;
+$option_1.=">".($todayY-1)."年".$k."月</option>";
+
+
+echo $option_1;
+
+}
+for($i=1;$i<=12;$i++){
+if($i<10){$k="0".$i;}else {$k=$i;}
+$option="<option value=".$todayY.$k;
+$option.=">".$todayY."年".$k."月</option>";
+
+
+echo $option;
+
+}
+
+echo <<<FORM3
+	</select>
+	<td><input type="submit" name="submit" value="添加" ></td>
+	</tr>
+    
+	<tr style="visibility:hidden"><td>如果表名存在,则删除:</td><td><input type="checkbox" name="db_drop" unchecked></td></tr>
+	<tr style="visibility:hidden"><td colspan="2">
+	<i>不打钩,表示不删除已有的数据库表.<br><font color="red">
+	注意:如果你已经定义了数据库表的字段名,那么重定义字段后,插入的数据会出错!</td></tr>
+	<tr style="visibility:hidden"><td>数据库主机:</td><td>&nbsp;<input type="text" size=30 name="db_host" value="$db_host"></td></tr>
+	<tr style="visibility:hidden"><td>数据库名:</td><td>&nbsp;<input type="text" size=30 name="db_name" value="$db_name"></td></tr>
+	<tr style="visibility:hidden"><td>用户名:</td><td>&nbsp;<input type="text" size=30 name="db_user" value="$db_user"></td></tr>
+	<tr style="visibility:hidden"><td>密码:</td><td>&nbsp;<input type="password" size=30 name="db_pass" value="$db_pass"></td></tr>
+	<tr><td><input type="hidden" name="excel_file" value="$excel_file"></tr>
+	<tr>
+	<td><input type="hidden" name="useheaders" value="$_POST[useheaders]"></td>
+	<td><input type="hidden" name="step" value="2"></td>
+	</tr>
+	</table>
+	</form>
+	</table>
+	</div>
+FORM3;
+
+
+} 
+
+
+
+function prepareTableData ( $exc, $ws, $fieldcheck, $fieldname ) {
+    session_start();
+    $data = $ws['cell'];
+	
+	
+	foreach( $data as $i => $row ) { // Output data and prepare SQL instructions
+		
+	
+		if ( $i == 0 && $_POST['useheaders'] )
+			continue;
+		
+		$SQL[$i] = "";
+		
+		for ( $j = 0; $j <= $ws['max_col']; $j++ ) {
+		
+			if ( isset($fieldcheck[$j]) ) {
+			
+								
+				$SQL[$i] .= $fieldname[$j];
+				$SQL[$i] .= "=\"";
+				$SQL[$i] .= trim(addslashes ( get ( $exc, $row[$j] ) ));
+				$SQL[$i] .= "\"";
+				
+				$SQL[$i] .= ",";
+				
+							
+			}
+	   
+				
+		}
+         $SQL[$i] .="month='$_POST[month]',";
+         $SQL[$i] .="sessionID='".$_SESSION['exp_user']['mID']."',";
+		 $SQL[$i] = rtrim($SQL[$i], ',');
+		
+		$i++;
+		
+	}
+	 
+	
+	return $SQL;	
+			
+} 
+?>

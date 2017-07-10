@@ -1,0 +1,499 @@
+﻿@CHARSET "UTF-8";
+* html .hitarea {
+	display: inline;
+	float:none;
+}
+
+body {
+	margin:0;
+	padding:0;
+	font: normal 12px  "Trebuchet MS", Verdana, Arial, Helvetica,
+		sans-serif;
+	color: #4f6b72;
+	background-color:#ffffff;
+}
+
+p {
+	font: bold 14px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+}
+
+
+
+
+table {
+	font-size: 12px;
+}
+
+td.edit {
+	background-color: #99CCCC;
+	color: #000000;
+}
+
+a:link {
+	color: #3366CC;
+}
+
+a:visited {
+	color: #3366CC;
+}
+
+a:hover {
+	color: #3366CC;
+}
+
+a:active {
+	color: #3366CC;
+}
+
+.sub{
+	
+	text-decoration:none;
+}
+img{
+	behavior:	url("pngbehavior.htc");
+	border:none;
+}
+li{
+	list-style:none;
+}
+/*---------无边框input--------*/
+#insertTable input[type="text"] {
+margin:0px;
+padding:0px;
+width:100%;
+border:none;
+
+}
+
+#insertTable input {  
+ width: expression((this.type=="text") ? "100%" : "style");
+ border: expression((this.type=="text") ? "none" : "style");  
+}
+
+/* 主体 */
+
+
+
+
+
+#left,#right
+{
+
+	}
+
+#left{
+width:200px;
+}
+
+#right{
+width:800px;
+	
+}
+#footer{
+
+}
+
+.userSpan
+{
+	 float:left;
+	 margin:100px 0px 0 250px;
+	 text-align:left;
+	 width:500px; 
+}
+.weather
+{
+	float:right;
+	margin:10px 20px 0 0;
+}
+.mainFrame{
+	
+	width:100%;
+	height:100%;
+}
+
+
+
+
+.clear_small {
+	margin:0 auto;
+	background:url(images/OA/so_1.gif) no-repeat;
+	width:242px;
+	height:50px;
+	line-height:34px;
+	text-align:left;
+	padding-left:30px;
+}
+
+
+#main_left_1
+{
+	border-bottom:double 4px #eee;
+	margin:5px 0 20px 0;
+}
+
+#insert{
+	
+	
+}
+#insert ul {
+width:200px;
+	height:28px;
+    line-height:28px;
+	border:double medium #cccccc;
+	height:28px;
+	float:left;
+}
+
+#insert ul li {
+	float:left;
+    width:200px;
+	text-align:center;
+	list-style:none;
+	border-right:double medium #cccccc;
+	
+}
+
+#insert ul a{
+	text-decoration:none;
+	font-size:15px;
+}
+
+.btnList ul{
+	clear:both;
+	width:250px;
+	margin:0 auto;
+}
+.btnList ul li{
+	clear:both;
+	list-style:none;
+	margin:0 auto;
+}
+
+.btnList2
+{
+	width:700px;
+}
+.btnList2 >ul>li
+{
+	width:200px;
+	float:left;
+    padding-left:30px;
+
+}
+
+#display ul
+{
+	float:left;
+}
+
+.accordion {
+   margin-top:50px;
+	width: 95%;
+	border: solid 1px #c4c4c4;
+	
+}
+.accordion h3 {
+	background: #e9e7e7 url(images/arrow-square.gif) no-repeat right -51px;
+	padding: 7px 15px;
+	color:#6a8caf;
+	margin: 0;
+	font: bold 12px Arial, Helvetica, sans-serif;
+	border: solid 1px #c4c4c4;
+	border-bottom: none;
+	cursor: pointer;
+	
+}
+.accordion h3:hover {
+	background-color: #99c4f0;
+}
+.accordion h3.active {
+	background-position: right 5px;
+	background-color: #99c4f0;
+}
+
+.accordion p {
+	font: bold 18px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+	background: #f7f7f7;
+	color:#c61039;
+	margin: 0;
+	padding: 10px 15px 20px;
+	border-left: solid 1px #c4c4c4;
+	border-right: solid 1px #c4c4c4;
+}
+
+
+
+
+
+#headindex
+{
+background-image: url(../images/list_title_bg1.gif);
+height:38px;
+margin-top:0px;
+margin-left:0px;
+width:99%;
+text-align:left;
+font-size:12px;
+border-bottom-color:#999999; 
+border-bottom-style:inset; 
+border-bottom-width:1px; 
+padding:10px 0 0 0px;
+}
+
+#searchCondition{
+margin-left:80px;
+margin-top:20px;
+margin-bottom:20px;
+
+}
+
+
+#displayTable {
+padding: 0;
+margin: 0;
+}
+
+
+#displayTable th{
+font: normal 12px  "Trebuchet MS", Verdana, Arial, Helvetica,sans-serif;
+color: #4f6b72;
+letter-spacing: 2px;
+text-transform: uppercase;
+text-align:center;
+background: #CAE8EA;
+}
+
+.selAll{background-color:#E6F3FF;height:21px;width:110px;}
+
+td.edit{
+background-color: #99CCCC;
+
+color:#000000;
+}
+
+td.alt {
+background: #F5FAFA;
+color: #797268;
+}
+
+th.spec {
+border-left: 1px solid #C1DAD7;
+border-top: 0;
+background: #fff url(images/bullet1.gif) no-repeat;
+font: bold 13px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+}
+
+th.specalt {
+color:#99CC33;
+border-left: 1px solid #C1DAD7;
+border-top: 0;
+background:#394D86;
+font: bold 13px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+
+}
+/*---------for IE 5.x bug*/
+html>body td{ font-size:12px;}
+
+#foot
+{
+background-image: url(../images/list_title_bg1.gif);
+width:100%;
+height:35px;
+padding-top:5px;
+
+}
+
+.button{
+float:left;
+font-size:12px;
+color: #99FF66;
+padding-top:10px;
+}
+
+.index{
+float:right;
+font-size:12px;
+color: #9999CC;
+padding-top:10px;
+}
+
+/*------------treeview*/
+
+.treeview, .treeview ul { 
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+.treeview ul {
+	background-color: white;
+	margin-top: 4px;
+}
+
+.treeview .hitarea {
+	background: url(images/treeview-default.gif) -64px -25px no-repeat;
+	height: 16px;
+	width: 16px;
+	margin-left: -16px;
+	float: left;
+	cursor: pointer;
+}
+/* fix for IE6 */
+
+
+.treeview li { 
+	margin: 0;
+	padding: 3px 0pt 3px 16px;
+}
+
+.treeview a.selected {
+	background-color: #eee;
+}
+
+#treecontrol { margin: 1em 0; display: none; }
+
+.treeview .hover { color: red; cursor: pointer; }
+
+.treeview li { background: url(images/treeview-default-line.gif) 0 0 no-repeat; }
+.treeview li.collapsable, .treeview li.expandable { background-position: 0 -176px; }
+
+.treeview .expandable-hitarea { background-position: -80px -3px; }
+
+.treeview li.last { background-position: 0 -1766px }
+.treeview li.lastCollapsable, .treeview li.lastExpandable { background-image: url(images/treeview-default.gif); }  
+.treeview li.lastCollapsable { background-position: 0 -111px }
+.treeview li.lastExpandable { background-position: -32px -67px }
+
+.treeview div.lastCollapsable-hitarea, .treeview div.lastExpandable-hitarea { background-position: 0; }
+
+.treeview-red li { background-image: url(images/treeview-red-line.gif); }
+.treeview-red .hitarea, .treeview-red li.lastCollapsable, .treeview-red li.lastExpandable { background-image: url(images/treeview-red.gif); } 
+
+.treeview-black li { background-image: url(images/treeview-black-line.gif); }
+.treeview-black .hitarea, .treeview-black li.lastCollapsable, .treeview-black li.lastExpandable { background-image: url(images/treeview-black.gif); }  
+
+.treeview-gray li { background-image: url(images/treeview-gray-line.gif); }
+.treeview-gray .hitarea, .treeview-gray li.lastCollapsable, .treeview-gray li.lastExpandable { background-image: url(images/treeview-gray.gif); } 
+
+.treeview-famfamfam li { background-image: url(images/treeview-famfamfam-line.gif); }
+.treeview-famfamfam .hitarea, .treeview-famfamfam li.lastCollapsable, .treeview-famfamfam li.lastExpandable { background-image: url(images/treeview-famfamfam.gif); } 
+
+
+.filetree li { padding: 3px 0 2px 16px; }
+.filetree span.folder, .filetree span.file { padding: 1px 0 1px 16px; display: block; }
+.filetree span.folder { background: url(images/folder.gif) 0 0 no-repeat; }
+.filetree li.expandable span.folder { background: url(images/folder-closed.gif) 0 0 no-repeat; }
+.filetree span.file { background: url(images/file.gif) 0 0 no-repeat; }
+
+/*表单CSS*/
+.bd_xuanze { height:30px; margin:10 0 0 100px;}
+.maxNum { height:20px;}
+.num { height:15px;}
+
+
+
+
+/*鼠标增强提示*/
+/* "fallback" links for non-CSS supporting browsers. */
+.fallback {
+ display: none;
+}
+
+/* Here's our default note styles. */
+.notedefault, .notenested {
+ position: absolute;
+ visibility: hidden;
+ top: 1.5em;
+ left: 2em; width: 10em;
+}
+.notedefault {
+ padding: 3px;
+ border: 1px solid #369;
+ background-color: #69C;
+ color: white;
+}
+.notenested {
+ width: 8em;
+ padding: 3px;
+ border: 1px solid #963;
+ background-color: #C96;
+ color: white;
+}
+
+/* Some position-type-specific offset information. Tweak as needed! */
+.snp-mouseoffset, .snp-triggeroffset, .snp-mousetrack {
+ margin-left: 5px;
+ margin-top: 15px;
+}
+
+/* Headings within notes */
+.notedefault h5 {
+ margin: 0 0 5px 0;
+ padding: 2px;
+ background-color: white;
+ color: black;
+}
+
+/* Note close marker is only shown within pinned notes. */
+.note-close {
+ float: right;
+ margin-top: 2px;
+ width: 14px;
+ height: 14px;
+ line-height: 14px;
+ color: black;
+ text-decoration: none;
+ visibility: hidden
+}
+.snb-pinned .note-close {
+ visibility: inherit;
+}
+
+/*新增的部分..固定表头*/
+.red{
+     color:red;
+}
+
+.errorInput {
+	background: #d685b7;
+}
+
+.hiddenRemarks {
+	display: none;
+	z-index: 9999;
+	margin: 0 auto;
+	width: 150px;
+	float : left;
+	padding: 10px;
+	position: absolute;
+	background: #8fbff0;
+	padding: 10px;
+	float: left;
+    color:#aff005;
+}
+
+.fixedTable { {
+	
+	overflow: auto;
+	position: relative;
+}
+
+.fixedRowCol {
+	z-index: 999;
+	position: relative;
+	top: expression(this.offsetParent.scrollTop);
+	left: expression(this.offsetParent.scrollLeft);
+}
+
+.fixedCol {
+	z-index: 666;
+	position: relative;
+	left: expression(this.offsetParent.scrollLeft);
+	background: #CCFFFF;
+}
+
+.fixedRow {
+	position: relative;
+	background: #CCFFFF;
+	top: expression(this.offsetParent.scrollTop);
+}

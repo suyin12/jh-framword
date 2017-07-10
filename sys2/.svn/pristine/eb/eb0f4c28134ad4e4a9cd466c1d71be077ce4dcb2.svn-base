@@ -1,0 +1,88 @@
+<script type="text/html" id="pop_cate">
+<div class="pop_cate">
+<php>
+        $map['openid'] =get_openid();
+		$where['uid'] = M('public_follow')->where($map)->getField('uid');
+		
+		$mobile =D('Common/User')->where($where)->getField('mobile');
+	    
+</php>
+<empty name='mobile'>
+	<div class="unlogin">
+        <a class="weui_btn weui_btn_primary" href="{:U('register')}">注册</a>
+    </div>
+	</empty>
+    <ul class="pop_cate_lists">
+		<li>
+        <a class="item color0" href="{:U('index')}">
+            <span class="icon "><img src="__STATIC__/paiqian/home.png"/></span>
+            <span class="txt">首页</span>
+        </a>
+        </li>
+        <li>
+        <a class="item color1" href="{:U('help',array('tpl'=>'helpAddPerson'))}" style=" background: #1ab0ee;">
+            <span class="icon "><img src="__STATIC__/paiqian/pay.png"/></span>
+            <span class="txt">申缴</span>
+        </a>
+        </li>
+        <li>
+        <a class="item color2" href="{:U('userList')}" style="background: #c266ed;">
+            <span class="icon"><img src="__STATIC__/paiqian/person.png"/></span>
+            <span class="txt">参保人</span>
+        </a>
+        </li>
+        
+        
+     </ul>
+     <ul  class="pop_cate_lists">
+	 	<li>
+	 	<a class="item color3" href="{:U('stopIndex')}" style="background: #6bb022;">
+            <span class="icon"><img src="__STATIC__/paiqian/stop.png"/></span>
+            <span class="txt">停缴</span>
+        </a>
+        </li>
+        <li>
+        <a class="item color4" href="{:U('orderIndex')}" style="background: #c04819;">
+            <span class="icon"><img src="__STATIC__/paiqian/list.png"/></span>
+            <span class="txt">订单</span>
+        </a>
+        </li>
+       <li>
+        <a class="item color5"  href="{:U('calculate')}">
+            <span class="icon"><img src="__STATIC__/paiqian/calculator.png"/></span>
+            <span class="txt">测算</span>
+        </a>
+        </li>
+        
+    </ul>
+	<ul class="pop_cate_lists">
+	 <li>
+        <a class="item color6" href="{:U('help',array('tpl'=>'helpNone'))}">
+            <span class="icon"><img src="__STATIC__/paiqian/act.png"/></span>
+            <span class="txt">活动</span>
+        </a>
+        </li>
+       <li>
+        <a class="item color7" href="{:U('service')}">
+            <span class="icon"><img src="__STATIC__/paiqian/service.png"/></span>
+            <span class="txt">客服</span>
+        </a>
+        </li>
+        <li>
+        <a class="item color8" href="{:U('message')}">
+            <span class="icon"><img src="__STATIC__/paiqian/notice.png"/></span>
+            <span class="txt">消息</span>
+        </a>
+        </li>
+		 <li>
+        <a class="item color9" href="{:U('userCenter')}">
+            <span class="icon"><img src="__STATIC__/paiqian/me.png"/></span>
+            <span class="txt">我的</span>
+        </a>
+        </li>
+    </ul>
+    <center><br/><a href="javascript:;" class="close"><img src="__STATIC__/paiqian/close_page.png" width="50"/></a></center>
+</div>
+</script>
+</body>
+</html>

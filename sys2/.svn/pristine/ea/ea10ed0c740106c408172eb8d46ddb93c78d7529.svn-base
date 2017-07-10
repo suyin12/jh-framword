@@ -1,0 +1,65 @@
+<include file="./Addons/WorkerService/View/default/Wap/_head.html"/>
+
+<style>
+.news_titles{
+    font-family: 宋体,微软雅黑,黑体,Arial;
+    padding-left: 21px;
+    padding-right: 21px;
+}
+</style>
+<body>
+
+<div class="container">
+    <header class="header">
+        <a class="back" href="javascript:;" onClick="$.WeiPHP.back();"></a>
+        <span class="title">在职证明</span>
+        <a class="cate" href="javascript:;" onClick="$.WeiPHP.showPopCate();"></a>
+    </header>
+	<div class="page" style="margin-bottom: 23%;">
+	<p class="logo_img logo_img_bor"><a href="{:U('index')}"><img src="/weixin/Public/static/paiqian/logo_img3.png" width="30%"></a></p>
+	
+    <?php $id=3;?>
+	<form action="{:U('proveInfo','id='.$id)}" method="post">
+        <div class="news_detail hd news_titles">
+            <p class="prove_title">
+                在 职 证 明
+            </p>
+            <div class="content">
+
+                <p class="text p_Serving">
+                    兹证明<u>&nbsp;&nbsp;{$personalData.name}&nbsp;&nbsp;</u>（身份证号码：<u>{$personalData.pID}</u>）为我司在职员工，安排至<u>&nbsp;{$uName}&nbsp;</u>工作，担任<u>&nbsp;{$personalData.station}&nbsp;</u>岗位。合同期限为：<u>{$personalData.cBeginDay}</u>至<u>{$personalData.cEndDay}</u>。
+                </p>
+                <p class="p_Serving_pr">
+                    <u>本证明仅用于证明我司员工的工作情况，不作为我司对该员工任何形式的担保文件。</u>
+                </p>
+                <p class="Serving_foot">
+                    特此证明
+                </p>
+                <p class="text Serving_firm">
+                    深圳市鑫锦程人力资源管理有限公司
+                </p>
+                <p class="text Serving_time">
+                    {$nowTime}
+                </p>
+                <div class="weui_EC">
+                    <img src="/weixin/Public/static/WorkerService/gong_07.png" alt="">
+                </div>
+            </div>
+        </div>
+<include file="./Addons/WorkerService/View/default/Wap/_btn.html"/>
+	
+
+
+</form>
+    <script type="text/javascript">
+    $(function(){
+        $.WeiPHP.initJson2Select([{$json}]);
+    });
+</script>
+
+
+
+
+
+
+<include file="./Addons/WorkerService/View/default/Wap/_foot.html"/>

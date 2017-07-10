@@ -1,0 +1,1057 @@
+@CHARSET "UTF-8";
+html {
+    background:url(images/login_back.gif)  repeat;
+    color: #000;
+    font:11px/1.5 "\5FAE\8F6F\96C5\9ED1",helvetica,Arial;
+    _font-size: 12px;
+}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,
+legend,input,button,textarea,p,blockquote,th,td { 
+    margin: 0;
+    padding: 0;
+
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+img {
+    border: 0;
+}
+
+address,caption,cite,code,dfn,em,strong,lable,var,optgroup {
+    font-style: inherit;
+    font-weight: inherit;
+    font-family:inherit;
+    color: #800;
+    border-bottom:1px solid #fafafa;text-shadow:0 1px 0 #fff,1px 2px 2px #aaa;
+}
+legend {
+    background: url('images/bullet_right.png') no-repeat;
+    text-indent: 1em;
+}
+del,
+ins {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+caption,
+th {
+    text-align: left;
+}
+
+
+h1,h2,h3,h4,
+h5,h6 {
+    font-size: 100%;
+    font-weight: normal;
+}
+q:before,
+q:after {
+    content: '';
+}
+
+abbr,
+acronym {
+    border: 0;
+    font-variant: normal;
+}
+
+sup {
+    vertical-align: baseline;
+}
+
+sub {
+    vertical-align: baseline;
+}
+
+/*because legend doesn't inherit in IE */
+legend {
+    color: #000;
+}
+.tdbg{
+    border-top-width: 1px; 
+    border-top-style: solid;
+    border-top-color:#D5D5D5;
+    border-left-width: 1px;
+    border-left-style: solid;
+    border-left-color: #D5D5D5;	
+    border-right-width: 1px;
+    border-right-style: solid;
+    border-right-color: #D5D5D5;    
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: #D5D5D5; height:25px; text-align:left; padding-left:2px;
+}
+input,
+button,
+textarea,
+select,
+optgroup,
+option {
+    font-family: inherit;
+    font-size: inherit;
+    font-style: inherit;
+    color: #333;
+}
+
+/*@purpose To enable resizing for IE */
+/*@branch For IE6-Win, IE7-Win */
+input,
+button,
+textarea,
+select {
+    font-size: 100%;
+}
+
+
+body {
+    text-align:left;
+
+}
+a{
+    cursor: pointer;
+    color:#0080c0;
+    text-decoration:none;
+}
+a:hover
+{
+    color:#990000;
+}
+/*设置form*/
+.form {
+    background:#f4f4f4;
+    border:1px #ddd solid;
+    margin:0 0 1em 0;
+    padding:10px;
+}
+
+fieldset {
+    border:1px #ddd solid;
+    background:#fafafa;
+    margin:0 0 1em 0;
+    padding:0.5em;
+}
+
+legend {
+    font-size:125%; 
+    font-weight:normal; 
+    color:#000;
+}
+input,
+textarea,
+select, 
+optgroup {
+}
+
+input,
+textarea,
+select {
+    border:1px solid #ddd;
+    cursor: pointer;
+}
+
+/* :hover and :focus status on form fields | Effekt zur Hervorhebung von Formularfeldern bei :hover oder :focus */
+input:focus,
+select:focus,
+textarea:focus,
+input:hover,
+select:hover,
+textarea:hover,
+input:active,
+select:active,
+textarea:active {
+    border:1px #a66 solid;
+    background:#fff;
+}
+
+/* Styling of custom styled buttons | Gestaltung von individuell gestalteten Buttons */
+input {
+    padding:4px 1em;
+}
+input[type=text] {
+    padding:4px 1px;
+}
+input[type=reset] { color:#300; background:#661717 url(images/button_red.png) top left repeat-x; }
+input[type=submit] { color:#330; background:#5e5607 url(images/button_gray.png) top left repeat-x; }
+input[type=button] { color:#330; background:#5e5607 url(images/button_gray.png) top left repeat-x; }
+
+/* optional button styling for IE6 using classes */
+input.reset { color:#300; background:#661717 url(images/button_red.png) top left repeat-x; }
+input.submit { color:#330; background:#5e5607 url(images/button_yellow.png) top left repeat-x; }
+
+/* :hover and :focus status on buttons | Effekt zur Hervorhebung von Schaltern bei :hover oder :focus */
+input:focus,
+input:hover,
+input:active {
+    border-top:1px #444 solid;
+    border-left:1px #444 solid;
+    border-right:1px #ddd solid;
+    border-bottom:1px #ddd solid;
+    color:#fff;
+    background:#555; 
+}
+
+input.reset:focus,
+input.reset:hover,
+input.reset:active {
+    background:#800; color:#fff;
+}
+
+input.submit:focus,
+input.submit:hover,
+input.submit:active {
+    background:#880; color:#fff;
+}
+.error,
+.alert, 
+.notice,
+.success, 
+.info 			
+{ padding: 0.8em; margin-bottom: 1em; border: 2px solid #ddd; }
+
+.error, .alert { background: #fbe3e4; color: #8a1f11; border-color: #fbc2c4; }
+.notice     { background: #fff6bf; color: #514721; border-color: #ffd324; }
+.success    { background: #e6efc2; color: #264409; border-color: #c6d880; }
+.info 			{ background: #d5edf8; color: #205791; border-color: #92cae4; }
+.error a, .alert a { color: #0080C0; }
+.notice a   { color: #514721; }
+.success a  { color: #264409; }
+.info a			{ color: #205791; }
+/*定位和布局*/
+.left{float: left;}
+.right{float: right;}
+.center{margin: 0 auto;}
+.halfWidth{width:300px;}
+.agreeWidth{width:55%;}
+.PerInfoWidth{width:8%}
+.textWidth{width:60px;}
+.cHeight{height: 90%}
+.theight-1{height: 250px;}
+.theight-2{height: 150px;}
+.theight-3{height: 100px;}
+.theight-4{height: 50px;}
+
+.clear{
+	clear:both;
+}
+.block {
+    border-radius: 0.3em;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #888;
+    -webkit-box-shadow: 1px 1px 3px #888 inset;
+    -moz-box-shadow: 1px 1px 3px #888 inset;
+    box-shadow: 1px 1px 3px #888 inset;  
+    padding: 5px;
+    margin: 1.5em 0 0 0;
+    background-color: #FEFBF3;
+}
+
+.tabLayout{
+    font-size:20px; 
+    text-align: center;
+    height: 100px;
+}
+/*按钮的CSS*/
+a.aSub, a.noSub,button {
+    display: inline-block;
+    /*    float: left;*/
+    margin:0 0.583em 0.667em 0;
+    padding:5px 10px 5px 7px;   /* Links */
+    border:1px solid #dedede;
+    border-top:1px solid #eee;
+    border-left:1px solid #eee;
+    background-color:#f5f5f5;
+    font-size:100%;
+    line-height:130%;
+    text-decoration:none;
+    font-weight:bold;
+    color:#565656;
+    cursor:pointer;
+}
+button { width:auto; overflow:visible; padding:4px 10px 3px 7px; }
+button[type] { padding:4px 10px 4px 7px; line-height:17px; }
+*:first-child+html .container button[type] { padding:4px 10px 3px 7px; }
+
+button img, a.aSub img,a.noSub img{ margin:0 3px -3px 0 !important; padding:0; border:none; width:16px; height:16px; float:none; }
+
+/* Standard Buttons */
+button:hover, a.aSub:hover,a.noSub:hover{ background-color:#dff4ff; border:1px solid #c2e1ef; color:#336699; }
+a.aSub:active, button:active,a.noSub:active{ background-color:#6299c5; border:1px solid #6299c5; color:#fff; }
+
+/* Positive */
+body .positive { color:#529214; }
+a.positive:hover, button.positive:hover { background-color:#E6EFC2; border:1px solid #C6D880; color:#529214; }
+a.positive:active, button.positive:active { background-color:#529214; border:1px solid #529214; color:#fff; }
+
+/* Negative */
+body .negative { color:#d12f19; }
+a.negative:hover, button.negative:hover { background:#fbe3e4; border:1px solid #fbc2c4; color:#d12f19; }
+a.negative:active, button.negative:active { background-color:#d12f19; border:1px solid #d12f19; color:#fff; }
+.red{color:red;}
+/*endfrom*/
+
+/*索引页css*/
+#indexh{
+    font-size: 30px;
+    font-style: inherit;
+    font-weight: bolder;
+    letter-spacing: 2px;
+    color: #CED7E1;
+    border-bottom:1px solid #fafafa;
+    text-shadow:0 2px 0 #123,2px 2px 2px #008259;  
+    font-family:inherit;
+    background: url("images/index-bg.jpg") repeat-x;
+    height: 86px;
+    line-height: 78px;
+    text-align: center;
+}
+#indexLogo{
+    float: left;
+    width:150px;
+}
+#indexBrower{
+    float: right;
+    width:200px;
+    line-height: 78px;
+    height: 78px;
+}
+#headerList{
+    background: #333;
+    height: 550px;
+}
+/*圆角css*/
+.roundedCorners{
+width: 200px;
+height: 220px;
+border:1px solid #DDEEF6;
+margin: 20px 0px 10px 55px;
+_margin: 20px 20px 10px 30px;
+background: #fff; 
+/* Do rounding (native in Safari, Firefox and Chrome) */
+border: 1px solid #DDD;
+padding: 10px;
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
+box-shadow: 0 0 15px #B1C5CD;
+    -moz-box-shadow: 0 0 15px #B1C5CD;
+    -webkit-box-shadow: 0 0 15px #B1C5CD;
+    filter: progid:DXImageTransform.Microsoft.Shadow(Strength=9, Direction=110, Color='#B1C5CD');
+    -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=9, Direction=110, Color='#B1C5CD')";
+
+ 
+}
+/*end 索引页css*/
+#header{
+    width: 100%;
+    position: fixed;
+}
+
+#footer{
+    text-align: center;
+    font-size: 12px;
+    line-height: 24px;
+    color: #fff;
+}
+/*头文件CSS设置*/
+#loading{
+    background:#ff8000;
+    width:100px;
+}
+#visual{
+    height: 100px;
+    width: 1200px;
+    margin: 0 auto;
+}
+#logoInfo{
+    float: right;
+    text-align: center;
+    width: 100%;
+    margin:40px 0 0 0;
+    color: #fff;
+}
+#logoInfo a,#footer a{
+    color: #7EC4E0;
+}
+#logoInfo span.red{
+   color: #2CAB71; 
+}
+/*限制显示宽度的情况*/
+#main{
+    border:1px #ddd solid;
+    background:#fafafa;
+    clear: both;
+    width: 1200px;
+    margin:0px auto;
+    /*    border-left:1px solid #dfdfdf; border-right:1px solid #dfdfdf;*/
+}
+/*不限制显示宽度的*/
+#mainBody{
+    border:1px #ddd solid;
+    background:#fafafa;
+    margin:0px auto;
+    /*    border-left:1px solid #dfdfdf; border-right:1px solid #dfdfdf;*/
+}
+/*menu样式*/
+div#menu {
+    height:41px;
+    background:url(images/main-bg.png) repeat-x;
+    font-weight: bold;
+}
+
+div#menu ul {
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
+    width: 1000px;
+}
+div#menu ul.menu {
+    margin: 0 auto;
+    padding-left: 30px;
+}
+
+div#menu li {
+    position: relative;
+    z-index: 9;
+    margin: 0;
+    padding: 0 5px 0 0;
+    display: block;
+    float: left;
+}
+div#menu li:hover>ul {
+    left: -2px;
+}
+
+div#menu a {
+    position: relative;
+    z-index: 100;
+    height: 41px;
+    display: block;
+    float: left;
+    line-height: 41px;
+    text-decoration: none;
+}
+div#menu a:hover, div#menu a:hover span { color: #fff; }
+div#menu li.current a {}
+
+div#menu span {
+    display: block;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-position: 95% 0;
+}
+div#menu ul ul a.parent span {
+    background-position:95% 8px;
+    background-image: url(images/item-pointer.gif);
+}
+div#menu ul ul a.parent:hover span {
+    background-image: url(images/item-pointer-mover.gif);
+}
+
+/* menu::level1 */
+div#menu a {
+    padding: 0 10px 0 10px;
+    line-height: 30px;
+    color: #e5e5e5;
+}
+div#menu span {
+    margin-top: 5px;
+}/**@replace#1*/
+div#menu li { background: url(images/main-delimiter.png) 98% 4px no-repeat; }
+div#menu li.last { background: none; }
+
+/* menu::level2 */
+div#menu ul ul li { background: none; }
+div#menu ul ul {
+    position: absolute;
+    top: 38px;
+    left: -999em;
+    width: 178px;
+    padding: 5px 0 0 0;
+    background: rgb(45,45,45);
+    margin-top:1px;
+}
+div#menu ul ul a {
+    padding: 0 0 0 15px;
+    height: auto;  
+    display: block;
+    line-height: 24px;
+    color: rgb(169,169,169);
+}
+div#menu ul ul span {
+    margin-top: 0;
+    padding-right: 15px;
+    _padding-right: 20px;
+    color: rgb(169,169,169);
+}
+div#menu ul ul a:hover span {
+    color: #fff;
+    text-decoration: none;
+}
+div#menu ul ul li.last { background: none; }
+div#menu ul ul li {
+    width: 100%;
+}
+
+/* menu::level3 */
+div#menu ul ul ul {
+    padding: 0;
+    margin: -38px 0 0 163px !important;
+    margin-left:172px;
+}
+/* colors */
+div#menu ul ul ul { background: rgb(41,41,41); }
+div#menu ul ul ul ul { background: rgb(38,38,38); }
+div#menu ul ul ul ul { background: rgb(35,35,35); }
+
+/* lava lamp */
+div#menu li.back {
+    background: url(images/lava.png) no-repeat right -44px !important;
+    background-image: url(images/lava.gif);
+    width: 13px;
+    height: 44px;
+    z-index: 8;
+    position: absolute;
+    margin: -1px 0 0 -5px;
+}
+div#menu li.back .menuLeft {
+    background: url(images/lava.png) no-repeat top left !important;
+    background-image: url(images/lava.gif);
+    height: 44px;
+    margin-right: 8px;
+}
+
+
+/*table样式*/
+
+.myTable
+{
+    font-size: 12px;
+    border-collapse: collapse;
+    padding: 0;
+    white-space: nowrap;
+    text-indent:inherit;
+    text-align: center;
+    color: #669;
+}
+
+.myTable th
+{
+    background:#328aa4 url(images/tr_back.gif) repeat-x;
+    color:#fff;
+    border: 1px solid #B7C3CC;
+    border-bottom: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    vertical-align: center;
+    padding: 8px;
+    text-align: center;
+}
+/*.myTable tr{
+    background:#e5f1f4;
+}*/
+.myTable td
+{
+    text-align: center;
+    padding: 8px; 
+    border-bottom: 1px solid #fff;
+    border-top: 1px solid #fff;
+}
+.myTable tr:nth-child(odd)    { background:#f8fbfc;}
+.myTable tr:nth-child(even)    { background:#e5f1f4; }
+.myTable tr.red { background: #fbe3e4; color: #8a1f11; border-color: #fbc2c4; }
+.myTable tfoot tr td
+{
+    background:#ecfbd4;
+    color: #339;
+    font-weight:  bold;
+}
+.myTable tbody tr:hover 
+{
+    background:#ecfbd4;
+    color: #339;
+}
+
+.fht-table,
+.fht-table thead,
+.fht-table tfoot,
+.fht-table tbody,
+.fht-table tr,
+.fht-table th,
+.fht-table td {
+    /* position */
+    margin: 0;
+
+    /* size */
+
+    /* text */
+    font-size: 100%;
+    font: inherit;
+    vertical-align: top;
+}
+.fht-table {
+    /* appearance */
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* @end */
+
+/* @group Content */
+
+.fht-table-wrapper,
+.fht-table-wrapper .fht-thead,
+.fht-table-wrapper .fht-tfoot,
+.fht-table-wrapper .fht-fixed-column .fht-tbody,
+.fht-table-wrapper .fht-fixed-body .fht-tbody,
+.fht-table-wrapper .fht-tbody {
+    /* appearance */
+    overflow: hidden;
+
+    /* position */
+    position: relative;
+}
+
+.fht-table-wrapper .fht-fixed-body .fht-tbody,
+.fht-table-wrapper .fht-tbody {
+    /* appearance */
+    overflow: auto;
+}
+
+.fht-table-wrapper .fht-table .fht-cell {
+    /* appearance */
+    overflow: hidden;
+
+    /* size */
+    height: 1px;
+}
+
+.fht-table-wrapper .fht-fixed-column,
+.fht-table-wrapper .fht-fixed-body {
+    /* position */
+    top: 0;
+    left: 0;
+    position: absolute;
+}
+
+.fht-table-wrapper .fht-fixed-column {
+    /* position */
+    z-index: 1;
+}
+
+/* @end */
+/*审批流程相关*/
+.approvalTable{
+    width: 100%;
+}
+.approvalTable td{
+    background:#e6efc2;
+    padding: 6px 6px 6px 12px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.pass{
+    color:#ff00ff;
+}
+.rollback{
+    color:#c0c0c0;
+}
+/*旧版表单验证CSS*/
+
+.form 
+.form {  width:100%; -moz-border-radius:5px; -webkit-border-radius:5px; padding:20px; margin:0 0px 0 0; }
+.form .form-row { width:100%; margin-bottom: 10px;  }
+.form .label {  width:100px;margin:6px 0 0 5px; }
+.form .input-container {  width:195px; text-align:right; }
+.form .input { width:180px;	height:18px; border:2px solid #c4c4c4; }
+.form .textarea { width:180px; height:120px; border:2px solid #c4c4c4; font-family:Tahoma; font-size:11px; }
+.form .error-input, .form .error-both .input, .form .error-same .input { background-color:#FFEFEF; border-color:#BB6666; color:#660000; }
+.form .error-div {  margin:7px 10px 0 0; color:#935; font-size:10px; }
+.form .error-div-alternative { display:none; -moz-border-radius:10px; -webkit-border-radius:10px; width:800px; top:0; left:50%; position:absolute; z-index:1000; margin-left:-400px; text-align:center; font-size:16px; color:#934; padding:20px 0 20px 0; background-color:#fee; border:solid 2px #d36; border-top-width:0; }
+.form .error-same, .form .error-both { color:#fff; background-color:#b66; -moz-border-radius:3px; }
+.form .sendBtn {
+
+    width:75px;
+    height:24px;
+    text-align:center;
+    background:url(submit-btn-bg.gif) repeat-x 0 0;
+    color:#5f5f5f;
+    border:1px solid #aaa;
+
+    display:block;
+    cursor:pointer;
+    font-weight:bold;
+    -moz-border-radius:3px;
+    -webkit-border-radius:3px;
+}
+.form .sendBtn:hover { background:url(submit-btn-bg-hover.gif) repeat-x 0 0; color:#ffffff; border:1px solid #5f5f5f; }
+/*新版表单验证*/
+
+ .formError { z-index: 990; }
+    .formError .formErrorContent { z-index: 991; }
+    .formError .formErrorArrow { z-index: 996; }
+    
+    .formErrorInsideDialog.formError { z-index: 5000; }
+    .formErrorInsideDialog.formError .formErrorContent { z-index: 5001; }
+    .formErrorInsideDialog.formError .formErrorArrow { z-index: 5006; }
+
+.inputContainer {
+	position: relative;
+	float: left;
+}
+
+.formError {
+	position: absolute;
+	top: 300px;
+	left: 300px;
+	display: block;
+	cursor: pointer;
+}
+
+.ajaxSubmit {
+	padding: 20px;
+	background: #55ea55;
+	border: 1px solid #999;
+	display: none
+}
+
+.formError .formErrorContent {
+	width: 100%;
+	background: #ee0101;
+	position:relative;
+	color: #fff;
+	width: 150px;
+	font-size: 11px;
+	border: 2px solid #ddd;
+	box-shadow: 0 0 6px #000;
+	-moz-box-shadow: 0 0 6px #000;
+	-webkit-box-shadow: 0 0 6px #000;
+	padding: 4px 10px 4px 10px;
+	border-radius: 6px;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+}
+
+.greenPopup .formErrorContent {
+	background: #33be40;
+}
+
+.blackPopup .formErrorContent {
+	background: #393939;
+	color: #FFF;
+}
+
+.formError .formErrorArrow {
+	width: 15px;
+	margin: -2px 0 0 13px;
+	position:relative;
+}
+body[dir='rtl'] .formError .formErrorArrow,
+body.rtl .formError .formErrorArrow {
+	margin: -2px 13px 0 0;
+}
+
+.formError .formErrorArrowBottom {
+	box-shadow: none;
+	-moz-box-shadow: none;
+	-webkit-box-shadow: none;
+	margin: 0px 0 0 12px;
+	top:2px;
+}
+
+.formError .formErrorArrow div {
+	border-left: 2px solid #ddd;
+	border-right: 2px solid #ddd;
+	box-shadow: 0 2px 3px #444;
+	-moz-box-shadow: 0 2px 3px #444;
+	-webkit-box-shadow: 0 2px 3px #444;
+	font-size: 0px;
+	height: 1px;
+	background: #ee0101;
+	margin: 0 auto;
+	line-height: 0;
+	font-size: 0;
+	display: block;
+}
+
+.formError .formErrorArrowBottom div {
+	box-shadow: none;
+	-moz-box-shadow: none;
+	-webkit-box-shadow: none;
+}
+
+.greenPopup .formErrorArrow div {
+	background: #33be40;
+}
+
+.blackPopup .formErrorArrow div {
+	background: #393939;
+	color: #FFF;
+}
+
+.formError .formErrorArrow .line10 {
+	width: 15px;
+	border: none;
+}
+
+.formError .formErrorArrow .line9 {
+	width: 13px;
+	border: none;
+}
+
+.formError .formErrorArrow .line8 {
+	width: 11px;
+}
+
+.formError .formErrorArrow .line7 {
+	width: 9px;
+}
+
+.formError .formErrorArrow .line6 {
+	width: 7px;
+}
+
+.formError .formErrorArrow .line5 {
+	width: 5px;
+}
+
+.formError .formErrorArrow .line4 {
+	width: 3px;
+}
+
+.formError .formErrorArrow .line3 {
+	width: 1px;
+	border-left: 2px solid #ddd;
+	border-right: 2px solid #ddd;
+	border-bottom: 0 solid #ddd;
+}
+
+.formError .formErrorArrow .line2 {
+	width: 3px;
+	border: none;
+	background: #ddd;
+}
+
+.formError .formErrorArrow .line1 {
+	width: 1px;
+	border: none;
+	background: #ddd;
+}
+
+/* 弹出层tipwindow  CSS*/
+#windownbg {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #000; /*body-bg*/
+    top: 0;
+    left: 0;
+}
+
+#windown-box {
+    position: fixed;
+    _position: absolute; /*For IE 6.0*/
+    border: 5px solid #E9F3FD;
+    background: #FFF;
+    text-align: left;
+}
+
+#windown-title {
+    position: relative;
+    height: 30px;
+    border: 1px solid #A6C9E1;
+    overflow: hidden;
+    background: url(images/bg.png) 0 -330px repeat-x;
+}
+
+#windown-title h2 {
+    position: relative;
+    left: 10px;
+    top: 5px;
+    font-size: 14px;
+    color: #666;
+}
+
+#windown-close {
+    position: absolute;
+    right: 10px;
+    top: 8px;
+    width: 10px;
+    height: 16px;
+    text-indent: -10em;
+    overflow: hidden;
+    background: url(images/icon.png) -820px -720px no-repeat;
+    cursor: pointer;
+}
+
+#windown-content-border {
+    position: relative;
+    top: -1px;
+    border: 1px solid #A6C9E1;
+    padding: 5px 0 5px 5px;
+    background: url(images/bg.png) 0 -380px repeat-x;
+}
+
+#windown-content {
+    position: relative;
+    overflow: auto;
+    text-align: center;
+}
+
+#windown-content img,#windown-content iframe {
+    display: block;
+}
+
+#windown-content .loading {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -8px;
+    margin-top: -8px;
+}
+
+
+/*wChangeSurvey.tpl*/
+#condition{ margin: 0 0 0 ;}
+.querenshuju { margin:50px 0 100px;font-size:20px;
+               background:no-repeat;width:200px; height:50px;
+               line-height:50px;text-align:center}
+.querenshuju a {
+    color:#FF0000;
+}
+.weigoumaidiese{ background-color:#FF8000;}
+.weigoumaishebaomingdan{ margin:25px 0 0 0;}
+.weigoumaishangbaomingdan{ margin:25px 0 0; }
+.weicanjiahuzhuhuimingdan{ margin:25px 0 0; }
+.qingdangailan {font-size:14px; font-weight:900;}
+
+
+.P{line-height:50px;text-align:center;width:100%;
+   background:#7F9FAA;height:20px;text-align:left;font-size:15px;font-weight:900;} /* 定义右边容器的宽度 */ /* Moz FF */
+* html .P {line-height:50px;text-align:center;width:100%;
+           background:#7F9FAA;height:20px;text-align:left;font-size:15px;font-weight:900;} /* IE6 */
+*+html .P {line-height:50px;text-align:center;width:100%;
+           background:#7F9FAA;height:20px;text-align:left;font-size:15px;font-weight:900;} /* IE7 */ /* 定义左边容器的宽度 */ 
+
+/* jQuery插件supernote样式表 */
+
+/* "fallback" links for non-CSS supporting browsers. */
+.fallback {
+    display: none;
+}
+
+/* Here's our default note styles. */
+.notedefault, .notenested {
+    position: absolute;
+    visibility: hidden;
+    top: 1.5em;
+    left: 2em; width: 16em;
+}
+.notedefault {
+    padding: 3px;
+    border: 1px solid #369;
+    /* #69C -> #4f6b72 */
+    background-color: #CAE8EA;
+    color: black;
+}
+.notenested {
+    width: 8em;
+    padding: 3px;
+    border: 1px solid #963;
+    background-color: #C96;
+    color: white;
+}
+
+/* Some position-type-specific offset information. Tweak as needed! */
+.snp-mouseoffset, .snp-triggeroffset, .snp-mousetrack {
+    margin-left: 5px;
+    margin-top: 15px;
+}
+
+/* Headings within notes */
+.notedefault h5 {
+    margin: 0 0 5px 0;
+    padding: 2px;
+    background-color: white;
+    color: black;
+}
+
+/* Note close marker is only shown within pinned notes. */
+.note-close {
+    float: right;
+    margin-top: 2px;
+    width: 14px;
+    height: 14px;
+    line-height: 14px;
+    color: black;
+    text-decoration: none;
+    visibility: hidden
+}
+.snb-pinned .note-close {
+    visibility: inherit;
+}
+
+/* jQuery插件supernote样式表 结束 */
+
+/* tab样式  选项卡样式*/
+ #tabsJ {
+      float:left;
+      width:100%;
+      background:#F4F4F4;
+      font-size:93%;
+      line-height:normal;
+          border-bottom:1px solid #24618E;
+      }
+    #tabsJ ul {
+        margin:0;
+        padding:10px 10px 0 50px;
+        list-style:none;
+      }
+    #tabsJ li {
+      display:inline;
+      margin:0;
+      padding:0;
+      }
+    #tabsJ a {
+      float:left;
+      background:url("images/tableftJ.gif") no-repeat left top;
+      margin:0;
+      padding:0 0 0 3px;
+      text-decoration:none;
+      }
+    #tabsJ a span {
+      float:left;
+      display:block;
+      background:url("images/tabrightJ.gif") no-repeat right top;
+      padding:5px 15px 4px 6px;
+      color:#24618E;
+      }
+    /* Commented Backslash Hack hides rule from IE5-Mac \*/
+    #tabsJ a span {float:none;}
+    /* End IE5-Mac hack */
+    #tabsJ a:hover span {
+      color:#FFF;
+      }
+    #tabsJ a:hover {
+      background-position:0% -40px;
+      }
+    #tabsJ a:hover span {
+      background-position:100% -40px;
+      }
+
+        #tabsJ #current a {
+                background-position:0% -40px;
+        }
+        #tabsJ #current a span {
+                background-position:100% -40px;
+                color:#FFF;
+        }
+

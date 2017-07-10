@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    
+    <title>经营分析</title>
+    <link rel="stylesheet" href="__STATIC__/weui/weui.css?v={:SITE_VERSION}"/>
+    <link rel="stylesheet" href="__STATIC__/WorkerService/main.css?v={:SITE_VERSION}"/>  
+    <link rel="stylesheet" href="__STATIC__/Font-Awesome-master/css/font-awesome.min.css?v={:SITE_VERSION}"/>
+   
+   
+
+    <script type="text/javascript">
+		var IMG_PATH = "__IMG__";
+		var STATIC_PATH = "__STATIC__";
+		var SITE_URL = "{:SITE_URL}";
+		var WX_APPID = "{$jsapiParams.appId}";
+		var	WXJS_TIMESTAMP='{$jsapiParams.timestamp}'; 
+		var NONCESTR= '{$jsapiParams.nonceStr}'; 
+		var SIGNATURE= '{$jsapiParams.signature}';
+		
+		function fmoney(s, n) {
+			n = n > 0 && n <= 20 ? n : 2;
+			s = parseFloat((s + "").replace(/[^\d\.-]/g, "")).toFixed(n) + "";
+			var l = s.split(".")[0].split("").reverse(), r = s.split(".")[1];
+			t = "";
+			for (i = 0; i < l.length; i++) {
+				t += l[i] + ((i + 1) % 3 == 0 && (i + 1) != l.length ? "," : "");
+			}
+			return t.split("").reverse().join("") + "." + r;
+		}		
+	</script>
+   <script type="text/javascript" src="__STATIC__/zepto.min.js?v={:SITE_VERSION}"></script>
+    <script type="text/javascript" src="__STATIC__/flipsnap.min.js?v={:SITE_VERSION}"></script>
+	<script type="text/javascript" src="__STATIC__/jquery-2.2.3.js?v={:SITE_VERSION}"></script>
+	<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script type="text/javascript" src="__STATIC__/WorkerService/main.js?v={:SITE_VERSION}"></script>
+
+	
+</head>

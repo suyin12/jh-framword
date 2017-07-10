@@ -1,0 +1,221 @@
+<include file="./Addons/Paiqian/View/default/Wap/_head.html"/>
+<body>
+<div class="container">
+	<header class="header">
+        <a class="back" href="javascript:;" onClick="$.WeiPHP.back();"></a>
+        <span class="title">参保人详情</span>
+        <a class="cate" href="javascript:;" onClick="$.WeiPHP.showPopCate();"></a>
+    </header>
+    <div class="page with_foot_page">
+    	<div class="weui_cells weui_cells_access label_5em">
+        	 <a class="weui_cell" href="{:U('addPerson',array('fID'=>$info['fID']))}">
+                <div class="weui_cell_bd weui_cell_primary"><label class="weui_label">姓名</label></div>
+                <div class="weui_cell_ft">
+                    {$info.name}
+                </div>
+            </a>
+            <a class="weui_cell" href="{:U('addPerson',array('fID'=>$info['fID']))}">
+                <div class="weui_cell_bd weui_cell_primary"><label class="weui_label">手机号</label></div>
+                <div class="weui_cell_ft">
+                    {$info.mobilePhone}
+                </div>
+            </a>
+            <a class="weui_cell" href="{:U('addPerson',array('fID'=>$info['fID']))}">
+                <div class="weui_cell_bd weui_cell_primary"><label class="weui_label">身份证号</label></div>
+                <div class="weui_cell_ft">
+                    {$info.pID}
+                </div>
+            </a>
+            <a class="weui_cell" href="{:U('addPerson',array('fID'=>$info['fID']))}">
+                <div class="weui_cell_bd weui_cell_primary"><label class="weui_label">身份证</label></div>
+                <div class="weui_cell_ft weui_cell_img">
+                    <img src="{$info.pIDImgUrl_1}"/>
+                    <img src="{$info.pIDImgUrl_2}"/>
+                </div>
+            </a>
+            <a class="weui_cell" href="{:U('addPerson',array('fID'=>$info['fID']))}">
+                <div class="weui_cell_bd weui_cell_primary"><label class="weui_label">城市</label></div>
+                <div class="weui_cell_ft">
+                    {$info.city_title}
+                </div>
+            </a>
+            <a class="weui_cell" href="{:U('addPerson',array('fID'=>$info['fID']))}">
+                <div class="weui_cell_bd weui_cell_primary"><label class="weui_label">参保类型</label></div>
+                <div class="weui_cell_ft">
+                    {$info.cityInsurance_title}
+                </div>
+            </a>
+            <if condition="$info[soInsurance]">
+            <div class="weui_cell muti_inner_cells">
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>社保</p>
+                    </div>
+                    <div class="weui_cell_ft">
+                        <a class="weui_cell" href="{:U('baseSetting',array('fID'=>$info[fID],'from'=>'userDetail'))}">
+                            <div class="weui_cell_bd weui_cell_primary">
+                                
+                            </div>
+                            <div class="weui_cell_ft">
+                                起缴月份:{$info.soInsBeginMonth}
+                            </div>
+                        </a>
+                        <a class="weui_cell" href="{:U('baseSetting',array('fID'=>$info[fID],'from'=>'userDetail'))}">
+                            <div class="weui_cell_bd weui_cell_primary">
+                                
+                            </div>
+                            <div class="weui_cell_ft">
+                                购买套餐:{$info.soInsNeedMonthNum}个月(￥{$info.soInsFun.total}/月)
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                </if>
+                <if condition="$info[housingFund]">
+                <div class="weui_cell muti_inner_cells">
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>公积金</p>
+                    </div>
+                    <div class="weui_cell_ft">
+                        <a class="weui_cell" href="{:U('baseSetting',array('fID'=>$info[fID],'from'=>'userDetail'))}">
+                            <div class="weui_cell_bd weui_cell_primary">
+                                
+                            </div>
+                            <div class="weui_cell_ft">
+                                起缴月份:{$info.HFBeginMonth}
+                            </div>
+                        </a>
+                        <a class="weui_cell" href="{:U('baseSetting',array('fID'=>$info[fID],'from'=>'userDetail'))}">
+                            <div class="weui_cell_bd weui_cell_primary">
+                                
+                            </div>
+                            <div class="weui_cell_ft">
+                                购买套餐:{$info.HFNeedMonthNum}个月(￥{$info.HFFun.total}/月)
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                </if>
+        </div>
+        <p class="top_title_al">参保记录</p>
+        <div class="hd record_list">
+        	<ul>
+            <volist name="info.records" id="vo">
+            	<li>
+                	<p><strong>{$vo.paydate}</strong></p>
+                    <p>社保:<span class="orange">￥{$vo.soInsExpenditure}</span>  公积金:<span class="orange">￥{$vo.HFExpenditure}</span></p>
+                </li>
+                </volist>
+            </ul>
+            <if condition="$info[count] gt 3">
+            <a class="for_more" href="{:U('recordList',array('fID'=>$info['fID']))}">
+            	查看更多
+                <img src="__STATIC__/paiqian/more_icon.png"/>
+            </a>
+            </if>
+        </div>
+        <div class="bottom_fixed_bar two_btn_wrap">
+        	<a class="weui_btn weui_btn_warn" href="{:U('personList',array('status'=>2))}">续缴</a>
+            <button class="weui_btn weui_btn_primary" onClick="submitStop()">停缴</button>
+        </div>
+       
+        <include file="./Addons/Paiqian/View/default/Wap/_service.html"/>
+    </div>
+    
+</div>
+<script type="text/html" id="actionSheetHtml">
+<div id="actionSheet_wrap">
+	<div class="weui_mask_transition" id="mask" style="display:block;"></div>
+	<div class="weui_actionsheet year_moonth_actionsheet" id="weui_actionsheet">
+		<p class="weui_cells_tips">选择停缴年月和停缴类型</p>
+		<!--
+		
+		-->
+		<div class="weui_cells weui_cells_form weui_cells_split weui_cells_checkbox">
+			<div class="weui_cell weui_cell_select weui_select_after">
+				<div class="weui_cell_hd">
+					停缴年月
+				</div>
+				<div class="weui_cell_bd weui_cell_primary">
+					<php>$year = date('Y');</php>
+					<select class="weui_select chang_event" name="endMonth">
+						<option value="2015-12">{$year-1}-1</option>
+						<option value="2015-12">{$year-1}-2</option>
+						<option value="2015-12">{$year-1}-3</option>
+						<option value="2015-12">{$year-1}-4</option>
+						<option value="2015-12">{$year-1}-5</option>
+						<option value="2015-12">{$year-1}-6</option>
+						<option value="2015-12">{$year-1}-7</option>
+						<option value="2015-12">{$year-1}-8</option>
+						<option value="2015-12">{$year-1}-9</option>
+						<option value="2015-12">{$year-1}-10</option>
+						<option value="2015-12">{$year-1}-11</option>
+						<option value="2015-12">{$year-1}-12</option>
+						<option value="2015-12">{$year}-1</option>
+						<option value="2015-12">{$year}-2</option>
+						<option value="2015-12">{$year}-3</option>
+						<option value="2015-12">{$year}-4</option>
+						<option value="2015-12">{$year}-5</option>
+						<option value="2015-12">{$year}-6</option>
+						<option value="2015-12">{$year}-7</option>
+						<option value="2015-12">{$year}-8</option>
+						<option value="2015-12">{$year}-9</option>
+						<option value="2015-12">{$year}-10</option>
+						<option value="2015-12">{$year}-11</option>
+						<option value="2015-12">{$year}-12</option>
+						<option value="2015-12">{$year+1}-1</option>
+						<option value="2015-12">{$year+1}-2</option>
+						<option value="2015-12">{$year+1}-3</option>
+						<option value="2015-12">{$year+1}-4</option>
+						<option value="2015-12">{$year+1}-5</option>
+						<option value="2015-12">{$year+1}-6</option>
+						<option value="2015-12">{$year+1}-7</option>
+						<option value="2015-12">{$year+1}-8</option>
+						<option value="2015-12">{$year+1}-9</option>
+						<option value="2015-12">{$year+1}-10</option>
+						<option value="2015-12">{$year+1}-11</option>
+						<option value="2015-12">{$year+1}-12</option>
+					</select>
+				</div>
+		   </div>
+			<label class="weui_cell weui_check_label" for="ckeck_shebao">
+				<div class="weui_cell_hd">
+					<input type="checkbox" class="weui_check" name="checkbox1" id="ckeck_shebao" checked="checked">
+					<i class="weui_icon_checked"></i>
+				</div>
+				<div class="weui_cell_bd weui_cell_primary">
+					<p>社保</p>
+				</div>
+			</label>
+			<label class="weui_cell weui_check_label" for="ckeck_gongjijin">
+				<div class="weui_cell_hd">
+					<input type="checkbox" class="weui_check" name="checkbox1" id="ckeck_gongjijin" checked="checked">
+					<i class="weui_icon_checked"></i>
+				</div>
+				<div class="weui_cell_bd weui_cell_primary">
+					<p>公积金</p>
+				</div>
+			</label>
+		</div>
+		<div class="weui_actionsheet_action">
+			<a style="margin:5px 10px;" href="javascript:;" onClick="confirmStop();" class="weui_btn weui_btn_primary">确认停缴</a>
+		</div>
+	</div>
+</div>
+</script>
+<script type="text/javascript">
+function submitStop(){
+	$.WeiPHP.showActionSheet();
+}
+function confirmStop(){
+	var year = $('select[name="year"]').val();
+	var month = $('select[name="month"]').val();
+	$.post("{:U('stopDeal')}",{fID:"{$info.fID}",year:year,month:month}, function(res){
+		if(res.status==0){
+			$.WeiPHP.toast(res.msg,0,2000);
+		}else{
+			window.location.href = "{:U('stopRefund')}";
+		}
+	});
+}
+</script>
+<include file="./Addons/Paiqian/View/default/Wap/_foot.html"/>

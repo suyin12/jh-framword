@@ -1,0 +1,79 @@
+<include file="./Addons/Paiqian/View/default/Wap/_head.html"/>
+<body>
+<div class="container">
+	<header class="header">
+        <a class="back" href="javascript:;" onClick="$.WeiPHP.back();"></a>
+        <span class="title">停缴退款</span>
+        <a class="cate" href="javascript:;" onClick="$.WeiPHP.showPopCate();"></a>
+    </header>
+    <include file="./Addons/Paiqian/View/default/Wap/_menu.html"/>
+    <div class="page">
+       <form id="form" action="{:U('stopRefund')}" method="post" class="form-horizontal">
+  <!--     	<p class="top_title" style="padding-bottom:0">预计退款金额<span class="big small orange">￥{$info.expectedMoney}</span></p>-->
+       	<p class="top_title"  style="padding-top:0">请填写退款的银行账号</p>
+    	<div class="weui_cells weui_cells_form" style="margin-top:0">
+        	 <div class="weui_cell weui_cell_select weui_select_after">
+                <div class="weui_cell_hd">
+                    银行
+                </div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <select class="weui_select" name="bank">
+                    <volist name="banks" id="vo">
+						<option value="{$key}" <eq name="info.bank" value="$key" >selected="selected"</eq> >{$vo}</option>
+                    </volist>
+                    </select>
+                </div>
+            </div>
+        	 <div class="weui_cell">
+                <div class="weui_cell_hd"><label class="weui_label">账号</label></div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input class="weui_input" type="text" placeholder="请输入银行账号" name="code" value="{$info.code}">
+                </div>
+            </div>
+            <div class="weui_cell">
+                <div class="weui_cell_hd"><label class="weui_label">姓名</label></div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input class="weui_input" type="text" placeholder="请输入姓名" name="name" value="{$info.name}">
+                </div>
+            </div>   
+			<div class="weui_cell">
+                <div class="weui_cell_hd"><label class="weui_label">手机号</label></div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input class="weui_input" type="text" placeholder="请输入手机号" name="mobilePhone" value="{$info.mobilePhone}">
+                </div>
+            </div>
+            <div class="weui_cell">
+                <div class="weui_cell_hd"><label class="weui_label">开户行</label></div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input class="weui_input" type="text" placeholder="请输入开户分行" name="address" value="{$info.address}">
+                </div>
+            </div>
+            <div class="weui_cell">
+                <div class="weui_cell_hd"><label class="weui_label">安全密码</label></div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input class="weui_input" type="password" placeholder="请输入开户分行" name="password" value="">
+                </div>
+            </div>            
+            
+        </div>
+        <div class="weui_btn_area">
+        <input class="weui_input" type="hidden" name="fIDArr" value="{$_GET['fIDs']}">
+            <button class="weui_btn weui_btn_primary ajax-post" target-form="form-horizontal">确 认</button>
+        </div>
+       </form>
+        
+    </div>
+    <include file="./Addons/Paiqian/View/default/Wap/_service.html"/>
+</div>
+<script type="text/javascript">
+	function queren(){
+		
+		window.location.href="{:U('helpRefundIntro')}";
+		}
+</script>
+<script type="text/javascript">
+$(function(){
+
+})
+</script>
+<include file="./Addons/Paiqian/View/default/Wap/_foot.html"/>

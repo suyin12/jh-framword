@@ -1,0 +1,27 @@
+<include file="./Addons/WorkerService/View/default/Wap/_head.html"/>
+<body>
+	
+	<div class="container">
+    <header class="header">
+        <a class="back" href="javascript:;" onClick="$.WeiPHP.back();"></a>
+        <a class="cate" href="javascript:;" onClick="$.WeiPHP.showPopCate();"></a>
+    </header>
+		<div class="page">
+        <p class="logo_img" style="border-bottom: 1px solid #c0c0c0;"><img src="/weixin/Public/static/paiqian/logo_img3.png" width="30%"></p>
+
+          <p class="failure"><img src="/weixin/Public/static/paiqian/point.jpg" alt=""></p>
+            <div class="weui_btn_area">
+                <input type="hidden" name="fID" value="{$fID|intval}" />
+                <input type="hidden" name="sub" value="sub">
+                <a class="weui_btn weui_btn_primary" href="{:U('loginFirst')}" target-form="form-horizontal">登录失败</a>
+            </div>
+    <p class="prompt">温馨提示：<br>亲，您的登录信息有误或者已经被他人登录，请点击登录失败重新登录或者重新进入微信公众号，点击右下端的客服，我们会有专人帮您解决问题。</p>
+    </div>
+
+
+        <p class="bottom_tips" style="text-align: center;">客户经理:{$mName.mName}</p>
+        <p class="bottom_tips">鑫锦程人力服务热线：0755-82385383</p>
+        <p class="bottom_tips clearance">鑫锦程人力资源管理有限公司版权所有</p>
+
+
+<include file="./Addons/WorkerService/View/default/Wap/_foot.html"/>

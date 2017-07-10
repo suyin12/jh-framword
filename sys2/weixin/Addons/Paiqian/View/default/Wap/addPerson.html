@@ -1,0 +1,86 @@
+<include file="./Addons/Paiqian/View/default/Wap/_head.html"/>
+<body>
+<div class="container">
+	<header class="header">
+        <a class="back" href="javascript:;" onClick="$.WeiPHP.back();"></a>
+        <span class="title">新增参保人</span>
+        <a class="cate" href="javascript:;" onClick="$.WeiPHP.showPopCate();"></a>
+    </header>
+    
+    <div class="page" style="margin-bottom:15px;">
+       <form id="form" action="{:U('addPerson')}" method="post" class="form-horizontal">
+    	<div class="weui_cells weui_cells_form label_5em">
+        	 <div class="weui_cell">
+                <div class="weui_cell_hd"><label class="weui_label">姓名</label></div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input class="weui_input" type="text" placeholder="请输入姓名" name="name" value="{$info.name}">
+                </div>
+            </div>
+<div class="weui_cell">
+                <div class="weui_cell_hd"><label class="weui_label">手机号</label></div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input class="weui_input" type="text" placeholder="请输入手机号" name="mobilePhone" value="{$info.mobilePhone}">
+                </div>
+            </div>            
+            <div class="weui_cell">
+                <div class="weui_cell_hd"><label class="weui_label">身份证号</label></div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input class="weui_input" type="tel" placeholder="请输入身份证号" name="pID" value="{$info.pID}">
+                </div>
+            </div>
+            <div class="weui_cell">
+                <div class="weui_cell_hd"><label class="weui_label">身份证正面</label></div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <div class="upload_row muti_picture_row">
+                        <a class="img_item" href="javascript:;" onClick="$.WeiPHP.wxChooseImg(this,1,'pIDImgUrl_1')"><empty name='info.pIDImgUrl_1'><img src="__STATIC__/paiqian/add_default.jpg"/><else/><input type="hidden" name="pIDImgUrl_1" value="{$info.pIDImgUrl_1}"><img src="{$info.pIDImgUrl_1}"/></empty></a>
+                    </div>
+                </div>
+            </div>
+            <div class="weui_cell">
+                <div class="weui_cell_hd"><label class="weui_label">身份证反面</label></div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <div class="upload_row muti_picture_row">
+                        <a class="img_item" href="javascript:;" onClick="$.WeiPHP.wxChooseImg(this,1,'pIDImgUrl_2')"><empty name='info.pIDImgUrl_2'><img src="__STATIC__/paiqian/add_default.jpg"/><else/><input type="hidden" name="pIDImgUrl_2" value="{$info.pIDImgUrl_2}"><img src="{$info.pIDImgUrl_2}"/></empty></a>
+                    </div>
+                </div>
+            </div>
+            <div class="weui_cell weui_cell_select weui_select_after">
+                <div class="weui_cell_hd">
+                    城市
+                </div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <select class="weui_select" name="city" id="city">
+                    </select>
+                </div>
+            </div>
+            <div class="weui_cell weui_cell_select weui_select_after">
+                <div class="weui_cell_hd"><label class="weui_label">参保类型</label></div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <select class="weui_select chang_event" name="cityInsurance" id="cityInsurance">
+                    </select>
+                </div>        
+            </div>
+            <script type="text/javascript">
+				//selectIds：select的id
+				//v:option的值
+				//t:option的显示文字
+				//d:下一级
+				
+            </script>
+        </div>
+        <div class="weui_btn_area">
+            <input type="hidden" name="fID" value="{$fID|intval}" />
+            <input type="hidden" name="sub" value="sub">
+            <button class="weui_btn weui_btn_primary ajax-post" target-form="form-horizontal">保存</button>
+        </div>
+       </form>
+        
+    </div>
+    <include file="./Addons/Paiqian/View/default/Wap/_service.html"/>
+</div>
+<script type="text/javascript">
+$(function(){
+	$.WeiPHP.initJson2Select([{$json}]);
+});
+</script>
+<include file="./Addons/Paiqian/View/default/Wap/_foot.html"/>

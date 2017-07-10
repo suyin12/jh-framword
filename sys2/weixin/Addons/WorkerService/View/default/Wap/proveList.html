@@ -1,0 +1,96 @@
+<include file="./Addons/WorkerService/View/default/Wap/_head.html"/>
+
+
+<body>
+<div class="container">
+    <header class="header">
+        <a class="back" href="javascript:;" onClick="$.WeiPHP.back();"></a>
+        <span class="title">开具证明</span>
+        <a class="cate" href="javascript:;" onClick="$.WeiPHP.showPopCate();"></a>
+    </header>
+
+    <div class="page" style="margin-bottom:30%;min-height: 600px;">
+        <p class="logo_img"><a href="{:U('index')}"><img src="/weixin/Public/static/paiqian/logo_img3.png" width="30%"></a></p>
+            
+            <div class="common_tab common_bor">
+        <php>$status=I('status','1');$classCur[$status] = 'cur';</php>
+            <a class="{$classCur[1]} uer_a" href="{:U('proveList',array('status'=>'1'))}">常用证明</a>
+            <a class="{$classCur[0]} uer_a" href="{:U('personal',array('status'=>'0'))}">自定义证明</a>
+        </div>
+    
+        <div class="wage"></div>
+
+             <div class="user_action_list">
+            <div class="weui_cells weui_cells_access">
+
+
+                
+
+                <a class="weui_cell" href="{:U('aforProve')}">
+                    <div class="weui_cell_hd"></div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>收入证明(月收入)</p>
+                    </div>
+                    <div class="weui_cell_ft">
+                    </div>
+                </a>
+                
+                
+                 <a class="weui_cell" href="{:U('incomeYear')}">
+                    <div class="weui_cell_hd"></div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>收入证明(年收入)</p>
+                    </div>
+                    <div class="weui_cell_ft">
+                        
+                    </div>
+                </a>
+
+   				 <a class="weui_cell" href="{:U('serving')}">
+                    <div class="weui_cell_hd"></div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>在职证明</p>
+                    </div>
+                    <div class="weui_cell_ft">
+                        
+                    </div>
+                </a>
+
+             
+
+                <a class="weui_cell" href="{:U('insurance')}">
+                    <div class="weui_cell_hd"></div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>参保证明</p>
+                    </div>
+                    <div class="weui_cell_ft">
+                        
+                    </div>
+                </a>
+                 <a class="weui_cell" href="{:U('settled')}">
+                    <div class="weui_cell_hd"></div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>落户证明</p>
+                    </div>
+                    <div class="weui_cell_ft">
+                        
+                    </div>
+                </a>
+</div>
+<script type="text/javascript">
+    $(function(){
+        $.WeiPHP.initJson2Select([{$json}]);
+    });
+</script>
+</a>
+</div>
+
+
+    <include file="./Addons/WorkerService/View/default/Wap/_menu.html"/>
+    
+
+
+
+
+
+<include file="./Addons/WorkerService/View/default/Wap/_foot.html"/>

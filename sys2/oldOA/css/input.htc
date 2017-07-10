@@ -1,0 +1,18 @@
+<script   language=javascript>  
+  switch(type)  
+  {  
+      case   'text':  
+      case   'submit':  
+      case   'reset':  
+      case   'button':      
+          style.border="1px   solid   #80B4FB";  
+          style.backgroundColor="#C6DDFD";  
+          style.valign="top";  
+          style.height="18px";  
+          style.font="normal   12px   宋体";  
+          style.color="#000000";  
+          break;  
+      default:      
+          ;  
+  }  
+  </script>
