@@ -41,9 +41,8 @@ class PrivilegeManagement{
     public function rulesArr($id,$bool = false){
         $pdo = Conn::get_instance();
         $pdo = $pdo->connet();
-        if(empty($id)){
-            echo "传入id有误,请确认!!!";exit;
-        }
+        if(empty($id))  die("传入id有误,请确认!!!");
+
         if(!$bool){
             $sql = "select rules.name from roles_in_rules 
                     left join rules on rules.id = roles_in_rules.rules_id 
@@ -51,11 +50,12 @@ class PrivilegeManagement{
         }else{
             $sql = "select name from rules where 1=1";
         }
-        $pdo->query("set names utf8");
+
         $ret = $pdo->query($sql);
         $this->rolesArr = $ret->fetchAll(\PDO::FETCH_ASSOC);
-//        var_dump($this->rolesArr);exit;
-        return $this->rolesArr;
+        $res = json_encode($this->rolesArr);
+
+        return $res;
     }
 
     /**

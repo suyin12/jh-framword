@@ -15,15 +15,17 @@ if(JH){
 }else{
     ini_set("display_errors", "Off");
 }
-
+//定义基本路径
 $base_path = rtrim(str_replace("\\","/",__DIR__),"/")."/";
-
+//定义系统核心路径
 define("SYS_PATH",$base_path."sys/");
+//定义应用路径
 define("APP_PATH",$base_path."app/");
+//定义系统配置文件路径
 define("CONF_PATH", SYS_PATH . "conf/");
+//定义基础类文件路径
 define("JH_PATH", SYS_PATH . "jh/");
+var_dump($base_path);exit;
+require JH_PATH  ."Jh.php";
 
-require JH_PATH  ."jh.php";
-
-$a = "create a new branch is quick and simple";
 

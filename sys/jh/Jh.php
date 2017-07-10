@@ -13,7 +13,7 @@ compileConf(require_once CONF_PATH ."config.php");
 
 const URL_MODE = URL_COMMON;
 
-require_once JH_PATH.'baseJh.php';
+require_once JH_PATH.'BaseJh.php';
 
 class JH extends BaseJh{
 
