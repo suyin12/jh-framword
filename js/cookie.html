@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+<head>
+    <title>cookie</title>
+    <meta charset="utf-8">
+    <script>
+    //获取cookie
+    function getCookieValue(cookieName) {
+    var cookieValue = document.cookie;
+    var cookieStartAt = cookieValue.indexOf(""+cookieName+"=");
+    if(cookieStartAt==-1) {
+        cookieStartAt = cookieValue.indexOf(cookieName+"=");
+    }
+    if(cookieStartAt==-1)
+    {
+        cookieValue = null;
+    }else {
+        cookieStartAt = cookieValue.indexOf("=",cookieStartAt)+1;
+        cookieEndAt = cookieValue.indexOf(";",cookieStartAt);
+    if(cookieEndAt==-1) {
+        cookieEndAt = cookieValue.length;
+    }
+        cookieValue = unescape(cookieValue.substring(cookieStartAt,cookieEndAt));//解码latin-1
+    }
+        return cookieValue;
+    }
+    //设置cookie
+    function setCookie(cookieName,cookieValue,cookieExpires,cookiePath)
+    {
+    cookieValue = escape(cookieValue);//编码latin-1
+    if(cookieExpires=="") {
+        var nowDate = new Date();
+        nowDate.setMonth(nowDate.getMonth()+6);
+        cookieExpires = nowDate.toGMTString();
+    }
+    if(cookiePath!="") {
+        cookiePath = ";Path="+cookiePath;
+    }
+        document.cookie= cookieName+"="+cookieValue+";expires="+cookieExpires+cookiePath;
+    }
+
+    //页面加载时间处理函数
+    function window_onload() {
+        var userNameElem = document.getElementById("userName");//用户名输入框对象
+        var passwordElem = document.getElementById("password");//密码输入框对象
+        var currUserElem = document.getElementById("currUser");//复选框对象
+        var currUser = getCookieValue("currUser");
+    if(currUser!=null) {
+        userNameElem.value=currUser;
+        currUserElem.checked = true;
+    }
+    if(userNameElem.value!="")  {
+        passwordElem.focus();//密码输入框获得焦点
+    }
+    else {
+        currUserElem.focus();//用户名输入框获得焦点
+    }
+    }
+    //表单提交处理
+    function login() {
+        var userNameElem = document.getElementById("userName");
+        var passwordElem = document.getElementById("password");
+        var currUserElem = document.getElementById("currUser");
+    if(userNameElem.value=="" || passwordElem.value=="") {
+        alert("用户名或密码不能为空！");
+    if(userNameElem.value=="") {
+        userNameElem.focus();//用户名输入框获得焦点
+    } else {
+        passwordElem.focus();//密码输入框获得焦点
+    }
+        return false;
+    }
+    if(currUserElem.checked) {
+        setCookie("currUser",userNameElem.value,"","");//设置cookie
+    } else {
+        var nowDate = new Date();//当前日期
+        nowDate.setMonth(nowDate.getMonth()-2);//将cookie的过期时间设置为之前的某个日期
+        cookieExpires = nowDate.toGMTString();//过期时间的格式必须是GMT日期的格式
+        setCookie("userName","",cookieExpires,"");//删除一个cookie只要将过期时间设置为过去的一个时间即可
+    }
+        return true;
+    }
+    </script>
+    <style type="text/css">
+        div{
+        font-size:12px;
+    }
+    </style>
+    </head>
+    <body onload="window_onload()">
+        <div>
+        <form id="loginForm" onsubmit="return login()">
+        用户名：<input type="text" id="userName"><br>
+        密  码：<input type="password" id="password">
+        <input type="checkbox" id="currUser">记住用户名<br>
+        <input type="submit" value="登录">
+        </form>
+        </div>
+        </body>
+        </html>

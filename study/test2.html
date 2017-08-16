@@ -1,0 +1,45 @@
+<html>
+<head>
+    <title>test close window</title>
+    <script type="text/javascript">
+
+        function ha(){
+
+            window.location.href = "http://www.baidu.com";
+        }
+
+        function go(){
+
+            event.returnValue = "真的要退出吗？";
+
+        }
+    </script>
+</head>
+
+<body onunload="ajax();return true;">
+<h1>hello world</h1>
+<a href="http://www.baidu.com">heloo </a>
+</body>
+<script>
+    function ajax(){
+        var xmlHttpReq = null;
+        if(window.ActiveXObject){
+            xmlHttpReq = new ActiveXObject("Microsoft.XMLHTTP");
+        }else if(window.XMLHttpRequest){
+            xmlHttpReq = new XMLHttpRequest();
+        }
+
+        if(xmlHttpReq != null){
+            xmlHttpReq.open("post","session.php",true);//true异步,false同步
+            xmlHttpReq.send("action=1234567890");
+            xmlHttpReq.onreadystatechange = doRequest;//设置回调
+        }
+
+        function doRequest(){
+            if(xmlHttpReq.status == 200 && xmlHttpReq.readyState == 4){
+                alert(xmlHttpReq.responseText);
+            }
+        }
+    }
+</script>
+</html>

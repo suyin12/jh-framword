@@ -17,6 +17,4 @@ $(function(){
 	 			], 	{duration: 3200, fade: 1300});
 		});
 })
-function entry(){
-	$entryboll = document.getElementsByClassName("entry");
-}
+

@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content=text/html; charset='' />
+        <title>省份城市联动</title>
+        <!-- <script type="text/javascript" src=''></script> -->
+        <!-- <script type="text/javascript" src=''></script> -->
+<style type="text/css">
+	.first{
+		border:1px solid red;
+		float:right;
+		padding: 10px;margin:10px;
+	}
+</style>
+</head>
+<body>
+<from name="powers">
+
+	<div class="first">
+
+	<select>
+	<foreach name="provinces" item="vo">
+	<option value="省份">{$vo.province}</option>
+	</foreach>
+	</select>
+	<select>
+	<foreach name="cities" item="vo">
+	<option value="省份">{$vo.city}</option>
+	</foreach>
+	</select>
+	<select>
+	<foreach name="areas" item="vo">
+	<option value="省份">{$vo.area}</option>
+	</foreach>
+	</select>
+	</div>
+</from>
+</body>
+</html>

@@ -3417,7 +3417,7 @@ function down_file_media($media_id, $type = 'voice') {
 // 接口统一调用方法
 function agentDataByPost($model, $param = array(), $is_file = false,$url = 'agent/agentAPI.class.php') {
 	$key = 'wx00f249ca19e47f51';
-	 $url = 'http://www.szhro.cn/'.$url.'?model='.$model;
+	$url = 'http://www.szhro.cn/'.$url.'?model='.$model;
 	if ($_GET ['debug']) {
 		dump ( $param );
 	} else {

@@ -6,7 +6,9 @@
  *
  */
 
-echo $_COOKIE["user"];
-if($_POST){
-
-}
+//$data = file_get_contents("php://input");
+//echo "<pre>";
+//var_dump(json_decode($data,true));
+echo $_SERVER['HTTP_REFERER'];echo"<br />";
+echo "<pre>";
+var_dump($_SERVER);

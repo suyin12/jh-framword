@@ -1,0 +1,102 @@
+@charset "utf-8";
+
+/* CSS Document */
+
+*{margin:0 auto;padding:0;list-style-type:none;}
+
+a:focus{outline:none; -moz-outline-style:none;}
+
+body{margin:0 auto;padding:0; font-size:12px;font-family:"微软雅黑"; background:#f1f1f1;}
+
+a img{border:0;}
+
+.cboth{clear:both;}
+
+a{text-decoration:none; cursor:pointer;color:#4E4E4E; }
+
+ul{ list-style-type:none;}
+
+input,select,textarea{outline:none; font-family:"微软雅黑";}
+
+.cleft{float:left; }
+
+.cright{float:right;}
+
+.top01{height:278px; margin:82px auto 0; overflow:hidden; }
+.top02{height:300px; margin:0 auto; overflow:hidden; background:url() no-repeat top center;}
+.top03{height:300px; margin:0 auto; overflow:hidden; background:url() no-repeat top center;}
+.top04{height:300px; margin:0 auto; overflow:hidden; background:url() no-repeat top center;}
+.top05{height:300px; margin:0 auto; overflow:hidden; background:url() no-repeat top center;}
+.juz {
+	text-align: center;
+}
+
+
+/***
+
+css样式，大于1600px的样式
+
+***/
+#maintop{background:#FFF; width:100%;}
+.tops{box-shadow: 0 0 2px #888; position:fixed; width:100%; top:0px; z-index:9999; padding-bottom:0px; background:#FFF; min-width:1280px;border-bottom:1px solid #888;}
+.maintop{width:1200px; padding-top:15px; position: relative;clear:both;}
+
+.logo2{float:left;}
+
+
+.tops-center{float:left; width:640px; position: relative; margin-left:25px;}
+
+
+
+	
+.soluion{
+position:absolute;
+background:#ffffff;
+padding:10px;
+left:0px;
+top:46px;
+width:800px;
+border-left:1px solid #dedede;
+border-right:1px solid #dedede;
+border-bottom:1px solid #dedede;
+}
+
+	
+.cpjs{
+position:absolute;
+background:#ffffff;
+padding:10px;
+left:50px;
+top:46px;
+width:140px;
+border-left:1px solid #dedede;
+border-right:1px solid #dedede;
+border-bottom:1px solid #dedede;
+}
+.cpjs li{display:block;height:30px;}
+.cpjs a{line-height:30px;
+font-size:15px;}
+.soluion dl{
+float:left;
+width:350px;
+margin-left:20px;
+}
+.soluion dt{
+font-size:22px;
+height:40px;
+border-bottom:solid 1px #dedede;
+}
+.soluion dd{
+float:left;
+display:block;
+width:170px;
+height:35px;
+}
+.soluion a{
+line-height:35px;
+font-size:15px;
+}
+
+	
+
+

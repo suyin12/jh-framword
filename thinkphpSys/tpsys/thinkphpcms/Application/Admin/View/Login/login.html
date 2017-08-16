@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>系统登录</title>
+</head>
+<!--{U:(loginDo)}-->
+<body>
+    <from name="" action="{U:(loginDo)}" method="post" >
+        <table>
+            <tr>
+                <td colspan="2">系统登录</td>
+            </tr>
+            <tr>
+                <td>用户名:</td>
+                <td><input type="text" /></td>
+            </tr>
+            <tr>
+                <td>密码:</td>
+                <td><input type="text" /></td>
+            </tr>
+            <tr>
+                <td>验证码:</td>
+                <td><input type="text" /><img src=""></td>
+            </tr>
+            <tr>
+                <td><input type="button" value="登录" /></td>
+                <td><a href="{U:(register)}">注册</a><a href="{U:(register)}">忘记密码?</a></td>
+            </tr>
+        </table>
+    </from>
+</body>
+</html>
