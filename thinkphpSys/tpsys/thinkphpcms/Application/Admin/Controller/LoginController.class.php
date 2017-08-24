@@ -62,6 +62,7 @@ class LoginController extends Controller {
     function pwdReset(){
         $this->display();
     }
+
     function pwdResetDo(){
 //         $email = "452292741@qq.com";//测试
        $email = I('email');

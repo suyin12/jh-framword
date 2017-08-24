@@ -81,15 +81,12 @@ class Tpl{
         $right = preg_quote($this->right_delimiter,'/');
 
         //简单模拟编译  变量
-        $pattern = array(
-            //例如{$test}
-            '/'.$left.'\$([a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*)'.$right.'/i'
-        );
-
-        $replace = array(
+        $pattern = [
+            '/'.$left.'\$([a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*)'.$right.'/i'//例如{$test}
+        ];
+        $replace = [
             '<?php echo $this->tpl_vars[\'${1}\']?>'
-        );
-
+        ];
         //正则处理
         return preg_replace($pattern,$replace,$content);
     }

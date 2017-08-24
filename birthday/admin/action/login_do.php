@@ -19,9 +19,8 @@ $res = $ret->fetchAll(PDO::FETCH_ASSOC);
 
 if($res[0]){
     $_SESSION['user'] = $username;
-    @$_SESSION['expire'] = time() + 60*24;
+    @$_SESSION['expire'] = time() + 60*60;
 }
-
 header('Location:'.HTTP_PATH.'jh-framwork/birthday/index.php');
 
 

@@ -10,4 +10,4 @@ require 'lib/Tpl.class.php';
 
 $tpl = new Tpl();
 
-$tpl->display('login.html');
+$tpl->display('admin/login.html');

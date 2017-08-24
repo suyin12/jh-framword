@@ -1,0 +1,13 @@
+body{
+    position: relative;
+    background: #1A5A82;
+    margin: 0;
+    padding: 0;
+}
+#login{
+    text-align:center;
+    border:  1px;
+    position: absolute;
+    left: 45%;
+    margin-top: 20%;
+}
