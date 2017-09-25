@@ -23,5 +23,14 @@
 //session_start();
 //var_dump(($expire+ 86400)-time());exit;
 //var_dump($_SESSION['user']);
-echo strtotime("2017-08-19");
+
+//$test = gmstrftime('%H:%M:%S',500);echo "<br>";
+//var_dump($test);exit;
+//
+//echo date('Y-m-d H:i:s',time());
+
+
+
+//phpinfo();
+//echo strtotime("2017-08-19");
 ?>

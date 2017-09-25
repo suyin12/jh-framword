@@ -20,9 +20,7 @@ function Directory($dir){
         }else{
         Directory(dirname($dir));
         if(@mkdir($dir,0777)){
-
             echo $dir."创建123132<br>";
-
         }
     }
 }

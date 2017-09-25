@@ -22,3 +22,5 @@
 function  Directory( $dir ){
     return   is_dir ( $dir )  or  Directory(dirname( $dir ))  and   mkdir ( $dir , 0777);
 }
+$file = "D:/wnmp/nginx/htdocs/jh-framwork/study/A/B/C/D/E/F/G/";
+Directory($file);
