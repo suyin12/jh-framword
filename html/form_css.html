@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+    <style>
+        body{
+            /*background:url(source/linux.jpg);*/
+        }
+        p {
+            font-size:12px;
+            color:yellow;
+            border:2px solid blue;
+            /*text-align:center;*/
+            background:green;
+            /*缩进*/
+            text-indent:10em;
+
+        }
+        h1 {
+            font-size:x-large;
+            color:red;
+        }
+        h2 {
+            font-size:large;
+            color:blue
+        }
+        input[type="search"]{
+            -webkit-appearance: textfield;
+        }
+    </style>
+
+</head>
+<body>
+<mark>HTML5内容</mark>
+<h1>一级标题</h1>
+<h2>二级标题</h2>
+<h3 style="font-size:x-large;color:black">三级标题</h3>
+<p>Linux</p>
+<p>MySQL</p>
+<p>PHP</p>
+<p>Apache</p>
+<textarea id="formtest" name="textarea" autofocus></textarea>
+<form id="formtest" action="checkbox.php" method="get">
+    <h3>爱好:</h3>
+    篮球<input type="checkbox" name="hobby[]" value="4"><br />
+    足球<input type="checkbox" name="hobby[]" value="5" checked><br />
+    游泳<input type="checkbox" name="hobby[]" value="6" ><br />
+    跑步<input type="checkbox" name="hobby[]" value="7" ><br />
+    <h3>工作地点:</h3>
+    广州<input type="radio" name="address" value="1"><br />
+    深圳<input type="radio" name="address" value="2"><br />
+    上海<input type="radio" name="address" value="3"><br />
+    tel:<input type="tel" id="formtest" name="bookname" pattern="[0-9]+"/><br />
+    search:<input type="search" name="bookname" /><br />
+    <input type="submit" value="提交" />
+    <input type="submit" formaction="checkbox1.php" value="提交" />
+    <input type="submit" formaction="checkbox2.php" value="提交" />
+    <input type="reset" value="重置" />
+</form>
+
+
+text:<input type="text" name="bookname" /><br />
+text:<input type="text" name="bookname" autocomplete="" list="bookname" />
+<datalist id="bookname">
+    <option value="php">php</option>
+    <option value="MySQL">MySQL</option>
+    <option value="Linux">Linux</option>
+</datalist>
+</body>
+</html>

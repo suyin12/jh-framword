@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<h1>发布信息</h1>
+<a href="main.php">主页面</a>
+<br />
+<br />
+<?php
+session_start();
+if(empty($_SESSION["username"]))
+{
+    header("location:login.php");
+    exit;
+}
+
+$user = $_SESSION["username"];
+
+include("DADB.class.php");
+$db = new DADB();
+
+$shaoyou = "select * from firend where me='{$user}'";
+$ahaoyou = $db->Query($shaoyou);
+
+?>
+<form action="fabuchuli.php" method="post">
+    <p>接收人：
+        <select name="jsr">
+            <option value="all">所有人</option>
+            <?php
+            foreach($ahaoyou as $v)
+            {
+                $name = uname($v[2]);
+                echo "<option value='{$v[2]}'>{$name}</option>";
+            }
+            ?>
+        </select>
+    </p>
+    <br />
+    <p>
+        信息内容：<textarea name="neirong"></textarea>
+    </p><br />
+    <input type="submit" value="发送" />
+</form>
+<?php
+function uname($user)
+{
+    global $db;
+
+    if($user=="all")
+    {
+        return "所有人";
+    }
+    else
+    {
+        $sql1 = "select name from yuangong where username='{$user}'";
+        $att = $db->Query($sql1);
+
+        return $att[0][0];
+    }
+}
+?>
+</body>
+</html>

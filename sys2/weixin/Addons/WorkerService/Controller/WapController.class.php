@@ -173,7 +173,7 @@ class WapController extends AddonsController
                 $mobile = I('phone');
                 $expid = '0';
                 $encode = 'utf-8';
-                $data = $this->dao->content($uid, $auth, $mobile, $msg, $expid, $encode);
+                $data = $this->dao->content($uid, $auth, $mobile, $msg, $expid, $encode); //todo
                 $url1 = $this->generateUrl($url, $data);
                 $ret = $this->getUrl($url1);
                 list($sendStatus,$sendID) = explode(",",$ret);

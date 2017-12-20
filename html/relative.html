@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<button id="id" >点我啊^_^</button>
+<script type="text/javascript">
+    document.getElementById("id").onmouseover=function(){
+        var a = document.getElementById('id');
+        a.style.position = 'relative';
+        var top = String(Math.random()*500);
+        var left = String(Math.random()*800);
+        a.style.top = top+'px';
+        a.style.left = left+'px';
+    };
+//    function out(){
+//        alert("");
+//    }
+//    window.setTimeout(out,10000);
+</script>
+</body>
+</html>

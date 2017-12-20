@@ -1,0 +1,65 @@
+/*html选择器,为body添加样式*/
+body {
+    background:white;    /*设置整个网页文本内容背景为白色*/
+    font:12px Arial,宋体;/*设置网页字体像素12px,Arial或宋体字*/
+    margin: 0px;
+    padding: 0px;
+}
+/*组合选择器+伪元素选择器,设置网页超链接正常和访问过样式*/
+a:link,a:hover,a:visited{
+    text-decoration:none;/*设置文本链接取消默认下划线*/
+    color:#0a6aa1;          /*设置链接中文本字体颜色*/
+}
+/*ID选择器,定义整个栏目容器的ID选择器*/
+#wrapper{
+    /*display:none;*/
+    margin: 30px auto;
+    width:300px;         /*定义栏目容器区块宽度为300px*/
+    text-align:left;     /*定义栏目容器区块所有文本内容居左对齐*/
+}
+/*class选择器,定义栏目容器中标题区块的类选择器*/
+.tit{
+    width:100%;         /*设置栏目标题占上一标记宽度的100%*/
+    height:24px;        /*设置栏目标题区块高度为24像素*/
+}
+.tit h3{
+    margin:0px;         /*清除h3标题中默认的4边的外边距*/
+    padding:0px;        /*清除h3标题中默认的4边的内边距*/
+    line-height:24px;   /*设置h3标题的行高和标题区块高度相同*/
+    font-size:12px;     /*设置h3标题字体大小为12像素*/
+    text-indent:50px;   /*设置h3标题的文本缩进为30像素*/
+    /*text-align:center;*/
+    background:url('source/tittb.png') no-repeat 1% 50%;/*使用背景在h3标题前添加一张符号图片*/
+}
+/*class选择器,定义栏目容器中的内容列表区块的类选择器*/
+.list{
+    width:298px !important;  /*内容盒子在非IE中的宽度为298像素*/
+    width:300px;              /*内容盒子在IE中的宽度为300像素*/
+    float:left;               /*设置内容列表区块为左漂浮*/
+    border:2px solid #000000; /*设置内容列表区块显示直线边框*/
+    border-top:0px;           /*设置内容列表区块取消顶部的边框线*/
+}
+/*HTML选择器,为html列表元素ul设置样式*/
+ul{
+    list-style-type:none;     /*设置为none,去掉列表默认的符号*/
+    margin:0px;               /*设定列表去掉四周的外边距的缩进*/
+    padding:0px;              /*设定列表去掉四周的内边距的缩进*/
+}
+/*关联选择器,为HTML列表元素li设置样式*/
+ul li{
+    float:left;               /*设置每个列表区块为左漂浮*/
+    line-height:20px;         /*设置列表项的行高为20像素*/
+    width:45%;                /*设置列表项的宽度占上一标记的45%*/
+    margin:0px 5px;           /*设置上下外边距为0,左右边距为5px*/
+    /*background:url('source/bullet.png') repeat-x 0 bottom;!*使用背景图像添加列表符号下方的点线*!*/
+}
+/*关联选择器,为列表元素中的超链接定义样式*/
+ul a{
+    padding-left:12px;        /*设置链接中的文本左内添加12px的空白*/
+    background:url('') no-repeat 0 50%;/*使用背景图像为链接添加自定义的符号*/
+}
+/*关联选择器,设置网页中超链接被访问时的样式*/
+ul a:hover{
+    text-decoration:underline; /*设置超链接被访问时添加下划线*/
+    color:#ff0000;             /*文本颜色设置为红色*/
+}

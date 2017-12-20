@@ -6,7 +6,6 @@
  *
  */
 function getFlieType(&$file){
-
     return end(explode('.',$file));
 }
 $testFile = "ddsfasfs.php";

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+
+    <style>
+        div{
+            width:500px;
+            height:100px;
+            background-color:green;
+        }
+        div>p{
+            color:#f00;
+        }
+        /*div p{*/
+            /*color:#f00;*/
+        /*}*/
+        h1+p{
+            color:blue;
+        }
+        p~ul{
+            color:blueviolet;
+        }
+    </style>
+</head>
+<body>
+<h1>毗邻元素选择器</h1>
+<p>毗邻元素选择器</p>
+<div>
+    <p>后代选择器</p>
+    <p>后代选择器</p>
+    <p>后代选择器</p>
+</div>
+<ol>
+    <li>多元素选择器</li>
+    <li>多元素选择器</li>
+    <li>多元素选择器</li>
+</ol>
+<div>
+    <p>子元素选择器</p>
+    <p>子元素选择器</p>
+    <p>子元素选择器</p>
+    <section>
+        <p>子元素选择器</p>
+        <p>
+        <ul>
+            <li>同级元素通用选择器</li>
+            <li>同级元素通用选择器</li>
+            <li>同级元素通用选择器</li>
+        </ul>
+        <ul>
+            <li>同级元素通用选择器</li>
+            <li>同级元素通用选择器</li>
+            <li>同级元素通用选择器</li>
+        </ul>
+        <section>
+        <ul>
+            <li>同级元素通用选择器</li>
+            <li>同级元素通用选择器</li>
+            <li>同级元素通用选择器</li>
+        </ul>
+        </section>
+        </p>
+    </section>
+</div>
+</body>
+</html>

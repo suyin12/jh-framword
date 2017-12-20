@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+    <style>
+        p[title]{
+            color:#f00;
+        }
+        div{
+            width:200px;
+            height:200px;
+            background:#FFFFE7;
+        }
+        div[class=error]{       /*div元素class属性且值等于error*/
+            border:5px solid blue;
+        }
+        /*header[title~=coll]{    !*header元素title属性以空格隔开,包含有coll字符串的元素,对应的[title*=coll]表示title中含有coll字符串*!*/
+            /*color:#f00;*/
+        /*}*/
+        header[title^=coll]{    /*title属性的值以hello开头,不需要字符隔开*/
+            font-size:2em;
+        }
+        header[title*=coll]{    /*title属性的值含有coll字符串,不需要字符隔开*/
+            color:#f00;
+        }
+        header[title$=hello]{    /*title属性的值以hello结束,不需要字符隔开*/
+            color:#f00;
+        }
+        a[class=title][title]{  /*组合选择器*/
+            color:#f00;
+        }
+        section>p[lang|=en]{    /*p元素lang属性以en开头*/
+            color:#f00;
+        }
+    </style>
+</head>
+<body>
+<p title="">属性选择器---具有title属性的p元素</p>
+<p>属性选择器---没有title属性的p元素</p>
+<div class="error">
+    属性选择器---具有class属性且值等于error的div元素
+</div>
+<div class="">
+    属性选择器---具有class属性且值等于" "的div元素
+</div>
+<header title="coll hello">属性选择器---具有title属性且值有coll的header元素</header>
+<header title="collhello">属性选择器---具有title属性且值没有coll的header元素</header>
+<a class="title" title="" herf="">属性选择器---多个属性结合</a>
+<a class="title" herf="" >属性选择器---只含某个属性</a>
+<section>
+    <p lang="en">en</p>
+    <p lang="en-us">en-us</p>
+    <p lang="en-gb">en-gb</p>
+    <p lang="us">us</p>
+    <p lang="zh">zh</p>
+</section>
+</body>
+</html>
