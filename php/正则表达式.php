@@ -12,4 +12,4 @@ $pre3 = "/.*/";
 $ret2 = preg_match_all($pre3,$str3,$ret);
 
 
-var_dump($ret1);
+

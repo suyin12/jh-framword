@@ -4,7 +4,7 @@
     <title>phpInfo</title>
 </head>
 <body>
-<?php
+<?
     $sysos = $_SERVER['SERVER_SOFTWARE'];//获取服务器标识的字符串
     $phpVersion = PHP_VERSION;           //获取php服务器版本
 
