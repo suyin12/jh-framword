@@ -3,11 +3,11 @@ class FileUpload{
     /**
      * @type string 上传目录
      */
-    private $path = "./Uploads";
+    private $path = "/Uploads/"; //todo
     /**
      * @type array 上传类型
      */
-    private $allowType = array('jpg','png','gif');
+    private $allowType = array('jpg','png','gif','doc','pdf');
     /**
      * @type integer 允许上传最大字节
      */
@@ -66,7 +66,7 @@ class FileUpload{
         $tmpName = $_FILES[$fileFiled]['tmp_name'];
         $size = $_FILES[$fileFiled]['size'];
         $error = $_FILES[$fileFiled]['error'];
-
+echo '<pre>';print_r($_FILES);exit;
         /* 如果多个文件上传$file['name']是一个数组 */
         if(is_array($name)){
             $errors = array();
@@ -115,7 +115,7 @@ class FileUpload{
                 /* 上传前检查一下文件类型和文件大小 */
                 if($this->checkFileSize() && $this->checkFileType()){
                     /* 为上传文件设置新文件名 */
-                    $this->setNewFileName();
+                    $this->setNewFileName($name);
                     /* 上传文件,返回0为成功,小于0都为错误 */
                     if($this->copyFile()){
                         return true;
@@ -203,9 +203,9 @@ class FileUpload{
     /***
      * 设置上传后的文件名称
      */
-    private function setNewFileName(){
+    private function setNewFileName($name){
         if($this->isRandName){
-            $this->setOption('newFileName',$this->proRandName());
+            $this->setOption('newFileName',$this->proRandName($name));
         }else{
             $this->setOption('newFileName',$this->originName);
         }
@@ -236,6 +236,8 @@ class FileUpload{
      * 检查是否有存放上传文件目录
      */
     private function checkFilePath(){
+        $base = dirname(__FILE__);
+        $this->path = $base.$this->path;
         if(empty($this->path)){
             $this->setOption('errorNum',-5);
             return false;
@@ -251,8 +253,9 @@ class FileUpload{
     /***
      * 设置随机新的文件名
      */
-    private function proRandName(){
-        $fileName = date('YmdHis').'_'.rand(100,999);
+    private function proRandName($name){
+        $name = explode('.',$name)[0];
+        $fileName = $name.date('YmdHis').'_'.rand(100,999);
         return $fileName.'.'.$this->fileType;
     }
     /***
@@ -260,7 +263,7 @@ class FileUpload{
      */
     private function copyFile(){
         if(!$this->errorNum){
-            $path = trim($this->path,'/').'/';
+            $path = rtrim($this->path,'/').'/';
             $path .= $this->newFileName;
             if(@move_uploaded_file($this->tmpFileName,$path)){
                 return true;
