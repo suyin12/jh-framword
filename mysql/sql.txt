@@ -39,6 +39,7 @@ create index ind on cats(cid,catname);
 drop index ind on cats;
 //展示索引清单
 show index from cats;
+//全文索引
 create table if not exists books(
     bookId int(10) not null auto_increment primary key,
     bookName varchar(20) not null,
@@ -46,3 +47,63 @@ create table if not exists books(
     detail text not null,
     fulltext(detail)
 )engine=MyISAM default character set utf8 collate utf8_general_ci;
+//match()负责列举将对它进行搜索的一个或多个数据列,against()负责给出搜索字符串.
+select bookName,price from books where match(detail) against('hello');
+select match(detail) against('hello') from books;
+//DML
+insert into cats (cid,catname) values (0,'类别');
+insert into cats values(0,'自然');
+update books set price = '2.50' where bookid = 2;
+delete from books where bookid=2;
+//清空表
+truncate table tableName(cats);
+//DQL
+select bookName as '图书名称',price as '图书价格', detail as '图书详情';
+//去除重复的catid,如果数据列是两列将返回
+select distinct catid from books;
+//嵌套子查询
+select bookid,bookname,price from books where bookid in(select bookid from carts where bookid = '1');
+//自身连接查询
+select cat1.catname as '父类图书名称',cat2.catname as '子类图书名称' from cats cat1,cats cat2 where cat1.id=cat2.pid;
+//mysql连接符
+$link = mysql_connect('localhost','root','admin');
+
+mysql_select_db('books',$link);
+//客户端API函数库的版本信息
+mysql_get_client_info();
+//与MYSQL服务器的连接类型
+mysql_get_host_info();
+//通信协议的版本信息
+mysql_get_proto_info();
+//mysql服务器的版本信息
+mysql_get_server_info();
+//客户端使用的默认字符集
+mysql_client_encoding();
+//mysql服务器当前的工作状态
+mysql_stat();
+//执行任何一条sql语句,成功返回非0值,失败返回false(0)
+mysql_query()
+//当执行DML语句的时候,返回影响的行数.
+mysql_affected_rows()
+//返回最后插入一条记录id
+mysql_insert_id();
+//DQL返回结果集
+mysql_query();
+//查看行与列数
+mysql_num_rows(mysql_query());
+mysql_num_field(mysql_query());
+//普通索引形式返回一条结果集
+mysql_fetch_row(mysql_query());
+//关联索引形式返回一条结果集
+mysql_fetch_assoc(mysql_query());
+//对象形式返回一条结果集
+mysql_fetch_object(mysql_query());
+//通过传递不同常量返回数组形态,默认MYSQL_BOTH
+mysql_fetch_array(mysql_query(),MYSQL_BOTH);
+//改变返回结果集记录
+mysql_data_seek();
+//释放查询的结果集资源
+mysql_free_result()
+
+
+

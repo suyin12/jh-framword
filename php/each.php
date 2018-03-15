@@ -6,3 +6,6 @@ var_dump(each($arr));
 var_dump(each($arr));
 var_dump(each($arr));
 var_dump(each($arr));
+echo '<br>';
+echo '<pre>';
+print_r($_SERVER);
